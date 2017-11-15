@@ -6,7 +6,7 @@ public class Queue<T> {
 
     private LinkedList<T> mLinkedList;
 
-    Queue(){
+    public Queue() {
         mLinkedList = new LinkedList<>();
     }
 

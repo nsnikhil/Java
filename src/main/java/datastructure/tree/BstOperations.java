@@ -37,8 +37,9 @@ public class BstOperations {
                     "Enter 12 to display Level Order\n" +
                     "Enter 13 to get no of elements\n" +
                     "Enter 14 to check if the node is leaf node\n" +
-                    "Enter 15 to display\n" +
-                    "Enter 0 to exit");
+                    "Enter 15 to check if tree is complete\n" +
+                    "Enter 16 to display\n" +
+                    "Enter 0 to exit\n");
 
             ch = Integer.parseInt(mBufferedReader.readLine());
 
@@ -59,33 +60,36 @@ public class BstOperations {
                     System.out.println(mBinarySearchTree.getMax(mBstNode));
                     break;
                 case 6:
-                    System.out.println(mBinarySearchTree.getHeight());
+                    System.out.println(mBinarySearchTree.getHeight(mBstNode));
                     break;
                 case 7:
-                    System.out.println(mBinarySearchTree.getDepth());
+                    System.out.println(mBinarySearchTree.getDepth(mBstNode, takeInput("no")));
                     break;
                 case 8:
-                    ArrayUtil.printArray(mBinarySearchTree.toArray());
+                    ArrayUtil.printArray(mBinarySearchTree.toArray(mBstNode));
                     break;
                 case 9:
-                    ArrayUtil.printArray(mBinarySearchTree.toInorder());
+                    ArrayUtil.printArray(mBinarySearchTree.toInorder(mBstNode));
                     break;
                 case 10:
-                    ArrayUtil.printArray(mBinarySearchTree.toPreOrder());
+                    ArrayUtil.printArray(mBinarySearchTree.toPreOrder(mBstNode));
                     break;
                 case 11:
-                    ArrayUtil.printArray(mBinarySearchTree.toPostOrder());
+                    ArrayUtil.printArray(mBinarySearchTree.toPostOrder(mBstNode));
                     break;
                 case 12:
-                    ArrayUtil.printArray(mBinarySearchTree.toLevelOrder());
+                    ArrayUtil.printArray(mBinarySearchTree.toLevelOrder(mBstNode));
                     break;
                 case 13:
-                    System.out.println(mBinarySearchTree.getNoOfElements());
+                    System.out.println(mBinarySearchTree.getNoOfElements(mBstNode));
                     break;
                 case 14:
-                    System.out.println(mBinarySearchTree.isLeafNode(takeInput("no")));
+                    System.out.println(mBinarySearchTree.isLeafNode(mBstNode, takeInput("no")));
                     break;
                 case 15:
+                    System.out.println(mBinarySearchTree.isComplete(mBstNode));
+                    break;
+                case 16:
                     mBinarySearchTree.display(mBstNode);
                     break;
             }
