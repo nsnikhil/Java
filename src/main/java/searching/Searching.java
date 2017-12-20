@@ -3,15 +3,11 @@ package searching;
 import searching.algorithms.BinarySearch;
 import searching.algorithms.LinearSearch;
 import util.ArrayUtil;
+import util.GenericUtil;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Searching {
-
-    private static BufferedReader mBufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
 
     public static void main(String... args) throws IOException {
         Searching searching = new Searching();
@@ -28,7 +24,7 @@ public class Searching {
 
         System.out.println("\nEnter the number to search\n");
 
-        number = Integer.parseInt(mBufferedReader.readLine());
+        number = GenericUtil.takeIntegerInput();
 
         do {
 
@@ -38,7 +34,7 @@ public class Searching {
 
             System.out.println("\nEnter your choice\n");
 
-            choice = Integer.parseInt(mBufferedReader.readLine());
+            choice = GenericUtil.takeIntegerInput();
 
             switch (choice) {
                 case 1:

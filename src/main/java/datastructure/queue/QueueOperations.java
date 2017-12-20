@@ -1,12 +1,10 @@
 package datastructure.queue;
 
-import java.io.BufferedReader;
+import util.GenericUtil;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class QueueOperations {
-
-    private BufferedReader mBufferedReader = new BufferedReader(new InputStreamReader(System.in));
     private Queue<Integer> mQueue;
 
     public static void main(String... args) throws IOException {
@@ -29,11 +27,12 @@ public class QueueOperations {
                     "Enter 7 to display the queue\n" +
                     "Enter 0 to exit\n");
 
-            ch = Integer.parseInt(mBufferedReader.readLine());
+            ch = GenericUtil.takeIntegerInput();
 
             switch (ch){
                 case 1:
-                    mQueue.enqueue(takeInput("no"));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mQueue.enqueue(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
                     System.out.println(mQueue.dequeue());
@@ -45,7 +44,8 @@ public class QueueOperations {
                     System.out.println(mQueue.empty());
                     break;
                 case 5:
-                    System.out.println(mQueue.search(takeInput("no")));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mQueue.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 6:
                     System.out.println(mQueue.size());
@@ -57,10 +57,4 @@ public class QueueOperations {
 
         }while (ch!=0);
     }
-
-    private int takeInput(String message) throws IOException {
-        System.out.println("Enter the "+message);
-        return Integer.parseInt(mBufferedReader.readLine());
-    }
-
 }

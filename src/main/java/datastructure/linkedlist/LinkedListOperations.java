@@ -1,15 +1,12 @@
 package datastructure.linkedlist;
 
-import org.jetbrains.annotations.NotNull;
+import util.GenericUtil;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 
 public class LinkedListOperations {
 
-    private BufferedReader mBufferedReader = new BufferedReader(new InputStreamReader(System.in));
     private LinkedList<Integer> mLinkedList;
 
     public static void main(String... args) throws IOException {
@@ -40,18 +37,21 @@ public class LinkedListOperations {
                     "Enter 14 to display list\n" +
                     "Enter 0 to exit\n");
 
-
-            ch = Integer.parseInt(mBufferedReader.readLine());
+            ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {
                 case 1:
-                    mLinkedList.insertFirst(takeInput("no"));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mLinkedList.insertFirst(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    mLinkedList.insertLast(takeInput("no"));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mLinkedList.insertLast(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
-                    mLinkedList.insertAtPosition(takeInput("position"),takeInput("no"));
+                    System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE);
+                    System.out.println("And " + GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mLinkedList.insertAtPosition(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
                     break;
                 case 4:
                     mLinkedList.deleteFirst();
@@ -60,10 +60,12 @@ public class LinkedListOperations {
                     mLinkedList.deleteLast();
                     break;
                 case 6:
-                    mLinkedList.deleteAtPosition(takeInput("position"));
+                    System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE);
+                    mLinkedList.deleteAtPosition(GenericUtil.takeIntegerInput());
                     break;
                 case 7:
-                    mLinkedList.deleteItem(takeInput("no"));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mLinkedList.deleteItem(GenericUtil.takeIntegerInput());
                     break;
                 case 8:
                     System.out.println(mLinkedList.getFirst());
@@ -72,10 +74,12 @@ public class LinkedListOperations {
                     System.out.println(mLinkedList.getLast());
                     break;
                 case 10:
-                    System.out.println(mLinkedList.getAtPosition(takeInput("position")));
+                    System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE);
+                    System.out.println(mLinkedList.getAtPosition(GenericUtil.takeIntegerInput()));
                     break;
                 case 11:
-                    System.out.println(mLinkedList.searchByItem(takeInput("no")));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mLinkedList.searchByItem(GenericUtil.takeIntegerInput()));
                     break;
                 case 12:
                     System.out.println(mLinkedList.getSize());
@@ -87,14 +91,6 @@ public class LinkedListOperations {
                     mLinkedList.display();
                     break;
             }
-
         } while (ch != 0);
     }
-
-    @NotNull
-    private Integer takeInput(String message) throws IOException {
-        System.out.println("Enter the "+message);
-        return Integer.valueOf(mBufferedReader.readLine());
-    }
-
 }

@@ -1,11 +1,19 @@
 package datastructure.tree;
 
-public class BstNode<T> {
+/**
+ * the building block of binary search tree
+ * where mData is the value of node and
+ * mLeftNode & mRightNode are the left and right
+ * branches of the node respectively.
+ *
+ * @param <T> Generic to be replaced by any object
+ */
+class BstNode<T> {
 
     private T mData;
     private BstNode<T> mLeftNode,mRightNode;
 
-    public BstNode(T data, BstNode<T> leftNode, BstNode<T> rightNode) {
+    BstNode(T data, BstNode<T> leftNode, BstNode<T> rightNode) {
         this.mData = data;
         this.mLeftNode = leftNode;
         this.mRightNode = rightNode;

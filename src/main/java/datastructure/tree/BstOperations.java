@@ -1,14 +1,12 @@
 package datastructure.tree;
 
 import util.ArrayUtil;
+import util.GenericUtil;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class BstOperations {
 
-    private BufferedReader mBufferedReader = new BufferedReader(new InputStreamReader(System.in));
     private BinarySearchTree<Integer> mBinarySearchTree;
     private BstNode<Integer> mBstNode;
 
@@ -41,17 +39,20 @@ public class BstOperations {
                     "Enter 16 to display\n" +
                     "Enter 0 to exit\n");
 
-            ch = Integer.parseInt(mBufferedReader.readLine());
+            ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {
                 case 1:
-                    mBstNode = mBinarySearchTree.insert(takeInput("no"), mBstNode);
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mBstNode = mBinarySearchTree.insert(GenericUtil.takeIntegerInput(), mBstNode);
                     break;
                 case 2:
-                    mBstNode = mBinarySearchTree.remove(takeInput("no"), mBstNode);
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mBstNode = mBinarySearchTree.remove(GenericUtil.takeIntegerInput(), mBstNode);
                     break;
                 case 3:
-                    System.out.println(mBinarySearchTree.search(takeInput("no"), mBstNode));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mBinarySearchTree.search(GenericUtil.takeIntegerInput(), mBstNode));
                     break;
                 case 4:
                     System.out.println(mBinarySearchTree.getMin(mBstNode));
@@ -63,7 +64,8 @@ public class BstOperations {
                     System.out.println(mBinarySearchTree.getHeight(mBstNode));
                     break;
                 case 7:
-                    System.out.println(mBinarySearchTree.getDepth(mBstNode, takeInput("no")));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mBinarySearchTree.getDepth(mBstNode, GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
                     ArrayUtil.printArray(mBinarySearchTree.toArray(mBstNode));
@@ -84,7 +86,8 @@ public class BstOperations {
                     System.out.println(mBinarySearchTree.getNoOfElements(mBstNode));
                     break;
                 case 14:
-                    System.out.println(mBinarySearchTree.isLeafNode(mBstNode, takeInput("no")));
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mBinarySearchTree.isLeafNode(mBstNode, GenericUtil.takeIntegerInput()));
                     break;
                 case 15:
                     System.out.println(mBinarySearchTree.isComplete(mBstNode));
@@ -97,9 +100,5 @@ public class BstOperations {
         } while (ch != 0);
     }
 
-    private int takeInput(String message) throws IOException {
-        System.out.println("Enter the " + message);
-        return Integer.parseInt(mBufferedReader.readLine());
-    }
 
 }
