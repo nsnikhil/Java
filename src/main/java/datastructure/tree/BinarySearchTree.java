@@ -1,51 +1,45 @@
 package datastructure.tree;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class BinarySearchTree<I> {
 
-    /**
-     * If root node is null assign the new node to root
-     * else find the data node is greater or smaller tha one given
-     * if smaller recursively find the position in left side where the
-     * data can be inserted else if data is greater do the same for right side
-     * of the node.
-     *
-     * @param data the value to be inserted
-     * @param node the node to be inserted on(generally root node)
-     * @return the node after insertion is complete
-     */
-    BstNode<I> insert(I data, BstNode<I> node) {
-        BstNode<I> temp = new BstNode<>(data, null, null);
+    private BstNode<I> mBstNode;
+
+    final void insert(final I data) {
+        mBstNode = insert(mBstNode, new BstNode<>(data, null, null));
+    }
+
+    private BstNode<I> insert(BstNode<I> node, final BstNode<I> newNode) {
         if (node == null) {
-            node = temp;
+            node = newNode;
             return node;
         }
-        if ((Integer) node.getData() > (Integer) data)
-            node.setLeftNode(insert(data, node.getLeftNode()));
+        if ((Integer) node.getData() > (Integer) newNode.getData())
+            node.setLeftNode(insert(node.getLeftNode(), newNode));
         else
-            node.setRightNode(insert(data, node.getRightNode()));
+            node.setRightNode(insert(node.getRightNode(), newNode));
         return node;
+    }
+
+    final void remove(final I data) {
+        remove(data, mBstNode);
     }
 
     //TODO
-    BstNode<I> remove(I data, BstNode<I> node) {
+    private void remove(final I data, final BstNode<I> node) {
         if (!search(data, node)) throw new IllegalArgumentException("Invalid data");
-        return node;
     }
 
-    /**
-     * if node is null return false as nothing can't have anything
-     * if node data equals data given return true
-     * else if data is smaller than node element
-     * recursively search the right sub tree
-     * else recursively search the right sub tree
-     *
-     * @param data the element to be searched
-     * @param node the node on which element is to be searched(generally the root node)
-     * @return true if element is found else !true
-     */
-    boolean search(I data, BstNode<I> node) {
+
+    final boolean search(final I data) {
+        return search(data, mBstNode);
+    }
+
+    @Contract("_, null -> false")
+    private boolean search(final I data, final BstNode<I> node) {
         if (node == null) return false;
         if (node.getData() == data)
             return true;
@@ -54,47 +48,34 @@ public class BinarySearchTree<I> {
         return search(data, node.getRightNode());
     }
 
-    /**
-     *
-     * Reach the left most node
-     * and return the value at that node
-     *
-     * @param node  the node to be searched in
-     * @return the smallest element of the tree
-     */
-    I getMin(BstNode<I> node) {
-        while (node.getLeftNode() != null)
-            node = node.getLeftNode();
-        return node.getData();
+
+    final I getMin() {
+        return getMin(mBstNode);
     }
 
-    /**
-     * Reach the right most node
-     * and return the value at that node
-     *
-     * @param node  the node to be searched in
-     * @return the largest element of the tree
-     */
-    I getMax(BstNode<I> node) {
-        while (node.getRightNode() != null)
-            node = node.getRightNode();
-        return node.getData();
+    private I getMin(@NotNull final BstNode<I> node) {
+        if (node.getLeftNode() == null) return node.getData();
+        return getMin(node.getLeftNode());
     }
 
-    /**
-     *
-     * the length of longest branch from node is the height
-     * of the node
-     *
-     * @param node  the node whose height is to be found
-     * @return the height of that node
-     */
-    int getHeight(BstNode<I> node) {
+    final I getMax() {
+        return getMax(mBstNode);
+    }
+
+    private I getMax(@NotNull final BstNode<I> node) {
+        if (node.getRightNode() == null) return node.getData();
+        return getMax(node.getRightNode());
+    }
+
+    final int getHeight() {
+        return getHeight(mBstNode);
+    }
+
+    private int getHeight(final BstNode<I> node) {
         if (node == null) return 0;
-        int left = 1 + getHeight(node.getLeftNode());
-        int right = 1 + getHeight(node.getRightNode());
-        return getMax(left, right);
+        return getMax(1 + getHeight(node.getLeftNode()), 1 + getHeight(node.getRightNode()));
     }
+
 
     /**
      * @param a the first element
@@ -102,57 +83,84 @@ public class BinarySearchTree<I> {
      * @return the larger between first and second
      */
     @Contract(pure = true)
-    private int getMax(int a, int b) {
+    private int getMax(final int a, final int b) {
         return a > b ? a : b;
     }
 
-    /**
-     *
-     * The depth of a node is its height from the
-     * tree root.
-     *
-     * @param root  the node
-     * @param data  the element whose depth is to be found
-     * @return the depth of the element in the node
-     */
-    int getDepth(BstNode<I> root, I data) {
+    final int getDepth(final I data) {
+        return getDepth(mBstNode, data);
+    }
+
+    private int getDepth(@NotNull final BstNode<I> root, final I data) {
         if (root.getData() == data) return 1;
         if ((Integer) data < (Integer) root.getData()) return 1 + getDepth(root.getLeftNode(), data);
         return 1 + getDepth(root.getRightNode(), data);
     }
 
+    final I[] toArray() {
+        return toArray(mBstNode);
+    }
+
     //TODO
-    I[] toArray(BstNode<I> node) {
+    @Nullable
+    private I[] toArray(final BstNode<I> node) {
         if (!isComplete(node)) throw new IllegalArgumentException("Incomplete binary search tree");
         return null;
     }
 
+    final I[] toInorder() {
+        return toInorder(mBstNode);
+    }
+
     //TODO
-    I[] toInorder(BstNode<I> node) {
+    @Nullable
+    private I[] toInorder(final BstNode<I> node) {
         if (!isComplete(node)) throw new IllegalArgumentException("Incomplete binary search tree");
         return null;
     }
 
+    final I[] toPreOrder() {
+        return toPreOrder(mBstNode);
+    }
+
     //TODO
-    I[] toPreOrder(BstNode<I> node) {
+    @Nullable
+    private I[] toPreOrder(final BstNode<I> node) {
         if (!isComplete(node)) throw new IllegalArgumentException("Incomplete binary search tree");
         return null;
     }
 
+    final I[] toPostOrder() {
+        return toPostOrder(mBstNode);
+    }
+
     //TODO
-    I[] toPostOrder(BstNode<I> node) {
+    @Nullable
+    private I[] toPostOrder(final BstNode<I> node) {
         if (!isComplete(node)) throw new IllegalArgumentException("Incomplete binary search tree");
         return null;
     }
 
+
+    final I[] toLevelOrder() {
+        return toLevelOrder(mBstNode);
+    }
+
     //TODO
-    I[] toLevelOrder(BstNode<I> node) {
+    @Nullable
+    private I[] toLevelOrder(final BstNode<I> node) {
         if (!isComplete(node)) throw new IllegalArgumentException("Incomplete binary search tree");
         return null;
     }
 
+
+    final boolean isComplete() {
+        return isComplete(mBstNode);
+    }
+
     //TODO
-    boolean isComplete(BstNode<I> root) {
+    @Contract("null -> true")
+    private boolean isComplete(final BstNode<I> root) {
         if (root == null) return true;
         if (!isLeafNode(root, root.getData())) {
             if (root.getLeftNode() == null && root.getRightNode() != null) {
@@ -162,52 +170,45 @@ public class BinarySearchTree<I> {
         return isComplete(root.getLeftNode()) && isComplete(root.getRightNode());
     }
 
-    /**
-     *
-     * add 1 until all the elements of the node has been
-     * visited
-     *
-     * @param node  the node(usually root)
-     * @return the no of element in that node
-     */
-    int getNoOfElements(BstNode<I> node) {
+    final int getNoOfElements() {
+        return getNoOfElements(mBstNode);
+    }
+
+    private int getNoOfElements(final BstNode<I> node) {
         if (node == null) return 0;
         return 1 + getNoOfElements(node.getLeftNode()) + getNoOfElements(node.getRightNode());
     }
 
-    /**
-     *
-     * If the nodes has no left and right child its a root node
-     *
-     * @param root  the node(usually root)
-     * @param data  the element to be checked
-     * @return true if element is at leaf else !true
-     */
-    boolean isLeafNode(BstNode<I> root, I data) {
+
+    final boolean isLeafNode(final I data) {
+        return isLeafNode(mBstNode, data);
+    }
+
+    private boolean isLeafNode(final BstNode<I> root, final I data) {
         BstNode<I> node = getNodeFromData(root, data);
         return node.getLeftNode() == null && node.getRightNode() == null;
     }
 
     /**
-     *
      * Search in the tree at which node does the value
      * given present and return that node.
      *
-     * @param root  the node(usually root)
-     * @param data  the element whose node you want to return
+     * @param root the node(usually root)
+     * @param data the element whose node you want to return
      * @return the node of the element
      */
-    private BstNode<I> getNodeFromData(BstNode<I> root, I data) {
+    private BstNode<I> getNodeFromData(final BstNode<I> root, final I data) {
         if (!search(data, root)) throw new IllegalArgumentException("Invalid data");
         if (root.getData() == data) return root;
         if ((Integer) data <= (Integer) root.getData()) return getNodeFromData(root.getLeftNode(), data);
         return getNodeFromData(root.getRightNode(), data);
     }
 
-    /**
-     * @param node  the tree you want to display
-     */
-    void display(BstNode<I> node) {
+    final void display() {
+        display(mBstNode);
+    }
+
+    private void display(final BstNode<I> node) {
         if (node == null) return;
         System.out.print(node.getData() + " ");
         if (node.getLeftNode() != null)

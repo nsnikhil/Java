@@ -1,4 +1,6 @@
-package datastructure.queue.circular;
+package datastructure.queue.array.circular;
+
+import org.jetbrains.annotations.Contract;
 
 /**
  * Implementation of circular queue using array
@@ -28,10 +30,10 @@ package datastructure.queue.circular;
  */
 public class CircularQueueArray {
 
-    private int[] mQueue;
+    private final int[] mQueue;
     private int mFront = -1, mRear = -1;
 
-    CircularQueueArray(int size) {
+    CircularQueueArray(final int size) {
         mQueue = new int[size];
     }
 
@@ -47,7 +49,7 @@ public class CircularQueueArray {
      *
      * @param data the value to be enqueued
      */
-    void enqueue(int data) {
+    final void enqueue(final int data) {
         if (isFull()) {
             System.out.print("Queue is full");
             return;
@@ -60,7 +62,7 @@ public class CircularQueueArray {
     /**
      * Increments the front to point ot next index
      */
-    void dequeue() {
+    final void dequeue() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return;
@@ -71,33 +73,36 @@ public class CircularQueueArray {
     /**
      * @return returns the element from front of queue
      */
-    public int getFront() {
+    @Contract(pure = true)
+    public final int getFront() {
         return mQueue[mFront];
     }
 
     /**
      * @return returns the element from rear of the queue
      */
-    public int getRear() {
+    @Contract(pure = true)
+    public final int getRear() {
         return mQueue[mRear];
     }
 
     /**
      * @return true if queue is full else !true
      */
-    boolean isFull() {
+    @Contract(pure = true)
+    final boolean isFull() {
         return mFront == 0 && mRear == mQueue.length - 1 || mRear == mFront - 1;
     }
 
     /**
      * @return true if queue is empty else !true
      */
-    boolean isEmpty() {
+    @Contract(pure = true)
+    final boolean isEmpty() {
         return mRear == -1 && mFront == 1;
     }
 
     /**
-     *
      * If queue if empty return -1
      * else if
      * if front < rear than search the queue linearly
@@ -106,19 +111,18 @@ public class CircularQueueArray {
      * start to rear
      * and if element if found return its index else -1
      *
-     * @param data  the element to be searched
+     * @param data the element to be searched
      * @return index of the element if found else -1
      */
-    int search(int data) {
+    final int search(final int data) {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return -1;
         }
-        if (mFront <= mRear) {
-            for (int i = mFront; i <= mRear; i++)
-                if (mQueue[i] == data)
-                    return i;
-        } else {
+        if (mFront <= mRear)
+            return search(mFront, mRear, mQueue, data);
+        else {
+            //TODO
             int counter = 0;
             for (int j = mFront, size = mQueue.length; j <= size - 1; j++, counter++)
                 if (mQueue[j] == data)
@@ -130,9 +134,15 @@ public class CircularQueueArray {
         return -1;
     }
 
+    private int search(int index, final int rear, final int queue[], final int data) {
+        if (rear < index) return -1;
+        if (queue[index] == data) return index;
+        return search(++index, rear, queue, data);
+    }
+
     /**
      * Displays the element of list
-     *
+     * <p>
      * if
      * front is less than rear than the element
      * has not been wrapped so display linearly
@@ -140,19 +150,22 @@ public class CircularQueueArray {
      * display from front to end of queue
      * and from 0 to rear
      */
-    void display() {
+    final void display() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return;
         }
         if (mFront <= mRear)
-            for (int i = mFront; i <= mRear; i++)
-                System.out.print(mQueue[i] + " ");
+            display(mFront, mRear, mQueue);
         else {
-            for (int j = mFront, size = mQueue.length; j <= size - 1; j++)
-                System.out.print(mQueue[j] + " ");
-            for (int j = 0; j <= mRear; j++)
-                System.out.print(mQueue[j] + " ");
+            display(mFront, mQueue.length - 1, mQueue);
+            display(0, mRear, mQueue);
         }
+    }
+
+    private void display(int index, final int rear, final int[] queue) {
+        if (rear < index) return;
+        System.out.print(queue[index] + " ");
+        display(++index, rear, queue);
     }
 }

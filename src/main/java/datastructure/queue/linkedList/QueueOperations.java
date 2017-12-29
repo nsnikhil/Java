@@ -1,14 +1,15 @@
-package datastructure.queue;
+package datastructure.queue.linkedList;
 
 import util.GenericUtil;
 
 import java.io.IOException;
 
 public class QueueOperations {
+
     private Queue<Integer> mQueue;
 
     public static void main(String... args) throws IOException {
-        QueueOperations queueOperations = new QueueOperations();
+        final QueueOperations queueOperations = new QueueOperations();
         queueOperations.initialize();
     }
 

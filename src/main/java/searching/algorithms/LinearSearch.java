@@ -1,5 +1,7 @@
 package searching.algorithms;
 
+import org.jetbrains.annotations.NotNull;
+
 public class LinearSearch implements Searcher {
 
     /**
@@ -10,10 +12,11 @@ public class LinearSearch implements Searcher {
      * @return true if value if searched
      */
     @Override
-    public boolean search(int[] ar, int n) {
-        for (int i : ar)
-            if (i == n)
-                return true;
-        return false;
+    public boolean search(final int[] ar, final int n) {
+        return search(ar, n, 0);
+    }
+
+    private boolean search(@NotNull final int ar[], final int n, int index) {
+        return ar.length != index && (ar[index] == n || search(ar, n, ++index));
     }
 }

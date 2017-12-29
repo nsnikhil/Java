@@ -1,5 +1,7 @@
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The corresponding two elements of the array are compared
  * and if value of the first element is greater than the
@@ -29,11 +31,41 @@ package sorting.algorithms;
 public class BubbleSort implements Sorter {
 
     /**
+     * Recursive bubble sort
+     *
+     * Completely insane never go completely insane
+     *
      * @param ar the array
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public int[] sort(final int[] ar) {
+        return outerSort(ar, 0);
+    }
+
+    private int[] outerSort(@NotNull final int ar[], int index) {
+        if (ar.length == index) return ar;
+        innerSort(ar, 0, ar.length - index - 1);
+        return outerSort(ar, ++index);
+    }
+
+    private void innerSort(@NotNull final int ar[], int index, final int end) {
+        if (index >= end) return;
+        if (ar[index] > ar[index + 1]) {
+            int temp = ar[index];
+            ar[index] = ar[index + 1];
+            ar[index + 1] = temp;
+        }
+        innerSort(ar, ++index, end);
+    }
+
+    /**
+     * Iterative implementation of bubble sort
+     *
+     * @param ar the array to be sorted
+     * @return the sorted array
+     */
+    private int[] bubbleSortNonRecurivse(@NotNull final int[] ar) {
         for (int i = 0, size = ar.length; i < size; i++)
             for (int j = 0; j < size - i - 1; j++)
                 if (ar[j] > ar[j + 1]) {
@@ -43,5 +75,4 @@ public class BubbleSort implements Sorter {
                 }
         return ar;
     }
-
 }

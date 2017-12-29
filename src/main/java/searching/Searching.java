@@ -10,21 +10,21 @@ import java.io.IOException;
 public class Searching {
 
     public static void main(String... args) throws IOException {
-        Searching searching = new Searching();
+        final Searching searching = new Searching();
         searching.initialize();
     }
 
     private void initialize() throws IOException {
 
-        int choice,number;
+        int choice;
 
-        int ar[] = ArrayUtil.takeArrayInput();
+        final int ar[] = ArrayUtil.takeArrayInput();
 
         ArrayUtil.printArray(ar);
 
         System.out.println("\nEnter the number to search\n");
 
-        number = GenericUtil.takeIntegerInput();
+        final int number = GenericUtil.takeIntegerInput();
 
         do {
 

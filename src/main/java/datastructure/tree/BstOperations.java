@@ -8,10 +8,9 @@ import java.io.IOException;
 public class BstOperations {
 
     private BinarySearchTree<Integer> mBinarySearchTree;
-    private BstNode<Integer> mBstNode;
 
     public static void main(String... args) throws IOException {
-        BstOperations bstOperations = new BstOperations();
+        final BstOperations bstOperations = new BstOperations();
         bstOperations.initialize();
     }
 
@@ -44,61 +43,59 @@ public class BstOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mBstNode = mBinarySearchTree.insert(GenericUtil.takeIntegerInput(), mBstNode);
+                    mBinarySearchTree.insert(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mBstNode = mBinarySearchTree.remove(GenericUtil.takeIntegerInput(), mBstNode);
+                    mBinarySearchTree.remove(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.search(GenericUtil.takeIntegerInput(), mBstNode));
+                    System.out.println(mBinarySearchTree.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 4:
-                    System.out.println(mBinarySearchTree.getMin(mBstNode));
+                    System.out.println(mBinarySearchTree.getMin());
                     break;
                 case 5:
-                    System.out.println(mBinarySearchTree.getMax(mBstNode));
+                    System.out.println(mBinarySearchTree.getMax());
                     break;
                 case 6:
-                    System.out.println(mBinarySearchTree.getHeight(mBstNode));
+                    System.out.println(mBinarySearchTree.getHeight());
                     break;
                 case 7:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.getDepth(mBstNode, GenericUtil.takeIntegerInput()));
+                    System.out.println(mBinarySearchTree.getDepth(GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
-                    ArrayUtil.printArray(mBinarySearchTree.toArray(mBstNode));
+                    ArrayUtil.printArray(mBinarySearchTree.toArray());
                     break;
                 case 9:
-                    ArrayUtil.printArray(mBinarySearchTree.toInorder(mBstNode));
+                    ArrayUtil.printArray(mBinarySearchTree.toInorder());
                     break;
                 case 10:
-                    ArrayUtil.printArray(mBinarySearchTree.toPreOrder(mBstNode));
+                    ArrayUtil.printArray(mBinarySearchTree.toPreOrder());
                     break;
                 case 11:
-                    ArrayUtil.printArray(mBinarySearchTree.toPostOrder(mBstNode));
+                    ArrayUtil.printArray(mBinarySearchTree.toPostOrder());
                     break;
                 case 12:
-                    ArrayUtil.printArray(mBinarySearchTree.toLevelOrder(mBstNode));
+                    ArrayUtil.printArray(mBinarySearchTree.toLevelOrder());
                     break;
                 case 13:
-                    System.out.println(mBinarySearchTree.getNoOfElements(mBstNode));
+                    System.out.println(mBinarySearchTree.getNoOfElements());
                     break;
                 case 14:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.isLeafNode(mBstNode, GenericUtil.takeIntegerInput()));
+                    System.out.println(mBinarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
                     break;
                 case 15:
-                    System.out.println(mBinarySearchTree.isComplete(mBstNode));
+                    System.out.println(mBinarySearchTree.isComplete());
                     break;
                 case 16:
-                    mBinarySearchTree.display(mBstNode);
+                    mBinarySearchTree.display();
                     break;
             }
 
         } while (ch != 0);
     }
-
-
 }

@@ -1,4 +1,4 @@
-package datastructure.stack;
+package datastructure.stack.linkedList;
 
 
 import datastructure.linkedlist.LinkedList;
@@ -10,26 +10,28 @@ import datastructure.linkedlist.LinkedList;
  *
  * @param <T> Generics to be replaced with any object
  */
-public class Stack<T> {
+public class Stack<T> implements StackInterface<T> {
 
-    private LinkedList<T> mLinkedList;
+    private final LinkedList<T> mLinkedList;
 
-    Stack(){
+    Stack() {
         mLinkedList = new LinkedList<>();
     }
 
     /**
      * @param data the element to be pushed into stack
      */
-    public void push(T data) {
+    @Override
+    public final void push(final T data) {
         mLinkedList.insertFirst(data);
     }
 
     /**
      * @return the poped element from stack
      */
-    public T pop(){
-        T  data = mLinkedList.getFirst();
+    @Override
+    public final T pop() {
+        final T data = mLinkedList.getFirst();
         mLinkedList.deleteFirst();
         return data;
     }
@@ -37,14 +39,16 @@ public class Stack<T> {
     /**
      * @return the first element from stack
      */
-    public T peek(){
+    @Override
+    public final T peek() {
         return mLinkedList.getFirst();
     }
 
     /**
      * @return true if stack is empty else !true
      */
-    public boolean empty(){
+    @Override
+    public final boolean empty() {
         return mLinkedList.isEmpty();
     }
 
@@ -52,21 +56,24 @@ public class Stack<T> {
      * @param data the element to be searched
      * @return index of the element if present else -1
      */
-    public int search(T data){
+    @Override
+    public final int search(final T data) {
         return mLinkedList.getItemPosition(data);
     }
 
     /**
      * displays the stack elements
      */
-    public void display(){
+    @Override
+    public final void display() {
         mLinkedList.display();
     }
 
     /**
      * @return the size of stack
      */
-    public int size(){
+    @Override
+    public final int size() {
         return mLinkedList.getSize();
     }
 

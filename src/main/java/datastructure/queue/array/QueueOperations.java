@@ -9,17 +9,15 @@ public class QueueOperations {
     private Queue mQueue;
 
     public static void main(String... args) throws IOException {
-        QueueOperations queueOperations = new QueueOperations();
+        final QueueOperations queueOperations = new QueueOperations();
         queueOperations.initialize();
     }
 
     private void initialize() throws IOException {
-        int ch, size;
+        int ch;
 
         System.out.println(GenericUtil.INTEGER_INPUT_SIZE);
-        size = GenericUtil.takeIntegerInput();
-
-        mQueue = new Queue(size);
+        mQueue = new Queue(GenericUtil.takeIntegerInput());
 
         do {
 

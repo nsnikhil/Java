@@ -1,4 +1,4 @@
-package datastructure.queue.circular;
+package datastructure.queue.array.circular;
 
 import util.GenericUtil;
 

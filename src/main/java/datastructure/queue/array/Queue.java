@@ -19,10 +19,10 @@ import org.jetbrains.annotations.Contract;
  */
 public class Queue {
 
-    int mFront = -1, mRear = -1;
-    private int[] mQueue;
+    private final int[] mQueue;
+    private int mFront = -1, mRear = -1;
 
-    Queue(int size) {
+    Queue(final int size) {
         mQueue = new int[size];
     }
 
@@ -33,7 +33,7 @@ public class Queue {
      *
      * @param data the data to be inserted
      */
-    void enqueue(int data) {
+    final void enqueue(final int data) {
         if (isFull()) {
             System.out.println("Queue Full");
             return;
@@ -46,7 +46,7 @@ public class Queue {
      * check if queue is empty
      * else increment the front
      */
-    void dequeue() {
+    final void dequeue() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return;
@@ -60,7 +60,7 @@ public class Queue {
      *
      * @return element at front of queue if not empty else -1
      */
-    int getFront() {
+    final int getFront() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return -1;
@@ -74,7 +74,7 @@ public class Queue {
      *
      * @return element at rear of queue if not empty else -1
      */
-    int getRear() {
+    final int getRear() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return -1;
@@ -86,7 +86,7 @@ public class Queue {
      * @return true if queue if full else !true
      */
     @Contract(pure = true)
-    boolean isFull() {
+    final boolean isFull() {
         return mRear >= mQueue.length - 1;
     }
 
@@ -97,7 +97,8 @@ public class Queue {
      *
      * @return true if queue is empty else !true
      */
-    boolean isEmpty() {
+    @Contract(pure = true)
+    final boolean isEmpty() {
         return mRear == -1 && mFront == -1 || mFront > mRear;
     }
 
@@ -110,27 +111,35 @@ public class Queue {
      * @param data the element to be searched
      * @return the index of element if found else -1
      */
-    int search(int data) {
+    final int search(final int data) {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return -1;
         }
-        for (int i = mFront; i <= mRear; i++)
-            if (mQueue[i] == data)
-                return i;
-        return -1;
+        return search(mRear, mQueue, mFront, data);
+    }
+
+    private int search(final int rear, final int[] queue, int index, final int data) {
+        if (rear < index) return -1;
+        if (queue[index] == data) return index;
+        return search(rear, queue, ++index, data);
     }
 
     /**
      * check if queue is empty
      * if not display the elements of queue
      */
-    void display() {
+    final void display() {
         if (isEmpty()) {
             System.out.println("Queue Empty");
             return;
         }
-        for (int i = mFront; i <= mRear; i++)
-            System.out.print(mQueue[i] + " ");
+        display(mRear, mQueue, mFront);
+    }
+
+    private void display(final int rear, final int queue[], int index) {
+        if (rear < index) return;
+        System.out.print(queue[index] + " ");
+        display(rear, queue, ++index);
     }
 }

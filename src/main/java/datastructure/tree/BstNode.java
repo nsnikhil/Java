@@ -13,33 +13,56 @@ class BstNode<T> {
     private T mData;
     private BstNode<T> mLeftNode,mRightNode;
 
-    BstNode(T data, BstNode<T> leftNode, BstNode<T> rightNode) {
+    /**
+     * @param data      the data part of the node
+     * @param leftNode  the left link of the node
+     * @param rightNode the right link of the node
+     */
+    BstNode(final T data, final BstNode<T> leftNode, final BstNode<T> rightNode) {
         this.mData = data;
         this.mLeftNode = leftNode;
         this.mRightNode = rightNode;
     }
 
+    /**
+     * @return data of the node
+     */
     public T getData() {
         return mData;
     }
 
-    public void setData(T data) {
+    /**
+     * @param data the new data of the node
+     */
+    public void setData(final T data) {
         this.mData = data;
     }
 
+    /**
+     * @return left link of the node
+     */
     public BstNode<T> getLeftNode() {
         return mLeftNode;
     }
 
-    public void setLeftNode(BstNode<T> leftNode) {
+    /**
+     * @param leftNode new left link for the node
+     */
+    public void setLeftNode(final BstNode<T> leftNode) {
         this.mLeftNode = leftNode;
     }
 
+    /**
+     * @return right link of the node
+     */
     public BstNode<T> getRightNode() {
         return mRightNode;
     }
 
-    public void setRightNode(BstNode<T> rightNode) {
+    /**
+     * @param rightNode new right link of the node
+     */
+    public void setRightNode(final BstNode<T> rightNode) {
         this.mRightNode = rightNode;
     }
 }

@@ -1,4 +1,4 @@
-package datastructure.queue;
+package datastructure.queue.linkedList;
 
 import datastructure.linkedlist.LinkedList;
 
@@ -9,9 +9,9 @@ import datastructure.linkedlist.LinkedList;
  *
  * @param <T> Generics to be replaced with any object
  */
-public class Queue<T> {
+public class Queue<T> implements QueueInterface<T> {
 
-    private LinkedList<T> mLinkedList;
+    private final LinkedList<T> mLinkedList;
 
     Queue() {
         mLinkedList = new LinkedList<>();
@@ -20,15 +20,17 @@ public class Queue<T> {
     /**
      * @param data the data to be enqueued
      */
-    public void enqueue(T data) {
+    @Override
+    public final void enqueue(final T data) {
         mLinkedList.insertLast(data);
     }
 
     /**
      * @return the dequeued item
      */
-    public T dequeue(){
-        T data = mLinkedList.getFirst();
+    @Override
+    public final T dequeue() {
+        final T data = mLinkedList.getFirst();
         mLinkedList.deleteFirst();
         return data;
     }
@@ -36,21 +38,24 @@ public class Queue<T> {
     /**
      * @return returns the first item
      */
-    public T peek(){
+    @Override
+    public final T peek() {
         return mLinkedList.getFirst();
     }
 
     /**
      * @return returns true if queue is empty else !true
      */
-    public boolean empty(){
+    @Override
+    public final boolean empty() {
         return mLinkedList.isEmpty();
     }
 
     /**
      * @return the size of queue
      */
-    public int size(){
+    @Override
+    public final int size() {
         return mLinkedList.getSize();
     }
 
@@ -58,14 +63,16 @@ public class Queue<T> {
      * @param data the element to be searched
      * @return the position of the element
      */
-    public int search(T data){
+    @Override
+    public final int search(final T data) {
         return mLinkedList.getItemPosition(data);
     }
 
     /**
      * displays the queue elements
      */
-    public void display(){
+    @Override
+    public final void display() {
         mLinkedList.display();
     }
 }

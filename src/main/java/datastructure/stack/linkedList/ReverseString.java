@@ -1,5 +1,6 @@
-package datastructure.stack;
+package datastructure.stack.linkedList;
 
+import org.jetbrains.annotations.NotNull;
 import util.GenericUtil;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public class ReverseString {
     private Stack<Integer> mIntegerStack;
 
     public static void main(String... args) throws IOException {
-        ReverseString reverseString = new ReverseString();
+        final ReverseString reverseString = new ReverseString();
         reverseString.initialize();
     }
 
@@ -19,7 +20,7 @@ public class ReverseString {
         mIntegerStack = new Stack<>();
         System.out.println(GenericUtil.STRING_INPUT_MESSAGE);
         reverseString(GenericUtil.takeStringInput());
-        System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+        System.out.println("\n" + GenericUtil.INTEGER_INPUT_MESSAGE);
         reverseInteger(GenericUtil.takeIntegerInput());
     }
 
@@ -29,11 +30,16 @@ public class ReverseString {
      *
      * @param s the string to be reversed
      */
-    private void reverseString(String s) {
-        for (int i = 0; i < s.length(); i++)
-            mCharacterStack.push(s.charAt(i));
+    private void reverseString(@NotNull final String s) {
+        pushString(s, mCharacterStack);
         while (!mCharacterStack.empty())
             System.out.print(mCharacterStack.pop());
+    }
+
+    private void pushString(@NotNull final String s, final Stack<Character> stack) {
+        if (s.length() <= 0) return;
+        stack.push(s.charAt(0));
+        pushString(s.substring(1), stack);
     }
 
     /**
@@ -56,23 +62,24 @@ public class ReverseString {
      *
      * @param integer the number to be reversed
      */
-    private void reverseInteger(int integer) {
-        int size = getNoOfDigits(integer);
-        while (size > 0) {
-            int div = (int) Math.pow(10, size - 1);
-            mIntegerStack.push(integer / div);
-            integer = integer % div;
-            size--;
-        }
+    private void reverseInteger(final int integer) {
+        pushInteger(integer, mIntegerStack, getNoOfDigits(integer));
         while (!mIntegerStack.empty())
             System.out.print(mIntegerStack.pop());
+    }
+
+    private void pushInteger(final int integer, final Stack<Integer> stack, int size) {
+        if (size < 1) return;
+        final int div = (int) Math.pow(10, size - 1);
+        stack.push(integer / div);
+        pushInteger(integer % div, stack, --size);
     }
 
     /**
      * @param no the integer
      * @return the no of digits in the integer
      */
-    private int getNoOfDigits(int no) {
+    private int getNoOfDigits(final int no) {
         if (Math.abs(no) < 1) return 0;
         return 1 + getNoOfDigits(no / 10);
     }

@@ -9,14 +9,14 @@ import java.io.IOException;
 public class Sorting {
 
     public static void main(String... args) throws IOException {
-        Sorting sorting = new Sorting();
+        final Sorting sorting = new Sorting();
         sorting.initialize();
     }
 
     private void initialize() throws IOException {
 
         int choice;
-        int ar[] = ArrayUtil.takeArrayInput();
+        final int ar[] = ArrayUtil.takeArrayInput();
         ArrayUtil.printArray(ar);
 
         do {

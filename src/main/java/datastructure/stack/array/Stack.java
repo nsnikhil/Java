@@ -1,6 +1,7 @@
 package datastructure.stack.array;
 
 
+import org.jetbrains.annotations.Contract;
 import util.ArrayUtil;
 
 /**
@@ -8,10 +9,10 @@ import util.ArrayUtil;
  */
 class Stack {
 
-    private int[] mStack;
+    private final int[] mStack;
     private int mTop = -1;
 
-    Stack(int size) {
+    Stack(final int size) {
         mStack = new int[size];
     }
 
@@ -22,7 +23,7 @@ class Stack {
      *
      * @param data the data to be pushed into stack
      */
-    void push(int data) {
+    final void push(final int data) {
         if (mTop >= mStack.length - 1) {
             System.out.println("Stack over flow");
             return;
@@ -35,7 +36,7 @@ class Stack {
      * if not empty set the top element to 0
      * and decrement the top
      */
-    void pop() {
+    final void pop() {
         if (mTop <= -1) {
             System.out.println("Stack under flow");
             return;
@@ -51,7 +52,7 @@ class Stack {
      *
      * @return the element at top of stack
      */
-    int peek() {
+    final int peek() {
         if (mTop <= -1) {
             System.out.println("Stack under flow");
             return -1;
@@ -68,7 +69,7 @@ class Stack {
      * @param data the data to be searched
      * @return position of data if found else -1
      */
-    int search(int data) {
+    final int search(final int data) {
         if (mTop <= -1) {
             System.out.println("Stack under flow");
             return -1;
@@ -82,11 +83,13 @@ class Stack {
     /**
      * @return true if stack is empty else !true
      */
-    boolean isEmpty() {
+    @Contract(pure = true)
+    final boolean isEmpty() {
         return mTop == -1;
     }
 
-    boolean isFull() {
+    @Contract(pure = true)
+    final boolean isFull() {
         return mTop >= mStack.length - 1;
     }
 
@@ -96,7 +99,7 @@ class Stack {
      * <p>
      * displays the stack
      */
-    void display() {
+    final void display() {
         if (mTop <= -1) {
             System.out.println("Stack Empty");
             return;
