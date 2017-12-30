@@ -16,6 +16,8 @@
 
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
+
 public class HeapSort implements Sorter{
 
     /**
@@ -25,7 +27,7 @@ public class HeapSort implements Sorter{
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public final int[] sort(@NotNull final int[] ar) {
         return new int[0];
     }
 

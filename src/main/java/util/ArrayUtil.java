@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
-public class ArrayUtil {
+public final class ArrayUtil {
 
     /**
      * @return integer array
@@ -68,7 +68,7 @@ public class ArrayUtil {
         return ar;
     }
 
-    private static int[] takeArrayInput(final int ar[], int index) throws IOException {
+    private static int[] takeArrayInput(@NotNull final int ar[], int index) throws IOException {
         if (ar.length == index) return ar;
         ar[index] = GenericUtil.takeIntegerInput();
         return takeArrayInput(ar, ++index);

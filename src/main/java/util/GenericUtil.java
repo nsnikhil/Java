@@ -20,7 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class GenericUtil {
+public final class GenericUtil {
 
     public static final String INTEGER_INPUT_MESSAGE = "Enter the no";
     public static final String INTEGER_INPUT_SIZE = "Enter the size";

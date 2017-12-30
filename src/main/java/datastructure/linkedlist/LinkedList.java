@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * @version 1.0
  * @since 29-12-2017
  */
-public class LinkedList<T> {
+public final class LinkedList<T> {
 
     private Node<T> mRoot;
 

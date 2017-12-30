@@ -16,6 +16,7 @@
 
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MergeSort implements Sorter {
@@ -25,7 +26,7 @@ public class MergeSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public final int[] sort(final int[] ar) {
         return mergeSort(ar);
     }
 
@@ -52,13 +53,13 @@ public class MergeSort implements Sorter {
      * @return the sorted array
      */
     @Nullable
-    private int[] mergeSort(int[] ar) {
-        int arrayLength = ar.length;
+    private int[] mergeSort(@NotNull final int[] ar) {
+        final int arrayLength = ar.length;
 
         if (arrayLength <= 1) return null;
 
-        int mid = ar.length / 2;
-        int leftSubArray[], rightSubArray[];
+        final int mid = ar.length / 2;
+        final int leftSubArray[], rightSubArray[];
 
         leftSubArray = new int[mid];
 
@@ -107,9 +108,9 @@ public class MergeSort implements Sorter {
      * @param leftArray  the left sub array
      * @param rightArray the right sub array
      */
-    private void merge(int[] ar, int[] leftArray, int[] rightArray) {
-        int leftLength = leftArray.length;
-        int rightLength = rightArray.length;
+    private void merge(@NotNull final int[] ar, @NotNull final int[] leftArray, @NotNull final int[] rightArray) {
+        final int leftLength = leftArray.length;
+        final int rightLength = rightArray.length;
 
         int i = 0, j = 0, k = 0;
 

@@ -16,6 +16,8 @@
 
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Find the smallest element of the array and place it in the beginning
  * <p>
@@ -40,12 +42,39 @@ package sorting.algorithms;
 public class SelectionSort implements Sorter {
 
     /**
+     * Recursive implementation of selection sort
+     *
      * @param ar the array
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public final int[] sort(final int[] ar) {
+        return selectionSort(ar, 0);
+    }
 
+    private int[] selectionSort(@NotNull final int[] ar, int index) {
+        if (ar.length == index) return ar;
+        final int minIndex = findMinIndex(ar, index + 1, index);
+        final int temp = ar[minIndex];
+        ar[minIndex] = ar[index];
+        ar[index] = temp;
+        return selectionSort(ar, ++index);
+    }
+
+    private int findMinIndex(@NotNull final int ar[], int index, int minIndex) {
+        if (ar.length == index) return minIndex;
+        if (ar[index] < ar[minIndex])
+            minIndex = index;
+        return findMinIndex(ar, ++index, minIndex);
+    }
+
+    /**
+     * Iterative implementation of selection sort
+     *
+     * @param ar the array to be sorted
+     * @return the sorted array
+     */
+    private int[] selectionSortIterative(@NotNull final int ar[]) {
         for (int i = 0, size = ar.length; i < size - 1; i++) {
             int minIndex = i;
 

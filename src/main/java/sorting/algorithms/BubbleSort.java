@@ -55,7 +55,7 @@ public class BubbleSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public int[] sort(final int[] ar) {
+    public final int[] sort(final int[] ar) {
         return outerSort(ar, 0);
     }
 
@@ -68,7 +68,7 @@ public class BubbleSort implements Sorter {
     private void innerSort(@NotNull final int ar[], int index, final int end) {
         if (index >= end) return;
         if (ar[index] > ar[index + 1]) {
-            int temp = ar[index];
+            final int temp = ar[index];
             ar[index] = ar[index + 1];
             ar[index + 1] = temp;
         }
@@ -81,7 +81,7 @@ public class BubbleSort implements Sorter {
      * @param ar the array to be sorted
      * @return the sorted array
      */
-    private int[] bubbleSortNonRecurivse(@NotNull final int[] ar) {
+    private int[] bubbleSortIterative(@NotNull final int[] ar) {
         for (int i = 0, size = ar.length; i < size; i++)
             for (int j = 0; j < size - i - 1; j++)
                 if (ar[j] > ar[j + 1]) {

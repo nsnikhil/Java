@@ -21,7 +21,7 @@ import util.GenericUtil;
 import java.io.IOException;
 
 
-public class LinkedListOperations {
+public final class LinkedListOperations {
 
     private LinkedList<Integer> mLinkedList;
 

@@ -16,6 +16,7 @@
 
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class QuickSort implements Sorter {
@@ -25,7 +26,7 @@ public class QuickSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public final int[] sort(final int[] ar) {
         return quickSort(ar, 0, ar.length - 1);
     }
 
@@ -50,9 +51,9 @@ public class QuickSort implements Sorter {
      * @return the sorted array
      */
     @Nullable
-    private int[] quickSort(int ar[], int start, int end) {
+    private int[] quickSort(final int ar[], final int start, final int end) {
         if (start >= end) return null;
-        int pivot = partition(ar, start, end);
+        final int pivot = partition(ar, start, end);
         quickSort(ar, start, pivot - 1);
         quickSort(ar, pivot + 1, end);
         return ar;
@@ -86,7 +87,7 @@ public class QuickSort implements Sorter {
      * @param end   the end index
      * @return the index of pivot
      */
-    private int partition(int[] ar, int start, int end) {
+    private int partition(@NotNull final int[] ar, final int start, final int end) {
         int pivotIndex = start;
         int temp, pivot = ar[end];
         for (int i = start; i < end; i++)

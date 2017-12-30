@@ -16,6 +16,8 @@
 
 package datastructure.linkedlist;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * The building block of linked list
  * where the mData is the item to stored
@@ -23,7 +25,7 @@ package datastructure.linkedlist;
  *
  * @param <T> generic to be replaced by any object
  */
-public class Node<T> {
+public final class Node<T> {
 
     private T mData;
     private Node<T> mNode;
@@ -40,6 +42,7 @@ public class Node<T> {
     /**
      * @return node
      */
+    @Contract(pure = true)
     public Node<T> getNode() {
         return mNode;
     }
@@ -54,6 +57,7 @@ public class Node<T> {
     /**
      * @return data at the node
      */
+    @Contract(pure = true)
     public T getData() {
         return mData;
     }

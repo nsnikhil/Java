@@ -16,6 +16,8 @@
 
 package sorting.algorithms;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Two variable i and j are initialized to 0 and 1 respectively
  * where i represents the point which divides the array into two
@@ -23,7 +25,7 @@ package sorting.algorithms;
  * unsorted portion.
  * <p>
  * The array is divided into two parts containing one element and
- * n-1 element and then each element of unsorted portion is picked and
+ * n-1 elements and then each element of unsorted portion is picked and
  * inserted at the correct position in sorted portion.
  * <p>
  * Eg -> 9,5,8,2,4
@@ -32,16 +34,20 @@ package sorting.algorithms;
  * since i = 0 and one single element array is always a sorted array
  * <p>
  * Now when a element is found that is smaller than the value at last index
- * of sorted array the sorted array is shifted and the value if inserted at
+ * of sorted array the sorted array is shifted by 1 and the value if inserted at
  * correct position
  * <p>
  * This is done by copying the value of elements until the correct position
  * and the inserting the value at correct position
- * given -> 2,4,5,8,3 then to inset three it is sorted in variable and
- * then 8 is copied to next index so 2,4,5,8,8 remains and then 5 is copied
- * so 2,4,5,5,8 remains and then 4 and 2,4,4,5,8 remains and 2 is smaller so its
- * not copied and 3 is inserted at index 1 and 2,3,4,5,8 remains.
+ * given -> 2,4,5,8,3 and it is sorted till the 3rd index and then to complete
+ * the sorting we have to insert three from unsorted portion into correct position
+ * of the sorted part so first it is sorted in variable and then each element from
+ * sorted part is compared to 3 from end and copied if it is greater than 3
+ * so, 8 is copied to next index so 2,4,5,8,8->remains and then 5 is copied
+ * so 2,4,5,5,8->remains and then 4 and 2,4,4,5,8 remains and 2 is smaller so its
+ * not copied and 3 is inserted at index 1 and 2,3,4,5,8->remains which is sorted.
  * <p>
+ * Given array -> 9,5,8,2,4
  * first iteration :
  * <p>
  * i = 0, j = 1;
@@ -63,15 +69,42 @@ package sorting.algorithms;
 public class InsertionSort implements Sorter {
 
     /**
+     * Recursive implementation of insertion sort
+     *
      * @param ar the array
      * @return the sorted array
      */
     @Override
-    public int[] sort(int[] ar) {
+    public final int[] sort(final int[] ar) {
+        return insertionSort(ar, 0, 1);
+    }
+
+    private int[] insertionSort(@NotNull final int ar[], int i, int j) {
+        if (ar.length == j) return ar;
+        final int number = ar[j];
+        final int position = i;
+        insertAtCorrectPosition(ar, position, number);
+        ar[position + 1] = number;
+        return insertionSort(ar, ++i, ++j);
+    }
+
+    private void insertAtCorrectPosition(@NotNull final int ar[], int position, final int number) {
+        if (position < 0 || ar[position] < number) return;
+        ar[position + 1] = ar[position];
+        insertAtCorrectPosition(ar, --position, number);
+    }
+
+    /**
+     * Iterative implementation of insertion sort
+     *
+     * @param ar the array to be sorted
+     * @return the sorted array
+     */
+    private int[] insertionSortIterative(@NotNull final int[] ar) {
         int i = 0;
         int j = 1;
         while (j < ar.length) {
-            int no = ar[j];
+            final int no = ar[j];
             int p = i;
             while (p >= 0 && ar[p] > no) {
                 ar[p + 1] = ar[p];
