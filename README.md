@@ -1,3 +1,1 @@
-# Thoughtworks
-
-#### Use expressions not statements
+## Use expressions avoid statements.
