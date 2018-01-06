@@ -48,7 +48,7 @@ public class BubbleSort implements Sorter {
 
     /**
      * Recursive bubble sort
-     *
+     * <p>
      * Completely insane never go completely insane
      *
      * @param ar the array
@@ -59,20 +59,20 @@ public class BubbleSort implements Sorter {
         return outerSort(ar, 0);
     }
 
-    private int[] outerSort(@NotNull final int ar[], int index) {
+    private int[] outerSort(@NotNull final int ar[], final int index) {
         if (ar.length == index) return ar;
         innerSort(ar, 0, ar.length - index - 1);
-        return outerSort(ar, ++index);
+        return outerSort(ar, index + 1);
     }
 
-    private void innerSort(@NotNull final int ar[], int index, final int end) {
+    private void innerSort(@NotNull final int ar[], final int index, final int end) {
         if (index >= end) return;
         if (ar[index] > ar[index + 1]) {
             final int temp = ar[index];
             ar[index] = ar[index + 1];
             ar[index + 1] = temp;
         }
-        innerSort(ar, ++index, end);
+        innerSort(ar, index + 1, end);
     }
 
     /**

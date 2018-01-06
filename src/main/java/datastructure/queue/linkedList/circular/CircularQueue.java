@@ -16,7 +16,6 @@
 
 package datastructure.queue.linkedList.circular;
 
-import datastructure.linkedlist.LinkedList;
 import datastructure.queue.linkedList.QueueInterface;
 
 /**
@@ -31,10 +30,10 @@ import datastructure.queue.linkedList.QueueInterface;
  */
 public class CircularQueue<T> implements QueueInterface<T> {
 
-    private final LinkedList<T> mLinkedList;
+    private final CircularLinkedList<T> mLinkedList;
 
     CircularQueue() {
-        mLinkedList = new LinkedList<>();
+        mLinkedList = new CircularLinkedList<>();
     }
 
     /**
@@ -52,7 +51,7 @@ public class CircularQueue<T> implements QueueInterface<T> {
      */
     @Override
     public final void enqueue(final T data) {
-        //TODO
+        mLinkedList.insertLast(data);
     }
 
     /**
@@ -64,8 +63,9 @@ public class CircularQueue<T> implements QueueInterface<T> {
      */
     @Override
     public final T dequeue() {
-        //TODO
-        return null;
+        T data = mLinkedList.getFirst();
+        mLinkedList.deleteFirst();
+        return data;
     }
 
     /**

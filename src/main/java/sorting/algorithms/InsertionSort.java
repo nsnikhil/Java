@@ -79,19 +79,18 @@ public class InsertionSort implements Sorter {
         return insertionSort(ar, 0, 1);
     }
 
-    private int[] insertionSort(@NotNull final int ar[], int i, int j) {
+    private int[] insertionSort(@NotNull final int ar[], final int i, final int j) {
         if (ar.length == j) return ar;
         final int number = ar[j];
-        final int position = i;
-        insertAtCorrectPosition(ar, position, number);
+        final int position = insertAtCorrectPosition(ar, i, number);
         ar[position + 1] = number;
-        return insertionSort(ar, ++i, ++j);
+        return insertionSort(ar, i + 1, j + 1);
     }
 
-    private void insertAtCorrectPosition(@NotNull final int ar[], int position, final int number) {
-        if (position < 0 || ar[position] < number) return;
+    private int insertAtCorrectPosition(@NotNull final int ar[], final int position, final int number) {
+        if (position < 0 || ar[position] < number) return position;
         ar[position + 1] = ar[position];
-        insertAtCorrectPosition(ar, --position, number);
+        return insertAtCorrectPosition(ar, position - 1, number);
     }
 
     /**

@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * @version 1.0
  * @since 29-12-2017
  */
-public final class LinkedList<T> {
+public class LinkedList<T> {
 
     private Node<T> mRoot;
 
@@ -116,13 +116,13 @@ public final class LinkedList<T> {
         insertAtPosition(mRoot, temp, position);
     }
 
-    private void insertAtPosition(final Node<T> node, final Node<T> newNode, int position) {
+    private void insertAtPosition(final Node<T> node, final Node<T> newNode, final int position) {
         if (position == 1) {
             newNode.setNode(node.getNode());
             node.setNode(newNode);
             return;
         }
-        insertAtPosition(node.getNode(), newNode, --position);
+        insertAtPosition(node.getNode(), newNode, position - 1);
     }
 
     /**
@@ -195,12 +195,12 @@ public final class LinkedList<T> {
         deleteAtPosition(mRoot, position);
     }
 
-    private void deleteAtPosition(final Node<T> node, int position) {
+    private void deleteAtPosition(final Node<T> node, final int position) {
         if (position == 1) {
             node.setNode(node.getNode().getNode());
             return;
         }
-        deleteAtPosition(node.getNode(), --position);
+        deleteAtPosition(node.getNode(), position - 1);
     }
 
     /**
@@ -277,9 +277,9 @@ public final class LinkedList<T> {
         return getAtPosition(mRoot, position);
     }
 
-    private T getAtPosition(final Node<T> node, int position) {
+    private T getAtPosition(final Node<T> node, final int position) {
         if (position == 0) return node.getData();
-        return getAtPosition(node.getNode(), --position);
+        return getAtPosition(node.getNode(), position - 1);
     }
 
     /**
@@ -356,7 +356,7 @@ public final class LinkedList<T> {
     }
 
     /**
-     * throw a null pointer exception is list is null
+     * throw a null pointer exception if list is null
      */
     private void nullCheck() {
         if (mRoot == null) throw new NullPointerException("List is null");

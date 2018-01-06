@@ -34,7 +34,7 @@ public final class Node<T> {
      * @param data the data part of the node
      * @param node the pointer to next node
      */
-    Node(final T data, final Node<T> node) {
+    public Node(final T data, final Node<T> node) {
         mData = data;
         mNode = node;
     }

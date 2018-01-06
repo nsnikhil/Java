@@ -22,12 +22,16 @@ import java.io.IOException;
 
 public final class ArrayUtil {
 
+    public static final String ARRAY_INPUT_SIZE = "Enter the size of array";
+    public static final String ARRAY_INPUT_ROW_SIZE = "Enter numbers of rows";
+    public static final String ARRAY_INPUT_COLUMN_SIZE = "Enter numbers of columns";
+    public static final String ARRAY_ELEMENTS_INPUTS = "Enter the array elements";
+
     /**
      * @return integer array
      * @throws IOException input/output exception
      */
     public static int[] takeArrayInput() throws IOException {
-        System.out.println("Enter the size of array and array elements");
         return takeArrayInput(new int[GenericUtil.takeIntegerInput()], 0);
     }
 
@@ -36,7 +40,6 @@ public final class ArrayUtil {
      * @throws IOException input/output exception
      */
     public static int[][] take2dArrayInput() throws IOException {
-        System.out.println("Enter the no of row and column and array elements");
         return take2dArrayInput(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
     }
 
@@ -50,28 +53,16 @@ public final class ArrayUtil {
         return take2dArrayInput(new int[row][column], 0);
     }
 
-    private static int[][] take2dArrayInput(@NotNull final int[][] arr, int row) throws IOException {
+    private static int[][] take2dArrayInput(@NotNull final int[][] arr, final int row) throws IOException {
         if (arr.length == row) return arr;
         arr[row] = takeArrayInput(arr[row], 0);
-        return take2dArrayInput(arr, ++row);
+        return take2dArrayInput(arr, row + 1);
     }
 
-    /**
-     * @param size size of integer array
-     * @return integer array
-     * @throws IOException input/output exception
-     */
-    private static int[] takeArrayInput(final int size) throws IOException {
-        final int ar[] = new int[size];
-        for (int i = 0; i < size; i++)
-            ar[i] = GenericUtil.takeIntegerInput();
-        return ar;
-    }
-
-    private static int[] takeArrayInput(@NotNull final int ar[], int index) throws IOException {
+    private static int[] takeArrayInput(@NotNull final int ar[], final int index) throws IOException {
         if (ar.length == index) return ar;
         ar[index] = GenericUtil.takeIntegerInput();
-        return takeArrayInput(ar, ++index);
+        return takeArrayInput(ar, index + 1);
     }
 
     /**
@@ -82,10 +73,10 @@ public final class ArrayUtil {
         printArray(ar, 0);
     }
 
-    private static void printArray(@NotNull final Integer[] ar, int index) {
+    private static void printArray(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return;
         System.out.print(ar[index] + " ");
-        printArray(ar, ++index);
+        printArray(ar, index + 1);
     }
 
     /**
@@ -96,11 +87,11 @@ public final class ArrayUtil {
         print2dArray(arr, 0);
     }
 
-    private static void print2dArray(@NotNull final Integer[][] arr, int row) {
+    private static void print2dArray(@NotNull final Integer[][] arr, final int row) {
         if (arr.length == row) return;
         printArray(arr[row]);
         System.out.println();
-        print2dArray(arr, ++row);
+        print2dArray(arr, row + 1);
     }
 
     /**
@@ -111,10 +102,10 @@ public final class ArrayUtil {
         printArray(ar, 0);
     }
 
-    private static void printArray(@NotNull final int[] ar, int index) {
+    private static void printArray(@NotNull final int[] ar, final int index) {
         if (ar.length == index) return;
         System.out.print(ar[index] + " ");
-        printArray(ar, ++index);
+        printArray(ar, index + 1);
     }
 
     /**
@@ -125,10 +116,10 @@ public final class ArrayUtil {
         print2dArray(arr, 0);
     }
 
-    private static void print2dArray(@NotNull final int[][] arr, int row) {
+    private static void print2dArray(@NotNull final int[][] arr, final int row) {
         if (arr.length == row) return;
         printArray(arr[row]);
         System.out.println();
-        print2dArray(arr, ++row);
+        print2dArray(arr, row + 1);
     }
 }

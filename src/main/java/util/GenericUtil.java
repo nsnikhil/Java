@@ -24,8 +24,10 @@ public final class GenericUtil {
 
     public static final String INTEGER_INPUT_MESSAGE = "Enter the no";
     public static final String INTEGER_INPUT_SIZE = "Enter the size";
+    public static final String INTEGER_INPUT_INDEX = "Enter the index";
     public static final String INTEGER_POSITION_MESSAGE = "Enter the position";
     public static final String STRING_INPUT_MESSAGE = "Enter the string";
+    public static final String STRING_INPUT_SUB_MESSAGE = "Enter the sub string";
 
     private static BufferedReader mBufferedReader;
 

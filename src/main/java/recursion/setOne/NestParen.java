@@ -14,25 +14,21 @@
  *    limitations under the License.
  */
 
-package searching.algorithms;
+package recursion.setOne;
 
 import org.jetbrains.annotations.NotNull;
+import util.GenericUtil;
 
-public class LinearSearch implements Searcher {
+import java.io.IOException;
 
-    /**
-     * Pathetic Algorithm no documentation needed
-     *
-     * @param ar the original array
-     * @param n  the value to be searched
-     * @return true if value if searched
-     */
-    @Override
-    public boolean search(final int[] ar, final int n) {
-        return search(ar, n, 0);
+public final class NestParen {
+
+    public static void main(String... args) throws IOException {
+        System.out.println(GenericUtil.STRING_INPUT_MESSAGE);
+        System.out.println(new NestParen().nestParen(GenericUtil.takeStringInput()));
     }
 
-    private boolean search(@NotNull final int ar[], final int n, final int index) {
-        return ar.length != index && (ar[index] == n || search(ar, n, index + 1));
+    private boolean nestParen(@NotNull final String str) {
+        return str.length() == 0 || str.charAt(0) == '(' && str.charAt(str.length() - 1) == ')' && nestParen(str.substring(1, str.length() - 1));
     }
 }

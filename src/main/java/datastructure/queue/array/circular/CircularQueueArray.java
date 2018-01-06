@@ -150,10 +150,10 @@ public class CircularQueueArray {
         return -1;
     }
 
-    private int search(int index, final int rear, final int queue[], final int data) {
+    private int search(final int index, final int rear, final int queue[], final int data) {
         if (rear < index) return -1;
         if (queue[index] == data) return index;
-        return search(++index, rear, queue, data);
+        return search(index + 1, rear, queue, data);
     }
 
     /**

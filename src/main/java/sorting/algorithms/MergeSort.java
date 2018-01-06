@@ -68,11 +68,19 @@ public class MergeSort implements Sorter {
         else
             rightSubArray = new int[mid + 1];
 
-        for (int i = 0, size = leftSubArray.length; i < size; i++)
-            leftSubArray[i] = ar[i];
+        /*
+         * The code below does the same as this loop
+         * for (int i = 0, size = leftSubArray.length; i < size; i++)
+         *      leftSubArray[i] = ar[i];
+         */
+        System.arraycopy(ar, 0, leftSubArray, 0, leftSubArray.length);
 
-        for (int i = mid; i < arrayLength; i++)
-            rightSubArray[i - mid] = ar[i];
+        /*
+         * The code below does the same as this loop
+         * for (int i = mid; i < arrayLength; i++)
+         *      rightSubArray[i - mid] = ar[i];
+         */
+        System.arraycopy(ar, mid, rightSubArray, 0, arrayLength - mid);
 
         mergeSort(leftSubArray);
 
@@ -138,4 +146,21 @@ public class MergeSort implements Sorter {
             k++;
         }
     }
+
+    /*private void mergeOne(@NotNull final int[] ar, @NotNull final int[] leftArray, @NotNull final int[] rightArray,final int leftLength,final int rightLength,final int i,final int j,final int k) {
+        if(i==leftLength||j==rightLength)return;
+        if (leftArray[i] < rightArray[j]) {
+            ar[k] = leftArray[i];
+            mergeOne(ar,leftArray,rightArray,leftLength,rightLength,i+1,j,k+1);
+        } else {
+            ar[k] = rightArray[j];
+            mergeOne(ar,leftArray,rightArray,leftLength,rightLength,i,j+1,k+1);
+        }
+    }
+
+    private void mergeTwo(@NotNull final int[] mainArray,@NotNull final int[] subArray,final int index,final int length,final int k){
+        if(index==length)return;
+        mainArray[k] = subArray[index];
+        mergeTwo(mainArray,subArray,index+1,length,k+1);
+    }*/
 }

@@ -52,20 +52,21 @@ public class SelectionSort implements Sorter {
         return selectionSort(ar, 0);
     }
 
-    private int[] selectionSort(@NotNull final int[] ar, int index) {
+    private int[] selectionSort(@NotNull final int[] ar, final int index) {
         if (ar.length == index) return ar;
         final int minIndex = findMinIndex(ar, index + 1, index);
         final int temp = ar[minIndex];
         ar[minIndex] = ar[index];
         ar[index] = temp;
-        return selectionSort(ar, ++index);
+        return selectionSort(ar, index + 1);
     }
 
-    private int findMinIndex(@NotNull final int ar[], int index, int minIndex) {
+    private int findMinIndex(@NotNull final int ar[], final int index, final int minIndex) {
         if (ar.length == index) return minIndex;
         if (ar[index] < ar[minIndex])
-            minIndex = index;
-        return findMinIndex(ar, ++index, minIndex);
+            //minIndex = index;
+            return findMinIndex(ar, index + 1, index);
+        return findMinIndex(ar, index + 1, minIndex);
     }
 
     /**

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.queue.array.circular;
+package datastructure.queue.linkedList.circular;
 
 import util.GenericUtil;
 
@@ -22,29 +22,24 @@ import java.io.IOException;
 
 public class CircularQueueOperations {
 
-    private CircularQueueArray mCircularQueueArray;
+    private CircularQueue<Integer> mQueue;
 
     public static void main(String... args) throws IOException {
-        final CircularQueueOperations circularQueueOperations = new CircularQueueOperations();
-        circularQueueOperations.initialize();
+        new CircularQueueOperations().initialize();
     }
 
     private void initialize() throws IOException {
+        mQueue = new CircularQueue<>();
         int ch;
 
-        System.out.println(GenericUtil.INTEGER_INPUT_SIZE);
-        mCircularQueueArray = new CircularQueueArray(GenericUtil.takeIntegerInput());
-
         do {
-
             System.out.println("\nEnter 1 to enqueue data to queue\n" +
                     "Enter 2 to dequeue data from queue\n" +
-                    "Enter 3 to get front\n" +
-                    "Enter 4 to get rear\n" +
-                    "Enter 5 check if queue is empty\n" +
-                    "Enter 6 check if queue is full\n" +
-                    "Enter 7 to search queue\n" +
-                    "Enter 8 to display the queue\n" +
+                    "Enter 3 to peek data from queue\n" +
+                    "Enter 4 check if queue is empty\n" +
+                    "Enter 5 to search queue\n" +
+                    "Enter 6 to get queue size\n" +
+                    "Enter 7 to display the queue\n" +
                     "Enter 0 to exit\n");
 
             ch = GenericUtil.takeIntegerInput();
@@ -52,33 +47,29 @@ public class CircularQueueOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mCircularQueueArray.enqueue(GenericUtil.takeIntegerInput());
+                    mQueue.enqueue(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    mCircularQueueArray.dequeue();
+                    System.out.println(mQueue.dequeue());
                     break;
                 case 3:
-                    System.out.println(mCircularQueueArray.getFront());
+                    System.out.println(mQueue.peek());
                     break;
                 case 4:
-                    System.out.println(mCircularQueueArray.getRear());
+                    System.out.println(mQueue.empty());
                     break;
                 case 5:
-                    System.out.println(mCircularQueueArray.isEmpty());
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mQueue.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 6:
-                    System.out.println(mCircularQueueArray.isFull());
+                    System.out.println(mQueue.size());
                     break;
                 case 7:
-                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mCircularQueueArray.search(GenericUtil.takeIntegerInput()));
-                    break;
-                case 8:
-                    mCircularQueueArray.display();
+                    mQueue.display();
                     break;
             }
 
         } while (ch != 0);
     }
-
 }

@@ -88,6 +88,7 @@ public class QuickSort implements Sorter {
      * @return the index of pivot
      */
     private int partition(@NotNull final int[] ar, final int start, final int end) {
+        //final int pivotIndex = getPivotIndex(ar,start,end,start,ar[end]);
         int pivotIndex = start;
         int temp, pivot = ar[end];
         for (int i = start; i < end; i++)
@@ -101,5 +102,16 @@ public class QuickSort implements Sorter {
         ar[pivotIndex] = pivot;
         ar[end] = temp;
         return pivotIndex;
+    }
+
+    private int getPivotIndex(@NotNull final int[] ar, final int start, final int end, final int pivotIndex, final int pivot) {
+        if (start == end) return pivotIndex;
+        if (ar[start] <= pivot) {
+            final int temp = ar[start];
+            ar[start] = ar[pivotIndex];
+            ar[pivotIndex] = temp;
+            return getPivotIndex(ar, start + 1, end, pivotIndex + 1, pivot);
+        } else
+            return getPivotIndex(ar, start + 1, end, pivotIndex, pivot);
     }
 }
