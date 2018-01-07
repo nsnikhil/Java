@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.tree;
+package datastructure.tree.bst;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

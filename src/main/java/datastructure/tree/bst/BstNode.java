@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.tree;
+package datastructure.tree.bst;
 
 /**
  * the building block of binary search tree
@@ -27,7 +27,7 @@ package datastructure.tree;
 class BstNode<T> {
 
     private T mData;
-    private BstNode<T> mLeftNode,mRightNode;
+    private BstNode<T> mLeftNode, mRightNode;
 
     /**
      * @param data      the data part of the node
