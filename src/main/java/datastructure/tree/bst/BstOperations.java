@@ -43,15 +43,14 @@ public class BstOperations {
                     "Enter 5 to get max\n" +
                     "Enter 6 to get height\n" +
                     "Enter 7 to get depth\n" +
-                    "Enter 8 to convert to array\n" +
-                    "Enter 9 to display In Order\n" +
-                    "Enter 10 to display Pre Order\n" +
-                    "Enter 11 to display Post Order\n" +
-                    "Enter 12 to display Level Order\n" +
-                    "Enter 13 to get no of elements\n" +
-                    "Enter 14 to check if the node is leaf node\n" +
-                    "Enter 15 to check if tree is complete\n" +
-                    "Enter 16 to display\n" +
+                    "Enter 8 to display In Order\n" +
+                    "Enter 9 to display Pre Order\n" +
+                    "Enter 10 to display Post Order\n" +
+                    "Enter 11 to display Level Order\n" +
+                    "Enter 12 to get no of elements\n" +
+                    "Enter 13 to check if the node is leaf node\n" +
+                    "Enter 14 to check if tree is complete\n" +
+                    "Enter 15 to display\n" +
                     "Enter 0 to exit\n");
 
             ch = GenericUtil.takeIntegerInput();
@@ -83,31 +82,28 @@ public class BstOperations {
                     System.out.println(mBinarySearchTree.getDepth(GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
-                    ArrayUtil.printArray(mBinarySearchTree.toArray());
-                    break;
-                case 9:
                     ArrayUtil.printArray(mBinarySearchTree.toInorder());
                     break;
-                case 10:
+                case 9:
                     ArrayUtil.printArray(mBinarySearchTree.toPreOrder());
                     break;
-                case 11:
+                case 10:
                     ArrayUtil.printArray(mBinarySearchTree.toPostOrder());
                     break;
-                case 12:
+                case 11:
                     ArrayUtil.printArray(mBinarySearchTree.toLevelOrder());
                     break;
-                case 13:
+                case 12:
                     System.out.println(mBinarySearchTree.getNoOfElements());
                     break;
-                case 14:
+                case 13:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
                     System.out.println(mBinarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
                     break;
-                case 15:
+                case 14:
                     System.out.println(mBinarySearchTree.isComplete());
                     break;
-                case 16:
+                case 15:
                     mBinarySearchTree.display();
                     break;
             }

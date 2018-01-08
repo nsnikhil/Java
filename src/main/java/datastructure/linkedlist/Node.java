@@ -17,6 +17,7 @@
 package datastructure.linkedlist;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The building block of linked list
@@ -29,6 +30,11 @@ public final class Node<T> {
 
     private T mData;
     private Node<T> mNode;
+
+    Node(@NotNull Builder<T> builder) {
+        this.mData = builder.mData;
+        this.mNode = builder.mNode;
+    }
 
     /**
      * @param data the data part of the node
@@ -67,5 +73,26 @@ public final class Node<T> {
      */
     public void setData(final T data) {
         this.mData = data;
+    }
+
+    //TODO
+    static class Builder<T> {
+
+        private T mData;
+        private Node<T> mNode;
+
+        public Builder setNode(Node<T> node) {
+            this.mNode = node;
+            return this;
+        }
+
+        public Builder setData(T data) {
+            this.mData = data;
+            return this;
+        }
+
+        public Node<T> build() {
+            return new Node<>(this);
+        }
     }
 }

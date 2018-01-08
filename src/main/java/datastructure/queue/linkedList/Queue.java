@@ -29,7 +29,7 @@ public class Queue<T> implements QueueInterface<T> {
 
     private final LinkedList<T> mLinkedList;
 
-    Queue() {
+    public Queue() {
         mLinkedList = new LinkedList<>();
     }
 
