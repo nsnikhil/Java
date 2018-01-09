@@ -20,6 +20,8 @@ import datastructure.queue.linkedList.Queue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -151,19 +153,34 @@ public class BinarySearchTree<I> {
         return getMaxNode().getData();
     }
 
+    /**
+     * @return The node with minimum value
+     */
     private BstNode<I> getMinNode() {
         return getMinNode(mBstNode);
     }
 
+    /**
+     * @param node the root
+     * @return the node with minimum value
+     */
     private BstNode<I> getMinNode(@NotNull final BstNode<I> node) {
         if (node.getLeftNode() == null) return node;
         return getMinNode(node.getLeftNode());
     }
 
+
+    /**
+     * @return The node with maximum value
+     */
     private BstNode<I> getMaxNode() {
         return getMaxNode(mBstNode);
     }
 
+    /**
+     * @param node  the root
+     * @return The node with maximum value
+     */
     private BstNode<I> getMaxNode(@NotNull final BstNode<I> node) {
         if (node.getRightNode() == null) return node;
         return getMaxNode(node.getRightNode());
@@ -178,6 +195,12 @@ public class BinarySearchTree<I> {
         return getHeight(mBstNode);
     }
 
+    /**
+     * Returns the height of the tree
+     *
+     * @param node  a node of the tree
+     * @return height of a given node
+     */
     private int getHeight(final BstNode<I> node) {
         if (node == null) return -1;
         return getMax(getHeight(node.getLeftNode()) + 1, getHeight(node.getRightNode()) + 1);
@@ -193,10 +216,23 @@ public class BinarySearchTree<I> {
         return a > b ? a : b;
     }
 
+    /**
+     * Returns the depth of the given value in tree
+     *
+     * @param data
+     * @return depth of given element in tree
+     */
     final int getDepth(final I data) {
         return getDepth(mBstNode, data);
     }
 
+    /**
+     * Returns the depth of the given value in tree
+     *
+     * @param root  the node from where depth is to be found
+     * @param data  node whose depth is to be found
+     * @return the depth of a element from a given node
+     */
     private int getDepth(@NotNull final BstNode<I> root, final I data) {
         if (root.getData() == data) return 0;
         if ((Integer) data < (Integer) root.getData()) return 1 + getDepth(root.getLeftNode(), data);
@@ -208,45 +244,78 @@ public class BinarySearchTree<I> {
      *
      * @return Inorder representation of the tree
      */
+    @NotNull
     final Integer[] toInorder() {
-        return toInorder(mBstNode, new Integer[getNoOfElements()], 0);
+        return toInorder(mBstNode, new ArrayList<>(getNoOfElements())).toArray(new Integer[getNoOfElements()]);
     }
 
-    //TODO
-    private Integer[] toInorder(final BstNode<I> node, final Integer[] ar, final int index) {
-        if (node == null) return ar;
-        toInorder(node.getLeftNode(), ar, index + 1);
-        ar[index] = (Integer) node.getData();
-        toInorder(node.getRightNode(), ar, index + 1);
-        return ar;
+    /**
+     *
+     * @param node
+     * @param list
+     * @return
+     */
+    @NotNull
+    private List<Integer> toInorder(final BstNode<I> node, final List<Integer> list) {
+        if (node == null) return list;
+        toInorder(node.getLeftNode(), list);
+        list.add((Integer) node.getData());
+        toInorder(node.getRightNode(), list);
+        return list;
     }
 
+    /**
+     *
+     * @return
+     */
+    @NotNull
     final Integer[] toPreOrder() {
-        return toPreOrder(mBstNode, new Integer[getNoOfElements()], 0);
+        return toPreOrder(mBstNode, new ArrayList<>(getNoOfElements())).toArray(new Integer[getNoOfElements()]);
     }
 
-    //TODO
-    private Integer[] toPreOrder(final BstNode<I> node, final Integer[] ar, final int index) {
-        if (node == null) return ar;
-        ar[index] = (Integer) node.getData();
-        toPreOrder(node.getLeftNode(), ar, index + 1);
-        toPreOrder(node.getRightNode(), ar, index + 1);
-        return ar;
+    /**
+     *
+     * @param node
+     * @param list
+     * @return
+     */
+    @NotNull
+    private List<Integer> toPreOrder(final BstNode<I> node, final List<Integer> list) {
+        if (node == null) return list;
+        list.add((Integer) node.getData());
+        toPreOrder(node.getLeftNode(), list);
+        toPreOrder(node.getRightNode(), list);
+        return list;
     }
 
+    /**
+     *
+     * @return
+     */
+    @NotNull
     final Integer[] toPostOrder() {
-        return toPostOrder(mBstNode, new Integer[getNoOfElements()], 0);
+        return toPostOrder(mBstNode, new ArrayList<>(getNoOfElements())).toArray(new Integer[getNoOfElements()]);
     }
 
-    //TODO
-    private Integer[] toPostOrder(final BstNode<I> node, final Integer[] ar, final int index) {
-        if (node == null) return ar;
-        toPostOrder(node.getLeftNode(), ar, index + 1);
-        toPostOrder(node.getRightNode(), ar, index + 1);
-        ar[index] = (Integer) node.getData();
-        return ar;
+    /**
+     *
+     * @param node
+     * @param list
+     * @return
+     */
+    @NotNull
+    private List<Integer> toPostOrder(final BstNode<I> node, final List<Integer> list) {
+        if (node == null) return list;
+        toPostOrder(node.getLeftNode(), list);
+        toPostOrder(node.getRightNode(), list);
+        list.add((Integer) node.getData());
+        return list;
     }
 
+    /**
+     *
+     * @return
+     */
     final Integer[] toLevelOrder() {
         if (!isComplete()) throw new IllegalArgumentException("Incomplete binary search tree");
         Queue<BstNode<I>> queue = new Queue<>();
@@ -254,6 +323,14 @@ public class BinarySearchTree<I> {
         return toLevelOrder(mBstNode, new Integer[getNoOfElements()], 0, queue);
     }
 
+    /**
+     *
+     * @param node
+     * @param ar
+     * @param index
+     * @param queue
+     * @return
+     */
     private Integer[] toLevelOrder(final BstNode<I> node, final Integer[] ar, final int index, final Queue<BstNode<I>> queue) {
         if (node == null) return ar;
         ar[index] = (Integer) queue.peek().getData();
@@ -264,25 +341,48 @@ public class BinarySearchTree<I> {
         return toLevelOrder(queue.peek(), ar, index + 1, queue);
     }
 
-    final BstNode<I> getSuccessorInOrder(I data) {
+    /**
+     *
+     * @param data
+     * @return
+     */
+    final BstNode<I> getSuccessorInOrder(final I data) {
         return getSuccessorInOrder(mBstNode, getNodeFromData(data));
     }
 
+    /**
+     *
+     * @param node
+     * @param temp
+     * @return
+     */
     //TODO
-    private BstNode<I> getSuccessorInOrder(BstNode<I> node, BstNode<I> temp) {
+    private BstNode<I> getSuccessorInOrder(final BstNode<I> node, final BstNode<I> temp) {
         //CHECK FOR RIGHT SUBTREE IF PRESENT RETURN MIN IN RIGHT SUB TREE ELSE
         //FIND DEEPEST ANCESTOR FOR WHICH CURRENT NODE IS IN LEFT SUBTREE
         return null;
     }
 
-
+    /**
+     *
+     */
     final void balanceBst() {
         mBstNode = balanceBst(mBstNode);
     }
 
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     //TODO
     private BstNode<I> balanceBst(final BstNode<I> node) {
+        /*
+         * Algorithm :
+         * Convert to array and the insert from mid and the
+         * mid-1 and mid+1 until 0 and array length if reached
+         */
         return null;
     }
 
@@ -331,30 +431,61 @@ public class BinarySearchTree<I> {
         return getNoOfElements(mBstNode);
     }
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     private int getNoOfElements(final BstNode<I> node) {
         if (node == null) return 0;
         return 1 + getNoOfElements(node.getLeftNode()) + getNoOfElements(node.getRightNode());
     }
 
 
+    /**
+     *
+     * @param data
+     * @return
+     */
     final boolean isLeafNode(final I data) {
         return isLeafNode(getNodeFromData(data));
     }
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     private boolean isLeafNode(@NotNull final BstNode<I> node) {
         return node.getLeftNode() == null && node.getRightNode() == null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Contract(pure = true)
     final boolean isBinarySearchTree() {
         return isBinarySearchTree(mBstNode, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
+    /**
+     *
+     * @param node
+     * @param minRange
+     * @param maxRange
+     * @return
+     */
     @Contract("null, _, _ -> true")
     private boolean isBinarySearchTree(BstNode<I> node, Integer minRange, Integer maxRange) {
         return node == null || (Integer) node.getData() <= minRange && (Integer) node.getData() > maxRange && isBinarySearchTree(node.getLeftNode(), minRange, (Integer) node.getData()) && isBinarySearchTree(node.getRightNode(), (Integer) node.getData(), maxRange);
     }
 
+    /**
+     *
+     * @param data
+     * @return
+     */
     private BstNode<I> getNodeFromData(final I data) {
         return getNodeFromData(mBstNode, data);
     }
@@ -374,10 +505,17 @@ public class BinarySearchTree<I> {
         return getNodeFromData(root.getRightNode(), data);
     }
 
+    /**
+     *
+     */
     final void display() {
         display(mBstNode);
     }
 
+    /**
+     *
+     * @param node
+     */
     private void display(final BstNode<I> node) {
         if (node == null) return;
         System.out.print(node.getData() + " ");

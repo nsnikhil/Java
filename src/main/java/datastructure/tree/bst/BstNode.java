@@ -16,6 +16,8 @@
 
 package datastructure.tree.bst;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * the building block of binary search tree
  * where mData is the value of node and
@@ -38,6 +40,13 @@ class BstNode<T> {
         this.mData = data;
         this.mLeftNode = leftNode;
         this.mRightNode = rightNode;
+    }
+
+    //TODO
+    BstNode(@NotNull final Builder<T> builder) {
+        this.mData = builder.mData;
+        this.mLeftNode = builder.mLeftNode;
+        this.mRightNode = builder.mRightNode;
     }
 
     /**
@@ -80,5 +89,30 @@ class BstNode<T> {
      */
     public void setRightNode(final BstNode<T> rightNode) {
         this.mRightNode = rightNode;
+    }
+
+    //TODO
+    static class Builder<T> {
+        private T mData;
+        private BstNode<T> mLeftNode, mRightNode;
+
+        Builder setData(T data) {
+            this.mData = data;
+            return this;
+        }
+
+        Builder setLeftNode(BstNode<T> leftNode) {
+            this.mLeftNode = leftNode;
+            return this;
+        }
+
+        Builder setRightNode(BstNode<T> rightNode) {
+            this.mRightNode = rightNode;
+            return this;
+        }
+
+        BstNode<T> build() {
+            return new BstNode<>(this);
+        }
     }
 }
