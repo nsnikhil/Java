@@ -20,6 +20,8 @@ import datastructure.queue.linkedList.Queue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * Tree traversal functions works if only Integer type Tree is used.
  *
@@ -80,7 +82,6 @@ public class BinarySearchTree<I> {
      * @param data the element to be deleted
      * @param node the root
      */
-    //TODO
     @Contract("_, null -> null")
     private BstNode<I> remove(final I data, final BstNode<I> node) {
         if (node == null) return null;
@@ -98,8 +99,8 @@ public class BinarySearchTree<I> {
                 return node.getLeftNode();
                 //Two children
             else {
-                node.setData(getMin());
-                node.setRightNode(remove(getMin(), node.getRightNode()));
+                node.setData(getMinNode(node.getRightNode()).getData());
+                node.setRightNode(remove(getMinNode(node.getRightNode()).getData(), node.getRightNode()));
             }
         }
         return node;
@@ -247,7 +248,7 @@ public class BinarySearchTree<I> {
     }
 
     final Integer[] toLevelOrder() {
-        if (!isComplete(mBstNode)) throw new IllegalArgumentException("Incomplete binary search tree");
+        if (!isComplete()) throw new IllegalArgumentException("Incomplete binary search tree");
         Queue<BstNode<I>> queue = new Queue<>();
         queue.enqueue(mBstNode);
         return toLevelOrder(mBstNode, new Integer[getNoOfElements()], 0, queue);
@@ -274,23 +275,51 @@ public class BinarySearchTree<I> {
         return null;
     }
 
+
+    final void balanceBst() {
+        mBstNode = balanceBst(mBstNode);
+    }
+
+
+    //TODO
+    private BstNode<I> balanceBst(final BstNode<I> node) {
+        return null;
+    }
+
     /**
      * @return true if tree is a complete binary search tree else !true
      */
     final boolean isComplete() {
-        return isComplete(mBstNode);
+        Queue<BstNode<I>> queue = new Queue<>();
+        queue.enqueue(mBstNode);
+        return isComplete(mBstNode, queue, new AtomicBoolean(false));
     }
 
-    //TODO
-    @Contract("null -> true")
-    private boolean isComplete(final BstNode<I> root) {
-        if (root == null) return true;
-        if (!isLeafNode(root.getData())) {
-            if (root.getLeftNode() == null && root.getRightNode() != null) {
-                return false;
-            }
-        }
-        return isComplete(root.getLeftNode()) && isComplete(root.getRightNode());
+    /**
+     * Algorithm : Traverse the tree in level order manner
+     * and once you encounter a non full node then following that
+     * all nodes must be non full node
+     * full node - one which has both left and right child
+     *
+     * @param node the root
+     * @return true if tree is complete else !true
+     */
+    @Contract("null, _, _ -> true")
+    private boolean isComplete(final BstNode<I> node, final Queue<BstNode<I>> queue, final AtomicBoolean isLeafNodeFlag) {
+        if (node == null) return true;
+        if (queue.peek().getLeftNode() != null) {
+            if (isLeafNodeFlag.get()) return false;
+            queue.enqueue(queue.peek().getLeftNode());
+        } else
+            isLeafNodeFlag.set(true);
+
+        if (queue.peek().getRightNode() != null) {
+            if (isLeafNodeFlag.get()) return false;
+            queue.enqueue(queue.peek().getRightNode());
+        } else
+            isLeafNodeFlag.set(true);
+        queue.dequeue();
+        return queue.empty() || isComplete(queue.peek(), queue, isLeafNodeFlag);
     }
 
     /**
