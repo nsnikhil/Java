@@ -18,7 +18,7 @@ package sorting.algorithms;
 
 import org.jetbrains.annotations.NotNull;
 
-public class HeapSort implements Sorter{
+public class HeapSort implements Sorter {
 
     /**
      * TODO
@@ -31,7 +31,7 @@ public class HeapSort implements Sorter{
         return new int[0];
     }
 
-    private void heapify(){
+    private void heapify() {
 
     }
 }

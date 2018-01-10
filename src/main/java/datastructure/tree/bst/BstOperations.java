@@ -21,7 +21,7 @@ import util.GenericUtil;
 
 import java.io.IOException;
 
-public class BstOperations {
+public final class BstOperations {
 
     private BinarySearchTree<Integer> mBinarySearchTree;
 
@@ -48,9 +48,12 @@ public class BstOperations {
                     "Enter 10 to display Post Order\n" +
                     "Enter 11 to display Level Order\n" +
                     "Enter 12 to get no of elements\n" +
-                    "Enter 13 to check if the node is leaf node\n" +
-                    "Enter 14 to check if tree is complete\n" +
-                    "Enter 15 to display\n" +
+                    "Enter 13 to get In Order Successor of a element\n" +
+                    "Enter 14 to check if the node is leaf node\n" +
+                    "Enter 15 to check if tree is complete\n" +
+                    "Enter 16 to check if tree is balanced\n" +
+                    "Enter 17 to balance the tree\n" +
+                    "Enter 18 to display\n" +
                     "Enter 0 to exit\n");
 
             ch = GenericUtil.takeIntegerInput();
@@ -98,12 +101,22 @@ public class BstOperations {
                     break;
                 case 13:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
+                    System.out.println(mBinarySearchTree.getSuccessorInOrder(GenericUtil.takeIntegerInput()));
                     break;
                 case 14:
-                    System.out.println(mBinarySearchTree.isComplete());
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mBinarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
                     break;
                 case 15:
+                    System.out.println(mBinarySearchTree.isComplete());
+                    break;
+                case 16:
+                    System.out.println(mBinarySearchTree.isBalanced());
+                    break;
+                case 17:
+                    mBinarySearchTree.balanceBst();
+                    break;
+                case 18:
                     mBinarySearchTree.display();
                     break;
             }

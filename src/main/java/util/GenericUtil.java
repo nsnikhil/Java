@@ -41,7 +41,7 @@ public final class GenericUtil {
 
     /**
      * @return output stream
-     * @throws IOException  input/output exception
+     * @throws IOException input/output exception
      */
     public static int takeIntegerInput() throws IOException {
         return Integer.parseInt(takeStringInput());
@@ -49,7 +49,7 @@ public final class GenericUtil {
 
     /**
      * @return output stream
-     * @throws IOException  input/output exception
+     * @throws IOException input/output exception
      */
     public static String takeStringInput() throws IOException {
         return getBufferedReader().readLine();

@@ -54,10 +54,10 @@ public class Searching {
 
             switch (choice) {
                 case 1:
-                    System.out.println(new LinearSearch().search(ar,number));
+                    System.out.println(new LinearSearch().search(ar, number));
                     break;
                 case 2:
-                    System.out.println(new BinarySearch().search(ar,number));
+                    System.out.println(new BinarySearch().search(ar, number));
                     break;
             }
         } while (choice != 0);

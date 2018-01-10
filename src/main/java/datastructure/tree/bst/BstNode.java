@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> Generic to be replaced by any object
  */
-class BstNode<T> {
+final class BstNode<T> {
 
     private T mData;
     private BstNode<T> mLeftNode, mRightNode;

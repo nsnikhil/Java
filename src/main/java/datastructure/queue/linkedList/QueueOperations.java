@@ -33,20 +33,20 @@ public class QueueOperations {
         mQueue = new Queue<>();
         int ch;
 
-        do{
+        do {
 
             System.out.println("\nEnter 1 to enqueue data to queue\n" +
                     "Enter 2 to dequeue data from queue\n" +
                     "Enter 3 to peek data from queue\n" +
                     "Enter 4 check if queue is empty\n" +
                     "Enter 5 to search queue\n" +
-                    "Enter 6 to get queue size\n"+
+                    "Enter 6 to get queue size\n" +
                     "Enter 7 to display the queue\n" +
                     "Enter 0 to exit\n");
 
             ch = GenericUtil.takeIntegerInput();
 
-            switch (ch){
+            switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
                     mQueue.enqueue(GenericUtil.takeIntegerInput());
@@ -72,6 +72,6 @@ public class QueueOperations {
                     break;
             }
 
-        }while (ch!=0);
+        } while (ch != 0);
     }
 }
