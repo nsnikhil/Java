@@ -20,20 +20,33 @@ import searching.algorithms.BinarySearch;
 import searching.algorithms.LinearSearch;
 import util.ArrayUtil;
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Searching {
 
+    private List<String> mChoice;
+
     public static void main(String... args) throws IOException {
         final Searching searching = new Searching();
+        searching.buildChoice();
         searching.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("perform linear search");
+        mChoice.add("perform binary search");
     }
 
     private void initialize() throws IOException {
 
         int choice;
-
+        System.out.println(ArrayUtil.ARRAY_INPUT_SIZE + " & " + ArrayUtil.ARRAY_ELEMENTS_INPUTS);
         final int ar[] = ArrayUtil.takeArrayInput();
 
         ArrayUtil.printArray(ar);
@@ -43,11 +56,8 @@ public class Searching {
         final int number = GenericUtil.takeIntegerInput();
 
         do {
-
-            System.out.println("\nEnter 1 to perform linear search\n" +
-                    "Enter 2 to perform binary search\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             System.out.println("\nEnter your choice\n");
 
             choice = GenericUtil.takeIntegerInput();

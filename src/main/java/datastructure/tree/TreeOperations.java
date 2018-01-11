@@ -17,43 +17,57 @@
 package datastructure.tree;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 //TODO
 public final class TreeOperations {
 
     private Tree<Integer> mTree;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
-        new TreeOperations().initialize();
+        final TreeOperations treeOperations = new TreeOperations();
+        treeOperations.buildChoice();
+        treeOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("insert");
+        mChoice.add("delete");
+        mChoice.add("search");
+        mChoice.add("display");
     }
 
     private void initialize() throws IOException {
         mTree = new Tree<>();
         int ch;
 
-        System.out.println("\nEnter 1 to insert\n" +
-                "\nEnter 2 to delete\n" +
-                "\nEnter 3 to search\n" +
-                "\nEnter 4 to display\n" +
-                "\nEnter 0 to exit\n");
-
-        ch = GenericUtil.takeIntegerInput();
-
         do {
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
+            ch = GenericUtil.takeIntegerInput();
+
             switch (ch) {
                 case 1:
-                    //INSERT
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE + " & " + GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mTree.insert(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    //DELETE
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    mTree.delete(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
-                    //SEARCH
+                    System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
+                    System.out.println(mTree.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 4:
-                    //DISPLAY
+                    mTree.display();
                     break;
             }
         } while (ch != 0);

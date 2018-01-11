@@ -36,7 +36,7 @@ class TreeNode<T> {
      * @param data  the data part of a node
      * @param links the list of child nodes of a node
      */
-    TreeNode(final T data, List<TreeNode<T>> links) {
+    TreeNode(final T data, final List<TreeNode<T>> links) {
         this.mData = data;
         this.mLinks = links;
     }

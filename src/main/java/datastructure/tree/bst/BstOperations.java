@@ -18,16 +18,44 @@ package datastructure.tree.bst;
 
 import util.ArrayUtil;
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class BstOperations {
 
     private BinarySearchTree<Integer> mBinarySearchTree;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
         final BstOperations bstOperations = new BstOperations();
+        bstOperations.buildChoice();
         bstOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("add item");
+        mChoice.add("remove item");
+        mChoice.add("search item");
+        mChoice.add("get min");
+        mChoice.add("get max");
+        mChoice.add("get height");
+        mChoice.add("get depth");
+        mChoice.add("display In Order");
+        mChoice.add("display Pre Order");
+        mChoice.add("display Post Order");
+        mChoice.add("display Level Order");
+        mChoice.add("get no of elements");
+        mChoice.add("get In Order Successor of a element");
+        mChoice.add("check if the node is leaf node");
+        mChoice.add("check if tree is complete");
+        mChoice.add("check if tree is balanced");
+        mChoice.add("balance the tree");
+        mChoice.add("display");
     }
 
     private void initialize() throws IOException {
@@ -35,29 +63,9 @@ public final class BstOperations {
         int ch;
 
         do {
-
-            System.out.println("\nEnter 1 to add item\n" +
-                    "Enter 2 to remove item\n" +
-                    "Enter 3 to search item\n" +
-                    "Enter 4 to get min\n" +
-                    "Enter 5 to get max\n" +
-                    "Enter 6 to get height\n" +
-                    "Enter 7 to get depth\n" +
-                    "Enter 8 to display In Order\n" +
-                    "Enter 9 to display Pre Order\n" +
-                    "Enter 10 to display Post Order\n" +
-                    "Enter 11 to display Level Order\n" +
-                    "Enter 12 to get no of elements\n" +
-                    "Enter 13 to get In Order Successor of a element\n" +
-                    "Enter 14 to check if the node is leaf node\n" +
-                    "Enter 15 to check if tree is complete\n" +
-                    "Enter 16 to check if tree is balanced\n" +
-                    "Enter 17 to balance the tree\n" +
-                    "Enter 18 to display\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
-
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);

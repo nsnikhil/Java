@@ -61,6 +61,55 @@ public class BinarySearchTree<I> {
     }
 
     /**
+     * Inserts a given element in tree using avl insertion method
+     * which ensures the tree is balanced
+     *
+     * @param node    the root
+     * @param newNode the node to be inserted
+     * @return the root with new node inserted and the tree balanced
+     */
+    private BstNode<I> insertAVL(final BstNode<I> node, final BstNode<I> newNode) {
+        //TODO
+        return null;
+    }
+
+
+    /**
+     * Rotates the tree from a given node to the left
+     *
+     * @param node the node from where rotation has to take place
+     * @return the node after left rotation
+     */
+    private BstNode<I> rotateLeft(final BstNode<I> node) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Rotates the tree from a given node to the right
+     *
+     * @param node the node from where rotation has to take place
+     * @return the node after right rotation
+     */
+    private BstNode<I> rotateRight(final BstNode<I> node) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Returns the balance of given node
+     * <p>
+     * Balance is given by difference between the node's left and right sub tree
+     * A node is said to be balanced if its balancing factor lies between -1 & 1
+     *
+     * @param node the node whose balance is to be found
+     * @return the balancing factor of the node
+     */
+    private int getBalance(@NotNull final BstNode<I> node) {
+        return getHeight(node.getLeftNode()) - getHeight(node.getRightNode());
+    }
+
+    /**
      * Returns a new node with the data provided
      *
      * @param data the data for the node
@@ -93,8 +142,9 @@ public class BinarySearchTree<I> {
      * of the min to the node to be deleted and simply remove the duplicate node like deleting a node
      * with 0 or 1 child.Or we can also go for maximum in left subtree
      *
-     * @param data the element to be deleted
-     * @param node the root
+     * @param data  the element to be deleted
+     * @param node  the root
+     * @return the node after deletion of element
      */
     @Contract("_, null -> null")
     private BstNode<I> remove(final I data, final BstNode<I> node) {
@@ -118,6 +168,30 @@ public class BinarySearchTree<I> {
             }
         }
         return node;
+    }
+
+    /**
+     * Removes a given node from tree using AVL method to persis the tree balance
+     * <p>
+     * <p>
+     * If a node with 0 child is to be deleted simply set the parent to point to null
+     * <p>
+     * If the node with one child is to be deleted set the parent to point to child for the node
+     * to be deleted
+     * <p>
+     * If the node with two child is to be deleted find the min in its right sub tree copy the value
+     * of the min to the node to be deleted and simply remove the duplicate node like deleting a node
+     * with 0 or 1 child.Or we can also go for maximum in left subtree
+     * <p>
+     * Re-Balancing Algorithm is TODO
+     *
+     * @param data the element to be deleted
+     * @param node the root
+     * @return the node after deletion of element and after re-balancing the tree
+     */
+    private BstNode<I> removeAVL(final I data, final BstNode<I> node) {
+        //TODO
+        return null;
     }
 
     /**

@@ -17,17 +17,42 @@
 package datastructure.linkedlist;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public final class LinkedListOperations {
 
     private LinkedList<Integer> mLinkedList;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
         final LinkedListOperations linkedListOperations = new LinkedListOperations();
+        linkedListOperations.buildChoice();
         linkedListOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("insert at beginning");
+        mChoice.add("insert at end");
+        mChoice.add("insert at given position");
+        mChoice.add("delete from first");
+        mChoice.add("delete from last");
+        mChoice.add("delete from given position");
+        mChoice.add("delete a given item");
+        mChoice.add("get first item");
+        mChoice.add("get last item");
+        mChoice.add("get item at given position");
+        mChoice.add("get item position");
+        mChoice.add("search if item exists");
+        mChoice.add("get the size of list");
+        mChoice.add("check if list is empty");
+        mChoice.add("display list");
     }
 
     private void initialize() throws IOException {
@@ -36,24 +61,8 @@ public final class LinkedListOperations {
         mLinkedList = new LinkedList<>();
 
         do {
-
-            System.out.println("\nEnter 1 to insert at beginning\n" +
-                    "Enter 2 to insert at end\n" +
-                    "Enter 3 to insert at given position\n" +
-                    "Enter 4 to delete from first\n" +
-                    "Enter 5 to delete from last\n" +
-                    "Enter 6 to delete from given position\n" +
-                    "Enter 7 to delete a given item\n" +
-                    "Enter 8 to get first item\n" +
-                    "Enter 9 to get last item\n" +
-                    "Enter 10 to get item at given position\n" +
-                    "Enter 11 to get item position\n" +
-                    "Enter 12 to search if item exists\n" +
-                    "Enter 13 to get the size of list\n" +
-                    "Enter 14 to check if list is empty\n" +
-                    "Enter 15 to display list\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

@@ -16,6 +16,8 @@
 
 package datastructure.tree;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @param <T>
  */
@@ -30,12 +32,19 @@ class Tree<T> {
      * @param data the data to inserted
      * @param node the node on which the data has to be inserted
      */
-    void insert(T data, T node) {
-        TreeNode<T> temp = new TreeNode<>(data, null);
-        if (mRoot == null) {
-            mRoot = temp;
-            return;
-        }
+    final void insert(final T data, final T node) {
+        //TODO
+    }
+
+    /**
+     * Returns a new node
+     *
+     * @param data the data for new node
+     * @return new node
+     */
+    @NotNull
+    private TreeNode<T> createNode(final T data) {
+        return new TreeNode<>(data, null);
     }
 
     /**
@@ -43,8 +52,19 @@ class Tree<T> {
      *
      * @param data the data to be deleted
      */
-    void delete(T data) {
+    final void delete(final T data) {
+        //TODO
+    }
 
+    /**
+     * Returns a node which holds the given data
+     *
+     * @param data the data
+     * @return the node which holds the data
+     */
+    private TreeNode<T> getNodeFromData(final T data) {
+        //TODO
+        return null;
     }
 
     /**
@@ -53,14 +73,15 @@ class Tree<T> {
      * @param data the data to be searched
      * @return true if data is found else !true
      */
-    boolean search(T data) {
-        return false;
+    final boolean search(final T data) {
+        //TODO
+        return true;
     }
 
     /**
      * displays the content of tree
      */
-    void display() {
-
+    final void display() {
+        //TODO
     }
 }

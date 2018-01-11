@@ -17,15 +17,33 @@
 package datastructure.queue.linkedList.circular;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CircularQueueOperations {
 
     private CircularQueue<Integer> mQueue;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
-        new CircularQueueOperations().initialize();
+        final CircularQueueOperations circularQueueOperations = new CircularQueueOperations();
+        circularQueueOperations.buildChoice();
+        circularQueueOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("enqueue data to queue");
+        mChoice.add("dequeue data from queue");
+        mChoice.add("peek data from queue");
+        mChoice.add("check if queue is empty");
+        mChoice.add("search queue");
+        mChoice.add("get queue size");
+        mChoice.add("display the queue");
     }
 
     private void initialize() throws IOException {
@@ -33,15 +51,8 @@ public class CircularQueueOperations {
         int ch;
 
         do {
-            System.out.println("\nEnter 1 to enqueue data to queue\n" +
-                    "Enter 2 to dequeue data from queue\n" +
-                    "Enter 3 to peek data from queue\n" +
-                    "Enter 4 check if queue is empty\n" +
-                    "Enter 5 to search queue\n" +
-                    "Enter 6 to get queue size\n" +
-                    "Enter 7 to display the queue\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

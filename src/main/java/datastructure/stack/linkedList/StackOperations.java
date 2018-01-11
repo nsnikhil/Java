@@ -17,30 +17,41 @@
 package datastructure.stack.linkedList;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StackOperations {
 
     private Stack<Integer> mStack;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
         final StackOperations stackOperations = new StackOperations();
+        stackOperations.buildChoice();
         stackOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("push data to stack");
+        mChoice.add("pop data from stack");
+        mChoice.add("peek data from stack");
+        mChoice.add("check if stack is empty");
+        mChoice.add("search stack");
+        mChoice.add("get stack size");
+        mChoice.add("display the stack");
     }
 
     private void initialize() throws IOException {
         int ch;
         mStack = new Stack<>();
         do {
-            System.out.println("\nEnter 1 to push data to stack\n" +
-                    "Enter 2 to pop data from stack\n" +
-                    "Enter 3 to peek data from stack\n" +
-                    "Enter 4 check if stack is empty\n" +
-                    "Enter 5 to search stack\n" +
-                    "Enter 6 to get stack size\n" +
-                    "Enter 7 to display the stack\n" +
-                    "Enter 0 to exit\n");
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
             switch (ch) {
                 case 1:

@@ -17,16 +17,32 @@
 package datastructure.stack.array;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StackOperation {
 
     private Stack mStack;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
         final StackOperation stackOperation = new StackOperation();
         stackOperation.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("push data to stack");
+        mChoice.add("pop data from stack");
+        mChoice.add("peek data from stack");
+        mChoice.add("check if stack is empty");
+        mChoice.add("check if stack is full");
+        mChoice.add("search stack");
+        mChoice.add("display the stack");
     }
 
     private void initialize() throws IOException {
@@ -36,14 +52,8 @@ public class StackOperation {
         mStack = new Stack(GenericUtil.takeIntegerInput());
 
         do {
-            System.out.println("\nEnter 1 to push data to stack\n" +
-                    "Enter 2 to pop data from stack\n" +
-                    "Enter 3 to peek data from stack\n" +
-                    "Enter 4 check if stack is empty\n" +
-                    "Enter 5 check if stack is full\n" +
-                    "Enter 6 to search stack\n" +
-                    "Enter 7 to display the stack\n" +
-                    "Enter 0 to exit\n");
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

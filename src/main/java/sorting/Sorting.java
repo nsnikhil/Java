@@ -19,34 +19,48 @@ package sorting;
 import sorting.algorithms.*;
 import util.ArrayUtil;
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sorting {
 
+    private List<String> mChoice;
+
     public static void main(String... args) throws IOException {
         final Sorting sorting = new Sorting();
+        sorting.buildChoice();
         sorting.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add(buildChoice("bubble"));
+        mChoice.add(buildChoice("insertion"));
+        mChoice.add(buildChoice("selection"));
+        mChoice.add(buildChoice("merge"));
+        mChoice.add(buildChoice("quick"));
+        mChoice.add(buildChoice("heap"));
+    }
+
+    private String buildChoice(String choice) {
+        return "perform " + choice + " sort";
     }
 
     private void initialize() throws IOException {
 
         int choice;
+        System.out.println(ArrayUtil.ARRAY_INPUT_SIZE + " & " + ArrayUtil.ARRAY_ELEMENTS_INPUTS);
         final int ar[] = ArrayUtil.takeArrayInput();
         ArrayUtil.printArray(ar);
 
         do {
-
-            System.out.println("\nEnter 1 to perform bubble sort\n" +
-                    "Enter 2 to perform insertion sort\n" +
-                    "Enter 3 to perform selection sort\n" +
-                    "Enter 4 to perform merge sort\n" +
-                    "Enter 5 to perform quick sort\n" +
-                    "Enter 6 to perform heap sort\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             System.out.println("\nEnter your choice\n");
-
             choice = GenericUtil.takeIntegerInput();
 
             switch (choice) {

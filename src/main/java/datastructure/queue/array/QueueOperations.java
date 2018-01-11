@@ -17,16 +17,34 @@
 package datastructure.queue.array;
 
 import util.GenericUtil;
+import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class QueueOperations {
 
     private Queue mQueue;
+    private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
         final QueueOperations queueOperations = new QueueOperations();
+        queueOperations.buildChoice();
         queueOperations.initialize();
+    }
+
+    private void buildChoice() {
+        mChoice = new ArrayList<>();
+        mChoice.add("exit");
+        mChoice.add("enqueue data to queue");
+        mChoice.add("dequeue data from queue");
+        mChoice.add("get front");
+        mChoice.add("get rear");
+        mChoice.add("check if queue is empty");
+        mChoice.add("check if queue is full");
+        mChoice.add("search queue");
+        mChoice.add("display the queue");
     }
 
     private void initialize() throws IOException {
@@ -36,17 +54,8 @@ public class QueueOperations {
         mQueue = new Queue(GenericUtil.takeIntegerInput());
 
         do {
-
-            System.out.println("\nEnter 1 to enqueue data to queue\n" +
-                    "Enter 2 to dequeue data from queue\n" +
-                    "Enter 3 to get front\n" +
-                    "Enter 4 to get rear\n" +
-                    "Enter 5 check if queue is empty\n" +
-                    "Enter 6 check if queue is full\n" +
-                    "Enter 7 to search queue\n" +
-                    "Enter 8 to display the queue\n" +
-                    "Enter 0 to exit\n");
-
+            System.out.println();
+            PrintUtil.printChoice(mChoice);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

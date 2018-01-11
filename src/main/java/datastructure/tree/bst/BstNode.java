@@ -16,6 +16,7 @@
 
 package datastructure.tree.bst;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -52,6 +53,7 @@ final class BstNode<T> {
     /**
      * @return data of the node
      */
+    @Contract(pure = true)
     public T getData() {
         return mData;
     }
@@ -66,6 +68,7 @@ final class BstNode<T> {
     /**
      * @return left link of the node
      */
+    @Contract(pure = true)
     public BstNode<T> getLeftNode() {
         return mLeftNode;
     }
@@ -80,6 +83,7 @@ final class BstNode<T> {
     /**
      * @return right link of the node
      */
+    @Contract(pure = true)
     public BstNode<T> getRightNode() {
         return mRightNode;
     }
