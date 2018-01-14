@@ -51,6 +51,14 @@ public final class GenericUtil {
      * @return output stream
      * @throws IOException input/output exception
      */
+    public static char takeCharacterInput() throws IOException {
+        return takeStringInput().charAt(0);
+    }
+
+    /**
+     * @return output stream
+     * @throws IOException input/output exception
+     */
     public static String takeStringInput() throws IOException {
         return getBufferedReader().readLine();
     }
