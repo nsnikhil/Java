@@ -31,23 +31,43 @@ public class GraphObject<T> {
     private List<T> mVertices;
     private Integer[][] mEdges;
 
+    /**
+     * @param vertices
+     * @param edges
+     */
     GraphObject(List<T> vertices, Integer[][] edges) {
         mVertices = vertices;
         mEdges = edges;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer[][] getEdges() {
         return mEdges;
     }
 
+    /**
+     *
+     * @param edges
+     */
     public void setEdges(Integer[][] edges) {
         this.mEdges = edges;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<T> getVertices() {
         return mVertices;
     }
 
+    /**
+     *
+     * @param vertices
+     */
     public void setVertices(List<T> vertices) {
         this.mVertices = vertices;
     }

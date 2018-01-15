@@ -67,7 +67,13 @@ import java.util.List;
  */
 class DummyGraph {
 
+    /**
+     *
+     */
     static final List<Character> VERTICES = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
+    /**
+     *
+     */
     static final Integer[][] EDGE_MATRIX_NON_WEIGHTED = {
             {0, 1, 1, 1, 0, 0, 0, 0},
             {1, 0, 0, 0, 1, 1, 0, 0},
@@ -77,7 +83,13 @@ class DummyGraph {
             {0, 1, 0, 0, 0, 0, 0, 1},
             {0, 0, 1, 0, 0, 0, 0, 1},
             {0, 0, 0, 1, 1, 1, 1, 0}};
+    /**
+     *
+     */
     private static final int m = Integer.MAX_VALUE;
+    /**
+     *
+     */
     static final Integer[][] EDGE_MATRIX_WEIGHTED = {
             {m, 5, 7, 3, m, m, m, m},
             {5, m, m, m, 2, 10, m, m},
@@ -87,5 +99,4 @@ class DummyGraph {
             {m, 10, m, m, m, m, m, 4},
             {m, m, 1, m, m, m, m, 6},
             {m, m, m, 6, 11, 9, 4, m}};
-
 }

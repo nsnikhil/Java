@@ -22,36 +22,54 @@ public class VertexObject<T> {
     private EdgeObject<T> mNodeTwo;
     private int mWeight;
 
+    /**
+     * @param nodeOne
+     * @param nodeTwo
+     */
     public VertexObject(EdgeObject<T> nodeOne, EdgeObject<T> nodeTwo) {
         this(nodeOne, nodeTwo, 1);
     }
 
+    /**
+     *
+     * @param nodeOne
+     * @param nodeTwo
+     * @param weight
+     */
     public VertexObject(EdgeObject<T> nodeOne, EdgeObject<T> nodeTwo, int weight) {
         this.mNodeOne = nodeOne;
         this.mNodeTwo = nodeTwo;
         this.mWeight = weight;
     }
 
+    /**
+     *
+     * @return
+     */
     public EdgeObject<T> getNodeOne() {
         return mNodeOne;
     }
 
+    /**
+     *
+     * @param nodeOne
+     */
     public void setmNodeOne(EdgeObject<T> nodeOne) {
         this.mNodeOne = nodeOne;
     }
 
-    public EdgeObject<T> getNodeTwo() {
-        return mNodeTwo;
-    }
-
-    public void setmNodeTwo(EdgeObject<T> nodeTwo) {
-        this.mNodeTwo = nodeTwo;
-    }
-
+    /**
+     *
+     * @return
+     */
     public int getWeight() {
         return mWeight;
     }
 
+    /**
+     *
+     * @param weight
+     */
     public void setWeight(int weight) {
         this.mWeight = weight;
     }

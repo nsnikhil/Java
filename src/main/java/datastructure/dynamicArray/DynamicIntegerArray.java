@@ -23,7 +23,7 @@ import searching.algorithms.BinarySearch;
 /**
  *
  */
-class DynamicIntegerArray {
+public class DynamicIntegerArray {
 
     private int mSize;
     private int mIndex = 0;
@@ -32,7 +32,7 @@ class DynamicIntegerArray {
     /**
      *
      */
-    DynamicIntegerArray() {
+    public DynamicIntegerArray() {
         this(10);
     }
 
@@ -47,7 +47,7 @@ class DynamicIntegerArray {
     /**
      * @param data
      */
-    final void add(final int data) {
+    public final void add(final int data) {
         if (mIndex >= mSize) increaseSize();
         mArray[mIndex] = data;
         ++mIndex;
@@ -87,7 +87,7 @@ class DynamicIntegerArray {
      * @return
      */
     @Contract(pure = true)
-    final int get(final int index) {
+    public final int get(final int index) {
         if (index < 0 || index > mIndex) throw new IllegalArgumentException("Invalid index " + index);
         return mArray[index];
     }
@@ -96,7 +96,7 @@ class DynamicIntegerArray {
      * @param data
      * @param index
      */
-    final void set(final int data, final int index) {
+    public final void set(final int data, final int index) {
         if (index > mIndex) throw new IllegalArgumentException("Invalid index " + index);
         mArray[index] = data;
     }
@@ -105,7 +105,7 @@ class DynamicIntegerArray {
      * @param data
      * @return
      */
-    final boolean search(int data) {
+    public final boolean search(int data) {
         return new BinarySearch().search(copyElements(mArray, new int[mSize], 0), data);
     }
 
@@ -113,7 +113,7 @@ class DynamicIntegerArray {
     /**
      * @param data
      */
-    final void remove(final int data) {
+    public final void remove(final int data) {
         if (!search(data)) throw new IllegalArgumentException("Invalid element " + data);
         final int index = getIndex(mArray, data, 0);
         if (index == mSize - 1)
@@ -148,7 +148,7 @@ class DynamicIntegerArray {
     /**
      *
      */
-    final void display() {
+    public final void display() {
         display(mArray, 0, mIndex);
     }
 

@@ -16,18 +16,32 @@
 
 package datastructure.graph.edgeList;
 
+/**
+ * @param <T>
+ */
 public class EdgeObject<T> {
 
     private T mData;
 
+    /**
+     * @param data
+     */
     EdgeObject(T data) {
         this.mData = data;
     }
 
+    /**
+     *
+     * @return
+     */
     public T getData() {
         return this.mData;
     }
 
+    /**
+     *
+     * @param data
+     */
     public void setData(T data) {
         this.mData = data;
     }

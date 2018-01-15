@@ -16,7 +16,7 @@
 
 package datastructure.graph.adjacencyMatrix;
 
-import org.jetbrains.annotations.NotNull;
+import datastructure.graph.util.GraphUtil;
 import util.GenericUtil;
 import util.PrintUtil;
 
@@ -26,17 +26,19 @@ import java.util.List;
 
 import static datastructure.graph.adjacencyMatrix.DummyGraph.*;
 
-public class GraphOperation {
+/**
+ *
+ */
+public class GraphOperations {
 
-    private static final String CHARACTER_INPUT = "Enter the vertex name";
     private GraphObject<Character> mGraphOne;
     private GraphObject<Character> mGraphTwo;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
-        final GraphOperation graphOperation = new GraphOperation();
-        graphOperation.buildChoice();
-        graphOperation.initilaize();
+        final GraphOperations graphOperations = new GraphOperations();
+        graphOperations.buildChoice();
+        graphOperations.initialize();
     }
 
     private void buildChoice() {
@@ -46,7 +48,7 @@ public class GraphOperation {
         mChoice.add("find if two nodes are connected");
     }
 
-    private void initilaize() throws IOException {
+    private void initialize() throws IOException {
         mGraphOne = new GraphObject<>(VERTICES, EDGE_MATRIX_NON_WEIGHTED);
         mGraphTwo = new GraphObject<>(VERTICES, EDGE_MATRIX_WEIGHTED);
 
@@ -59,25 +61,15 @@ public class GraphOperation {
 
             switch (ch) {
                 case 1:
-                    System.out.println(CHARACTER_INPUT);
-                    print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), mGraphOne));
+                    System.out.println(GraphUtil.CHARACTER_INPUT);
+                    GraphUtil.print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), mGraphOne));
                     break;
                 case 2:
-                    System.out.println(CHARACTER_INPUT + " & " + CHARACTER_INPUT);
+                    System.out.println(GraphUtil.CHARACTER_INPUT + " & " + GraphUtil.CHARACTER_INPUT);
                     System.out.println(GraphActions.areConnected(GenericUtil.takeCharacterInput(), GenericUtil.takeCharacterInput(), mGraphOne));
                     break;
             }
 
         } while (ch != 0);
-    }
-
-    private void print(@NotNull Character[] ar) {
-        print(ar, ar.length, 0);
-    }
-
-    private void print(final Character[] ar, final int size, final int index) {
-        if (size == index) return;
-        if (ar[index] != null) System.out.print(ar[index] + " ");
-        print(ar, size, index + 1);
     }
 }
