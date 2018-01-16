@@ -19,21 +19,53 @@ package util;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public final class PrintUtil {
 
+    /**
+     *
+     */
+    private static final String CHOICE_EXIT = "exit";
+
+    /**
+     * @return
+     */
+    public static List<String> getPrintList() {
+        final List<String> choiceList = new ArrayList<>();
+        choiceList.add(CHOICE_EXIT);
+        return choiceList;
+    }
+
+    /**
+     * @param list
+     */
     public static void printChoice(final List<String> list) {
         printChoice(list, list.size(), 1);
         System.out.println(buildChoice(0, list.get(0)));
     }
 
+    /**
+     * @param list
+     * @param listSize
+     * @param index
+     */
     private static void printChoice(final List<String> list, final int listSize, final int index) {
         if (listSize == index) return;
         System.out.println(buildChoice(index, list.get(index)));
         printChoice(list, listSize, index + 1);
     }
 
+    /**
+     *
+     * @param index
+     * @param action
+     * @return
+     */
     @NotNull
     @Contract(pure = true)
     private static String buildChoice(final int index, final String action) {

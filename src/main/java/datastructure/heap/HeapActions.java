@@ -16,6 +16,9 @@
 
 package datastructure.heap;
 
+import org.jetbrains.annotations.NotNull;
+import util.ArrayUtil;
+
 public final class HeapActions {
 
     /**
@@ -26,7 +29,7 @@ public final class HeapActions {
      * @param ar
      * @param value
      */
-    public final void insertIntoMaxHeap(final Integer ar[], Integer value) {
+    public static void insertIntoMaxHeap(final Integer ar[], Integer value) {
 
     }
 
@@ -38,7 +41,7 @@ public final class HeapActions {
      * @param ar
      * @param value
      */
-    public final void insertIntoMinHeap(final Integer ar[], Integer value) {
+    public static void insertIntoMinHeap(final Integer ar[], Integer value) {
 
     }
 
@@ -51,8 +54,19 @@ public final class HeapActions {
      *
      * @param ar the array to max heapify
      */
-    final void maxHeapify(final Integer[] ar) {
+    static void maxHeapify(@NotNull final Integer[] ar) {
+        maxHeapify(ar, ar.length / 2);
+        ArrayUtil.printArray(ar);
+    }
 
+    /**
+     * @param ar
+     * @param index
+     */
+    private static void maxHeapify(@NotNull final Integer[] ar, final int index) {
+        if (index < 0) return;
+        maxHeapifyUtil(ar, index);
+        maxHeapify(ar, index - 1);
     }
 
     /**
@@ -63,8 +77,19 @@ public final class HeapActions {
      *
      * @param ar the array to min heapify
      */
-    final void minHeapify(final Integer[] ar) {
+    static void minHeapify(final Integer[] ar) {
+        minHeapify(ar, ar.length / 2);
+        ArrayUtil.printArray(ar);
+    }
 
+    /**
+     * @param ar
+     * @param index
+     */
+    private static void minHeapify(final Integer[] ar, final int index) {
+        if (index < 0) return;
+        minHeapifyUtil(ar, index);
+        minHeapify(ar, index - 1);
     }
 
     /**
@@ -117,9 +142,21 @@ public final class HeapActions {
      * @param ar    the array to max heapify
      * @param index the index on which the heapify will occur
      */
-    private void maxHeapify(final Integer[] ar, final int index) {
-
+    private static void maxHeapifyUtil(final Integer[] ar, final int index) {
+        maxHeapifyUtil(ar, index, index, 2 * index + 1, 2 * index + 2);
     }
+
+    private static void maxHeapifyUtil(final Integer[] ar, final int index, int largest, final int left, final int right) {
+        if (left < ar.length && ar[left] > ar[largest])
+            largest = left;
+        if (right < ar.length && ar[right] > ar[largest])
+            largest = right;
+        if (index != largest) {
+            ArrayUtil.swapValues(index, largest, ar);
+            maxHeapifyUtil(ar, largest, largest, 2 * largest + 1, 2 * largest + 2);
+        }
+    }
+
 
     /**
      * Min heapifies a given array/tree
@@ -171,8 +208,19 @@ public final class HeapActions {
      * @param ar    the array to min heapify
      * @param index the index on which the heapify will occur
      */
-    private void minHeapify(final Integer[] ar, final int index) {
+    private static void minHeapifyUtil(final Integer[] ar, final int index) {
+        minHeapifyUtil(ar, index, index, 2 * index + 1, 2 * index + 2);
+    }
 
+    private static void minHeapifyUtil(final Integer[] ar, final int index, int smallest, final int left, final int right) {
+        if (left < ar.length && ar[left] < ar[smallest])
+            smallest = left;
+        if (right < ar.length && ar[right] < ar[smallest])
+            smallest = right;
+        if (index != smallest) {
+            ArrayUtil.swapValues(index, smallest, ar);
+            minHeapifyUtil(ar, smallest, smallest, 2 * smallest + 1, 2 * smallest + 2);
+        }
     }
 
     /**
@@ -185,15 +233,19 @@ public final class HeapActions {
      *
      * @param ar
      */
-    public final void deleteMax(final Integer[] ar) {
-
+    public final void deleteMaxMaxHeap(final Integer[] ar) {
+        //TODO
+        ar[0] = ar[ar.length - 1];
+        ar[ar.length - 1] = null;
+        maxHeapify(ar, 0);
+        ArrayUtil.printArray(ar);
     }
 
     /**
      * @param ar
      */
-    public final void deleteMin(final Integer[] ar) {
-
+    public final void deleteMinMaxHeap(final Integer[] ar) {
+        //TODO
     }
 
     /**
@@ -209,7 +261,16 @@ public final class HeapActions {
      * @param newVal
      */
     public final void increaseValueMaxHeap(final Integer[] ar, final int index, final int newVal) {
+        if (ar[index] < newVal)
+            throw new IllegalArgumentException(newVal + " is smaller than previous value " + ar[index]);
+        ar[index] = newVal;
+        swapParentMaxHeap(ar, index);
+    }
 
+    private void swapParentMaxHeap(final Integer ar[], final int index) {
+        if (index < 0 || ar[index] < ar[index / 2]) return;
+        ArrayUtil.swapValues(index, index / 2, ar);
+        swapParentMaxHeap(ar, index / 2);
     }
 
     /**

@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
+/**
+ *
+ */
 public final class ArrayUtil {
 
     public static final String ARRAY_INPUT_SIZE = "Enter the size of array";
@@ -53,16 +56,50 @@ public final class ArrayUtil {
         return take2dArrayInput(new int[row][column], 0);
     }
 
+    /**
+     * @param arr
+     * @param row
+     * @return
+     * @throws IOException
+     */
     private static int[][] take2dArrayInput(@NotNull final int[][] arr, final int row) throws IOException {
         if (arr.length == row) return arr;
         arr[row] = takeArrayInput(arr[row], 0);
         return take2dArrayInput(arr, row + 1);
     }
 
+    /**
+     * @param ar
+     * @param index
+     * @return
+     * @throws IOException
+     */
     private static int[] takeArrayInput(@NotNull final int ar[], final int index) throws IOException {
         if (ar.length == index) return ar;
         ar[index] = GenericUtil.takeIntegerInput();
         return takeArrayInput(ar, index + 1);
+    }
+
+    /**
+     * @param firstIndex
+     * @param secondIndex
+     * @param ar
+     */
+    public static void swapValues(final int firstIndex, final int secondIndex, @NotNull final Integer[] ar) {
+        ar[firstIndex] = ar[firstIndex] + ar[secondIndex];
+        ar[secondIndex] = ar[firstIndex] - ar[secondIndex];
+        ar[firstIndex] = ar[firstIndex] - ar[secondIndex];
+    }
+
+    /**
+     * @param firstIndex
+     * @param secondIndex
+     * @param ar
+     */
+    public static void swapValues(final int firstIndex, final int secondIndex, @NotNull final int[] ar) {
+        ar[firstIndex] = ar[firstIndex] + ar[secondIndex];
+        ar[secondIndex] = ar[firstIndex] - ar[secondIndex];
+        ar[firstIndex] = ar[firstIndex] - ar[secondIndex];
     }
 
     /**
@@ -73,6 +110,11 @@ public final class ArrayUtil {
         printArray(ar, 0);
     }
 
+    /**
+     *
+     * @param ar
+     * @param index
+     */
     private static void printArray(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return;
         System.out.print(ar[index] + " ");
@@ -87,6 +129,11 @@ public final class ArrayUtil {
         print2dArray(arr, 0);
     }
 
+    /**
+     *
+     * @param arr
+     * @param row
+     */
     private static void print2dArray(@NotNull final Integer[][] arr, final int row) {
         if (arr.length == row) return;
         printArray(arr[row]);
@@ -102,6 +149,11 @@ public final class ArrayUtil {
         printArray(ar, 0);
     }
 
+    /**
+     *
+     * @param ar
+     * @param index
+     */
     private static void printArray(@NotNull final int[] ar, final int index) {
         if (ar.length == index) return;
         System.out.print(ar[index] + " ");
@@ -116,6 +168,11 @@ public final class ArrayUtil {
         print2dArray(arr, 0);
     }
 
+    /**
+     *
+     * @param arr
+     * @param row
+     */
     private static void print2dArray(@NotNull final int[][] arr, final int row) {
         if (arr.length == row) return;
         printArray(arr[row]);
