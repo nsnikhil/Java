@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //TODO
@@ -36,12 +36,11 @@ public final class TreeOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("insert");
-        mChoice.add("delete");
-        mChoice.add("search");
-        mChoice.add("display");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                PrintUtil.ACTION_INSERT,
+                PrintUtil.ACTION_DELETE,
+                PrintUtil.ACTION_SEARCH,
+                PrintUtil.ACTION_DISPLAY));
     }
 
     private void initialize() throws IOException {
@@ -51,6 +50,7 @@ public final class TreeOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

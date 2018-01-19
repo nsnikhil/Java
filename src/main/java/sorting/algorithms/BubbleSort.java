@@ -17,6 +17,7 @@
 package sorting.algorithms;
 
 import org.jetbrains.annotations.NotNull;
+import util.ArrayUtil;
 
 /**
  * The corresponding two elements of the array are compared
@@ -55,23 +56,31 @@ public class BubbleSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public final int[] sort(final int[] ar) {
+    public final Integer[] sort(final Integer[] ar) {
         return outerSort(ar, 0);
     }
 
-    private int[] outerSort(@NotNull final int ar[], final int index) {
+    /**
+     * @param ar
+     * @param index
+     * @return
+     */
+    private Integer[] outerSort(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return ar;
         innerSort(ar, 0, ar.length - index - 1);
         return outerSort(ar, index + 1);
     }
 
-    private void innerSort(@NotNull final int ar[], final int index, final int end) {
+    /**
+     *
+     * @param ar
+     * @param index
+     * @param end
+     */
+    private void innerSort(@NotNull final Integer ar[], final int index, final int end) {
         if (index >= end) return;
-        if (ar[index] > ar[index + 1]) {
-            final int temp = ar[index];
-            ar[index] = ar[index + 1];
-            ar[index + 1] = temp;
-        }
+        if (ar[index] > ar[index + 1])
+            ArrayUtil.swapValues(index, index + 1, ar);
         innerSort(ar, index + 1, end);
     }
 
@@ -81,11 +90,11 @@ public class BubbleSort implements Sorter {
      * @param ar the array to be sorted
      * @return the sorted array
      */
-    private int[] bubbleSortIterative(@NotNull final int[] ar) {
+    private Integer[] bubbleSortIterative(@NotNull final Integer[] ar) {
         for (int i = 0, size = ar.length; i < size; i++)
             for (int j = 0; j < size - i - 1; j++)
                 if (ar[j] > ar[j + 1]) {
-                    int temp = ar[j];
+                    final int temp = ar[j];
                     ar[j] = ar[j + 1];
                     ar[j + 1] = temp;
                 }

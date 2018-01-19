@@ -30,7 +30,18 @@ public final class HeapActions {
      * @param value
      */
     public static void insertIntoMaxHeap(final Integer ar[], Integer value) {
+        if (ar[ar.length - 1] != null) throw new ArrayIndexOutOfBoundsException("Array is full ");
+        insertIntoMaxHeap(ar, value, getInsertIndex(ar, 0));
+    }
 
+    /**
+     * @param ar
+     * @param value
+     * @param index
+     */
+    private static void insertIntoMaxHeap(@NotNull final Integer[] ar, final Integer value, final int index) {
+        ar[index] = Integer.MIN_VALUE;
+        increaseValueMaxHeap(ar, index, value);
     }
 
     /**
@@ -42,7 +53,31 @@ public final class HeapActions {
      * @param value
      */
     public static void insertIntoMinHeap(final Integer ar[], Integer value) {
+        if (ar[ar.length - 1] != null) throw new ArrayIndexOutOfBoundsException("Array is full ");
+        insertIntoMinHeap(ar, value, getInsertIndex(ar, 0));
+    }
 
+    /**
+     * @param ar
+     * @param value
+     * @param index
+     */
+    private static void insertIntoMinHeap(final Integer ar[], Integer value, int index) {
+        ar[index] = Integer.MAX_VALUE;
+        decreaseValueMinHeap(ar, index, value);
+    }
+
+    /**
+     * Returns the index in the array where value can be inserted
+     *
+     * @param ar
+     * @param index
+     * @return
+     */
+    private static int getInsertIndex(final Integer ar[], final int index) {
+        if (ar.length - 1 == index) return index;
+        if (ar[index] == null) return index;
+        return getInsertIndex(ar, index + 1);
     }
 
 
@@ -54,7 +89,7 @@ public final class HeapActions {
      *
      * @param ar the array to max heapify
      */
-    static void maxHeapify(@NotNull final Integer[] ar) {
+    public static void maxHeapify(@NotNull final Integer[] ar) {
         maxHeapify(ar, ar.length / 2);
         ArrayUtil.printArray(ar);
     }
@@ -146,7 +181,14 @@ public final class HeapActions {
         maxHeapifyUtil(ar, index, index, 2 * index + 1, 2 * index + 2);
     }
 
-    private static void maxHeapifyUtil(final Integer[] ar, final int index, int largest, final int left, final int right) {
+    /**
+     * @param ar
+     * @param index
+     * @param largest
+     * @param left
+     * @param right
+     */
+    private static void maxHeapifyUtil(@NotNull final Integer[] ar, final int index, int largest, final int left, final int right) {
         if (left < ar.length && ar[left] > ar[largest])
             largest = left;
         if (right < ar.length && ar[right] > ar[largest])
@@ -212,7 +254,7 @@ public final class HeapActions {
         minHeapifyUtil(ar, index, index, 2 * index + 1, 2 * index + 2);
     }
 
-    private static void minHeapifyUtil(final Integer[] ar, final int index, int smallest, final int left, final int right) {
+    private static void minHeapifyUtil(@NotNull final Integer[] ar, final int index, int smallest, final int left, final int right) {
         if (left < ar.length && ar[left] < ar[smallest])
             smallest = left;
         if (right < ar.length && ar[right] < ar[smallest])
@@ -233,19 +275,20 @@ public final class HeapActions {
      *
      * @param ar
      */
-    public final void deleteMaxMaxHeap(final Integer[] ar) {
-        //TODO
+    public static Integer extractMaxMaxHeap(final Integer[] ar) {
+        final Integer max = ar[0];
         ar[0] = ar[ar.length - 1];
         ar[ar.length - 1] = null;
         maxHeapify(ar, 0);
-        ArrayUtil.printArray(ar);
+        return max;
     }
 
     /**
      * @param ar
      */
-    public final void deleteMinMaxHeap(final Integer[] ar) {
+    public static Integer extractMinMinHeap(final Integer[] ar) {
         //TODO
+        return null;
     }
 
     /**
@@ -260,14 +303,18 @@ public final class HeapActions {
      * @param index
      * @param newVal
      */
-    public final void increaseValueMaxHeap(final Integer[] ar, final int index, final int newVal) {
-        if (ar[index] < newVal)
+    public static void increaseValueMaxHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
+        if (ar[index] > newVal)
             throw new IllegalArgumentException(newVal + " is smaller than previous value " + ar[index]);
         ar[index] = newVal;
         swapParentMaxHeap(ar, index);
     }
 
-    private void swapParentMaxHeap(final Integer ar[], final int index) {
+    /**
+     * @param ar
+     * @param index
+     */
+    private static void swapParentMaxHeap(final Integer ar[], final int index) {
         if (index < 0 || ar[index] < ar[index / 2]) return;
         ArrayUtil.swapValues(index, index / 2, ar);
         swapParentMaxHeap(ar, index / 2);
@@ -283,12 +330,15 @@ public final class HeapActions {
      * @param index
      * @param newVal
      */
-    public final void decreaseValueMaxHeap(final Integer[] ar, final int index, final int newVal) {
-
+    public static void decreaseValueMaxHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
+        if (ar[index] < newVal)
+            throw new IllegalArgumentException(newVal + " is larger than previous value " + ar[index]);
+        ar[index] = newVal;
+        maxHeapify(ar, index);
     }
 
     /**
-     * For Max heap only
+     * For Min heap only
      * Algorithm :
      * Set the new value and call min heapify from the
      * node with new value
@@ -297,8 +347,11 @@ public final class HeapActions {
      * @param index
      * @param newVal
      */
-    public final void increaseeValueMinHeap(final Integer[] ar, final int index, final int newVal) {
-
+    public static void increaseeValueMinHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
+        if (ar[index] > newVal)
+            throw new IllegalArgumentException(newVal + " is smaller than previous value " + ar[index]);
+        ar[index] = newVal;
+        minHeapify(ar, index);
     }
 
     /**
@@ -313,15 +366,56 @@ public final class HeapActions {
      * @param index
      * @param newVal
      */
-    public final void decreaseValueMinHeap(final Integer[] ar, final int index, final int newVal) {
-
+    public static void decreaseValueMinHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
+        if (ar[index] < newVal)
+            throw new IllegalArgumentException(newVal + " is larger than previous value " + ar[index]);
+        ar[index] = newVal;
+        swapParentMinHeap(ar, index);
     }
 
-    private boolean isMaxHeap(final Integer[] ar) {
-        return false;
+    /**
+     * @param ar
+     * @param index
+     */
+    private static void swapParentMinHeap(final Integer ar[], final int index) {
+        if (index < 0 || ar[index] > ar[index / 2]) return;
+        ArrayUtil.swapValues(index, index / 2, ar);
+        swapParentMinHeap(ar, index / 2);
     }
 
+    /**
+     * @param ar
+     * @return
+     */
+    public static boolean isMaxHeap(final Integer[] ar) {
+        //TODO CHECK
+        return isMaxHeaps(ar, 0);
+    }
+
+    /**
+     * @param ar
+     * @param index
+     * @return
+     */
+    private static boolean isMaxHeaps(@NotNull final Integer[] ar, final int index) {
+        return ar.length / 2 == index || ar[index] >= ar[index * 2 + 1] && ar[index] >= ar[index * 2 + 2] && isMaxHeaps(ar, index + 1);
+    }
+
+    /**
+     * @param ar
+     * @param index
+     * @return
+     */
+    private static boolean isMinHeaps(@NotNull final Integer[] ar, final int index) {
+        return ar.length / 2 == index || ar[index] <= ar[index * 2 + 1] && ar[index] <= ar[index * 2 + 2] && isMaxHeaps(ar, index + 1);
+    }
+
+    /**
+     * @param ar
+     * @return
+     */
     private boolean isMinHeap(final Integer[] ar) {
-        return false;
+        //TODO CHECK
+        return isMinHeaps(ar, 0);
     }
 }

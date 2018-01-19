@@ -75,11 +75,17 @@ public class InsertionSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public final int[] sort(final int[] ar) {
+    public final Integer[] sort(final Integer[] ar) {
         return insertionSort(ar, 0, 1);
     }
 
-    private int[] insertionSort(@NotNull final int ar[], final int i, final int j) {
+    /**
+     * @param ar
+     * @param i
+     * @param j
+     * @return
+     */
+    private Integer[] insertionSort(@NotNull final Integer[] ar, final int i, final int j) {
         if (ar.length == j) return ar;
         final int number = ar[j];
         final int position = insertAtCorrectPosition(ar, i, number);
@@ -87,7 +93,14 @@ public class InsertionSort implements Sorter {
         return insertionSort(ar, i + 1, j + 1);
     }
 
-    private int insertAtCorrectPosition(@NotNull final int ar[], final int position, final int number) {
+    /**
+     *
+     * @param ar
+     * @param position
+     * @param number
+     * @return
+     */
+    private int insertAtCorrectPosition(@NotNull final Integer[] ar, final int position, final int number) {
         if (position < 0 || ar[position] < number) return position;
         ar[position + 1] = ar[position];
         return insertAtCorrectPosition(ar, position - 1, number);
@@ -99,7 +112,7 @@ public class InsertionSort implements Sorter {
      * @param ar the array to be sorted
      * @return the sorted array
      */
-    private int[] insertionSortIterative(@NotNull final int[] ar) {
+    private Integer[] insertionSortIterative(@NotNull final Integer[] ar) {
         int i = 0;
         int j = 1;
         while (j < ar.length) {

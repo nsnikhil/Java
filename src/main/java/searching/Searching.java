@@ -23,10 +23,10 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Searching {
+public final class Searching {
 
     private List<String> mChoice;
 
@@ -37,17 +37,16 @@ public class Searching {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("perform linear search");
-        mChoice.add("perform binary search");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                PrintUtil.buildChoiceString("linear", PrintUtil.ACTION_SEARCH),
+                PrintUtil.buildChoiceString("binary", PrintUtil.ACTION_SEARCH)));
     }
 
     private void initialize() throws IOException {
 
         int choice;
         System.out.println(ArrayUtil.ARRAY_INPUT_SIZE + " & " + ArrayUtil.ARRAY_ELEMENTS_INPUTS);
-        final int ar[] = ArrayUtil.takeArrayInput();
+        final Integer[] ar = ArrayUtil.takeArrayInput();
 
         ArrayUtil.printArray(ar);
 
@@ -58,7 +57,7 @@ public class Searching {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
-            System.out.println("\nEnter your choice\n");
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
 
             choice = GenericUtil.takeIntegerInput();
 

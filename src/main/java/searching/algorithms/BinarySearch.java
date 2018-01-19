@@ -26,7 +26,7 @@ public class BinarySearch implements Searcher {
      * @return true of value if found
      */
     @Override
-    public boolean search(final int[] ar, final int n) {
+    public boolean search(final Integer[] ar, final Integer n) {
         return binarySearch(new QuickSort().sort(ar), 0, ar.length, n);
     }
 
@@ -50,10 +50,10 @@ public class BinarySearch implements Searcher {
      * @param no    the number to be searched
      * @return true if number is present
      */
-    private boolean binarySearch(final int[] ar, final int start, final int end, final int no) {
+    private boolean binarySearch(final Integer[] ar, final Integer start, final Integer end, final Integer no) {
         if (start > end) return false;
-        int mid = (start + end) / 2;
-        if (no == ar[mid]) return true;
+        final int mid = (start + end) / 2;
+        if (no.equals(ar[mid])) return true;
         if (no < ar[mid]) return binarySearch(ar, start, mid - 1, no);
         return binarySearch(ar, mid + 1, end, no);
     }

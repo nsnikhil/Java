@@ -27,17 +27,28 @@ import java.util.List;
  */
 public final class PrintUtil {
 
-    /**
-     *
-     */
+
     private static final String CHOICE_EXIT = "exit";
 
+    public static final String ACTION_SORT = "sort";
+    public static final String ACTION_SEARCH = "search";
+    public static final String ACTION_INSERT = "insert";
+    public static final String ACTION_DELETE = "delete";
+    public static final String ACTION_DISPLAY = "display";
+    public static final String ACTION_GET = "get";
+    public static final String ACTION_SET = "set";
+    public static final String ACTION_CHECK = "check";
+
+    public static final String ENTER_CHOICE_MESSAGE = "\nEnter your choice\n";
+
     /**
+     * @param listItem
      * @return
      */
-    public static List<String> getPrintList() {
+    public static List<String> getPrintList(List<String> listItem) {
         final List<String> choiceList = new ArrayList<>();
         choiceList.add(CHOICE_EXIT);
+        choiceList.addAll(listItem);
         return choiceList;
     }
 
@@ -61,7 +72,6 @@ public final class PrintUtil {
     }
 
     /**
-     *
      * @param index
      * @param action
      * @return
@@ -70,6 +80,16 @@ public final class PrintUtil {
     @Contract(pure = true)
     private static String buildChoice(final int index, final String action) {
         return "Enter " + index + " to " + action;
+    }
+
+    /**
+     * @param choice
+     * @return
+     */
+    @NotNull
+    @Contract(pure = true)
+    public static String buildChoiceString(final String choice, final String action) {
+        return "perform " + choice + " " + action;
     }
 
 }

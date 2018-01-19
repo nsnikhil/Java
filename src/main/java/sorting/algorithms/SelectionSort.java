@@ -48,23 +48,23 @@ public class SelectionSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public final int[] sort(final int[] ar) {
+    public final Integer[] sort(final Integer[] ar) {
         return selectionSort(ar, 0);
     }
 
-    private int[] selectionSort(@NotNull final int[] ar, final int index) {
+    private Integer[] selectionSort(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return ar;
         final int minIndex = findMinIndex(ar, index + 1, index);
+        //ArrayUtil.swapValues(minIndex,index,ar);
         final int temp = ar[minIndex];
         ar[minIndex] = ar[index];
         ar[index] = temp;
         return selectionSort(ar, index + 1);
     }
 
-    private int findMinIndex(@NotNull final int ar[], final int index, final int minIndex) {
+    private int findMinIndex(@NotNull final Integer[] ar, final int index, final int minIndex) {
         if (ar.length == index) return minIndex;
         if (ar[index] < ar[minIndex])
-            //minIndex = index;
             return findMinIndex(ar, index + 1, index);
         return findMinIndex(ar, index + 1, minIndex);
     }
@@ -75,7 +75,7 @@ public class SelectionSort implements Sorter {
      * @param ar the array to be sorted
      * @return the sorted array
      */
-    private int[] selectionSortIterative(@NotNull final int ar[]) {
+    private Integer[] selectionSortIterative(@NotNull final Integer ar[]) {
         for (int i = 0, size = ar.length; i < size - 1; i++) {
             int minIndex = i;
 
@@ -83,7 +83,7 @@ public class SelectionSort implements Sorter {
                 if (ar[j] < ar[minIndex])
                     minIndex = j;
 
-            int temp = ar[minIndex];
+            final int temp = ar[minIndex];
             ar[minIndex] = ar[i];
             ar[i] = temp;
         }

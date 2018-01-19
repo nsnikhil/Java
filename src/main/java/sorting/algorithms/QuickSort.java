@@ -26,7 +26,7 @@ public class QuickSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public final int[] sort(final int[] ar) {
+    public final Integer[] sort(final Integer[] ar) {
         return quickSort(ar, 0, ar.length - 1);
     }
 
@@ -51,7 +51,7 @@ public class QuickSort implements Sorter {
      * @return the sorted array
      */
     @Nullable
-    private int[] quickSort(final int ar[], final int start, final int end) {
+    private Integer[] quickSort(final Integer[] ar, final int start, final int end) {
         if (start >= end) return null;
         final int pivot = partition(ar, start, end);
         quickSort(ar, start, pivot - 1);
@@ -87,7 +87,7 @@ public class QuickSort implements Sorter {
      * @param end   the end index
      * @return the index of pivot
      */
-    private int partition(@NotNull final int[] ar, final int start, final int end) {
+    private int partition(@NotNull final Integer[] ar, final int start, final int end) {
         //final int pivotIndex = getPivotIndex(ar,start,end,start,ar[end]);
         int pivotIndex = start;
         int temp, pivot = ar[end];
@@ -104,7 +104,7 @@ public class QuickSort implements Sorter {
         return pivotIndex;
     }
 
-    private int getPivotIndex(@NotNull final int[] ar, final int start, final int end, final int pivotIndex, final int pivot) {
+    private int getPivotIndex(@NotNull final Integer[] ar, final int start, final int end, final int pivotIndex, final int pivot) {
         if (start == end) return pivotIndex;
         if (ar[start] <= pivot) {
             final int temp = ar[start];

@@ -27,7 +27,7 @@ public class DynamicIntegerArray {
 
     private int mSize;
     private int mIndex = 0;
-    private int[] mArray;
+    private Integer[] mArray;
 
     /**
      *
@@ -39,9 +39,9 @@ public class DynamicIntegerArray {
     /**
      * @param size
      */
-    DynamicIntegerArray(final int size) {
+    DynamicIntegerArray(final Integer size) {
         mSize = size;
-        mArray = new int[size];
+        mArray = new Integer[size];
     }
 
     /**
@@ -58,7 +58,7 @@ public class DynamicIntegerArray {
      */
     private void increaseSize() {
         mSize = mSize * 2;
-        mArray = copyElements(mArray, new int[mSize]);
+        mArray = copyElements(mArray, new Integer[mSize]);
     }
 
     /**
@@ -66,7 +66,7 @@ public class DynamicIntegerArray {
      * @param newArray
      * @return
      */
-    private int[] copyElements(final int[] oldArray, final int[] newArray) {
+    private Integer[] copyElements(final Integer[] oldArray, final Integer[] newArray) {
         return copyElements(oldArray, newArray, 0);
     }
 
@@ -76,7 +76,7 @@ public class DynamicIntegerArray {
      * @param index
      * @return
      */
-    private int[] copyElements(@NotNull final int[] oldArray, final int[] newArray, final int index) {
+    private Integer[] copyElements(@NotNull final Integer[] oldArray, final Integer[] newArray, final Integer index) {
         if (oldArray.length == index) return newArray;
         newArray[index] = oldArray[index];
         return copyElements(oldArray, newArray, index + 1);
@@ -87,7 +87,7 @@ public class DynamicIntegerArray {
      * @return
      */
     @Contract(pure = true)
-    public final int get(final int index) {
+    public final Integer get(final Integer index) {
         if (index < 0 || index > mIndex) throw new IllegalArgumentException("Invalid index " + index);
         return mArray[index];
     }
@@ -96,7 +96,7 @@ public class DynamicIntegerArray {
      * @param data
      * @param index
      */
-    public final void set(final int data, final int index) {
+    public final void set(final Integer data, final Integer index) {
         if (index > mIndex) throw new IllegalArgumentException("Invalid index " + index);
         mArray[index] = data;
     }
@@ -105,15 +105,15 @@ public class DynamicIntegerArray {
      * @param data
      * @return
      */
-    public final boolean search(int data) {
-        return new BinarySearch().search(copyElements(mArray, new int[mSize], 0), data);
+    public final boolean search(Integer data) {
+        return new BinarySearch().search(copyElements(mArray, new Integer[mSize], 0), data);
     }
 
 
     /**
      * @param data
      */
-    public final void remove(final int data) {
+    public final void remove(final Integer data) {
         if (!search(data)) throw new IllegalArgumentException("Invalid element " + data);
         final int index = getIndex(mArray, data, 0);
         if (index == mSize - 1)
@@ -127,7 +127,7 @@ public class DynamicIntegerArray {
      * @param ar
      * @param deleteIndex
      */
-    private void removeElement(final int ar[], final int deleteIndex) {
+    private void removeElement(final Integer ar[], final Integer deleteIndex) {
         if (deleteIndex >= mIndex) return;
         ar[deleteIndex] = ar[deleteIndex + 1];
         removeElement(ar, deleteIndex + 1);
@@ -139,9 +139,9 @@ public class DynamicIntegerArray {
      * @param index
      * @return
      */
-    private int getIndex(final int[] ar, final int data, final int index) {
+    private int getIndex(final Integer[] ar, final Integer data, final Integer index) {
         if (index > mIndex) return index;
-        if (ar[index] == data) return index;
+        if (ar[index].equals(data)) return index;
         return getIndex(ar, data, index + 1);
     }
 
@@ -157,8 +157,8 @@ public class DynamicIntegerArray {
      * @param index
      * @param size
      */
-    private void display(final int[] array, final int index, final int size) {
-        if (size == index) return;
+    private void display(final Integer[] array, final Integer index, @NotNull final Integer size) {
+        if (size.equals(index)) return;
         System.out.print(array[index] + " ");
         display(array, index + 1, size);
     }

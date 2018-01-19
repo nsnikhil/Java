@@ -26,7 +26,7 @@ public class MergeSort implements Sorter {
      * @return the sorted array
      */
     @Override
-    public final int[] sort(final int[] ar) {
+    public final Integer[] sort(final Integer[] ar) {
         return mergeSort(ar);
     }
 
@@ -53,20 +53,20 @@ public class MergeSort implements Sorter {
      * @return the sorted array
      */
     @Nullable
-    private int[] mergeSort(@NotNull final int[] ar) {
+    private Integer[] mergeSort(@NotNull final Integer[] ar) {
         final int arrayLength = ar.length;
 
         if (arrayLength <= 1) return null;
 
         final int mid = ar.length / 2;
-        final int leftSubArray[], rightSubArray[];
+        final Integer leftSubArray[], rightSubArray[];
 
-        leftSubArray = new int[mid];
+        leftSubArray = new Integer[mid];
 
         if (arrayLength % 2 == 0)
-            rightSubArray = new int[mid];
+            rightSubArray = new Integer[mid];
         else
-            rightSubArray = new int[mid + 1];
+            rightSubArray = new Integer[mid + 1];
 
         /*
          * The code below does the same as this loop
@@ -116,7 +116,7 @@ public class MergeSort implements Sorter {
      * @param leftArray  the left sub array
      * @param rightArray the right sub array
      */
-    private void merge(@NotNull final int[] ar, @NotNull final int[] leftArray, @NotNull final int[] rightArray) {
+    private void merge(@NotNull final Integer[] ar, @NotNull final Integer[] leftArray, @NotNull final Integer[] rightArray) {
         final int leftLength = leftArray.length;
         final int rightLength = rightArray.length;
 
@@ -147,7 +147,7 @@ public class MergeSort implements Sorter {
         }
     }
 
-    /*private void mergeOne(@NotNull final int[] ar, @NotNull final int[] leftArray, @NotNull final int[] rightArray,final int leftLength,final int rightLength,final int i,final int j,final int k) {
+    /*private void mergeOne(@NotNull final Integer[] ar, @NotNull final Integer[] leftArray, @NotNull final Integer[] rightArray,final int leftLength,final int rightLength,final int i,final int j,final int k) {
         if(i==leftLength||j==rightLength)return;
         if (leftArray[i] < rightArray[j]) {
             ar[k] = leftArray[i];
@@ -158,7 +158,7 @@ public class MergeSort implements Sorter {
         }
     }
 
-    private void mergeTwo(@NotNull final int[] mainArray,@NotNull final int[] subArray,final int index,final int length,final int k){
+    private void mergeTwo(@NotNull final Integer[] mainArray,@NotNull final Integer[] subArray,final int index,final int length,final int k){
         if(index==length)return;
         mainArray[k] = subArray[index];
         mergeTwo(mainArray,subArray,index+1,length,k+1);

@@ -21,7 +21,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class BstOperations {
@@ -36,26 +36,25 @@ public final class BstOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("add item");
-        mChoice.add("remove item");
-        mChoice.add("search item");
-        mChoice.add("get min");
-        mChoice.add("get max");
-        mChoice.add("get height");
-        mChoice.add("get depth");
-        mChoice.add("display In Order");
-        mChoice.add("display Pre Order");
-        mChoice.add("display Post Order");
-        mChoice.add("display Level Order");
-        mChoice.add("get no of elements");
-        mChoice.add("get In Order Successor of a element");
-        mChoice.add("check if the node is leaf node");
-        mChoice.add("check if tree is complete");
-        mChoice.add("check if tree is balanced");
-        mChoice.add("balance the tree");
-        mChoice.add("display");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                "add item",
+                "remove item",
+                "search item",
+                "get min",
+                "get max",
+                "get height",
+                "get depth",
+                "display In Order",
+                "display Pre Order",
+                "display Post Order",
+                "display Level Order",
+                "get no of elements",
+                "get In Order Successor of a element",
+                "check if the node is leaf node",
+                "check if tree is complete",
+                "check if tree is balanced",
+                "balance the tree",
+                "display"));
     }
 
     private void initialize() throws IOException {

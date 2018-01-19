@@ -38,7 +38,7 @@ public final class Array11 {
         System.out.println(new Array11().array11(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
-    private int array11(@NotNull final int[] nums, final int index) {
+    private int array11(@NotNull final Integer[] nums, final Integer index) {
         if (index >= nums.length) return 0;
         if (nums[index] == 11) return 1 + array11(nums, index + 1);
         return array11(nums, index + 1);

@@ -21,7 +21,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static datastructure.graph.adjacencyMatrix.DummyGraph.*;
@@ -42,10 +42,10 @@ public class GraphOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("find adjacent nodes");
-        mChoice.add("find if two nodes are connected");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                "find adjacent nodes",
+                "find if two nodes are connected"
+        ));
     }
 
     private void initialize() throws IOException {
@@ -57,6 +57,7 @@ public class GraphOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

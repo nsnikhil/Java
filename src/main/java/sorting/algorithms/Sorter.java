@@ -17,5 +17,5 @@
 package sorting.algorithms;
 
 public interface Sorter {
-    int[] sort(final int[] ar);
+    Integer[] sort(final Integer[] ar);
 }

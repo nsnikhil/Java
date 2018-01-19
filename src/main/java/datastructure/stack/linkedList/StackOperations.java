@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StackOperations {
@@ -35,15 +35,14 @@ public class StackOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("push data to stack");
-        mChoice.add("pop data from stack");
-        mChoice.add("peek data from stack");
-        mChoice.add("check if stack is empty");
-        mChoice.add("search stack");
-        mChoice.add("get stack size");
-        mChoice.add("display the stack");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                "push data to stack",
+                "pop data from stack",
+                "peek data from stack",
+                "check if stack is empty",
+                "search stack",
+                "get stack size",
+                "display the stack"));
     }
 
     private void initialize() throws IOException {
@@ -52,7 +51,9 @@ public class StackOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
+
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);

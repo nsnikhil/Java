@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QueueOperations {
@@ -35,15 +35,14 @@ public class QueueOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("enqueue data to queue");
-        mChoice.add("dequeue data from queue");
-        mChoice.add("peek data from queue");
-        mChoice.add("check if queue is empty");
-        mChoice.add("search queue");
-        mChoice.add("get queue size");
-        mChoice.add("display the queue");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                "enqueue data to queue",
+                "dequeue data from queue",
+                "peek data from queue",
+                "check if queue is empty",
+                "search queue",
+                "get queue size",
+                "display the queue"));
     }
 
     private void initialize() throws IOException {
@@ -53,6 +52,7 @@ public class QueueOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

@@ -38,7 +38,7 @@ public final class Array220 {
         System.out.println(new Array220().array220(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
-    private boolean array220(@NotNull final int[] nums, final int index) {
+    private boolean array220(@NotNull final Integer[] nums, final Integer index) {
         //TODO
         return false;
     }

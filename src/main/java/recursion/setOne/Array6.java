@@ -38,7 +38,7 @@ public final class Array6 {
         System.out.println(new Array6().array6(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
-    private boolean array6(@NotNull final int[] nums, final int index) {
+    private boolean array6(@NotNull final Integer[] nums, final Integer index) {
         return index < nums.length && (nums[index] == 6 || array6(nums, index + 1));
     }
 }

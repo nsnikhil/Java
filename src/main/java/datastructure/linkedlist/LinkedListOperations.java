@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -36,23 +36,21 @@ public final class LinkedListOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("insert at beginning");
-        mChoice.add("insert at end");
-        mChoice.add("insert at given position");
-        mChoice.add("delete from first");
-        mChoice.add("delete from last");
-        mChoice.add("delete from given position");
-        mChoice.add("delete a given item");
-        mChoice.add("get first item");
-        mChoice.add("get last item");
-        mChoice.add("get item at given position");
-        mChoice.add("get item position");
-        mChoice.add("search if item exists");
-        mChoice.add("get the size of list");
-        mChoice.add("check if list is empty");
-        mChoice.add("display list");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                PrintUtil.ACTION_INSERT + " at beginning",
+                PrintUtil.ACTION_INSERT + " at end",
+                PrintUtil.ACTION_INSERT + " at given position",
+                PrintUtil.ACTION_DELETE + " from first",
+                PrintUtil.ACTION_DELETE + " from last",
+                PrintUtil.ACTION_DELETE + " from given position",
+                PrintUtil.ACTION_GET + " first item",
+                PrintUtil.ACTION_GET + " last item",
+                PrintUtil.ACTION_GET + " item at given position",
+                PrintUtil.ACTION_GET + " item position",
+                PrintUtil.ACTION_SEARCH + " if item exists",
+                PrintUtil.ACTION_GET + " the size of list",
+                PrintUtil.ACTION_CHECK + " if list is empty",
+                PrintUtil.ACTION_DISPLAY + " list"));
     }
 
     private void initialize() throws IOException {
@@ -63,6 +61,7 @@ public final class LinkedListOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

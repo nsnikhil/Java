@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CircularQueueOperations {
@@ -35,16 +35,15 @@ public class CircularQueueOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("enqueue data to queue");
-        mChoice.add("dequeue data from queue");
-        mChoice.add("get front");
-        mChoice.add("get rear");
-        mChoice.add("check if queue is empty");
-        mChoice.add("check if queue is full");
-        mChoice.add("search queue");
-        mChoice.add("display the queue");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                "enqueue data to queue",
+                "dequeue data from queue",
+                "get front",
+                "get rear",
+                "check if queue is empty",
+                "check if queue is full",
+                "search queue",
+                "display the queue"));
     }
 
     private void initialize() throws IOException {
@@ -56,6 +55,7 @@ public class CircularQueueOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

@@ -34,26 +34,16 @@ public final class ArrayUtil {
      * @return integer array
      * @throws IOException input/output exception
      */
-    public static int[] takeArrayInput() throws IOException {
-        return takeArrayInput(new int[GenericUtil.takeIntegerInput()], 0);
+    public static Integer[] takeArrayInput() throws IOException {
+        return takeArrayInputUtil(new Integer[GenericUtil.takeIntegerInput()], 0);
     }
 
     /**
      * @return 2-d integer array
      * @throws IOException input/output exception
      */
-    public static int[][] take2dArrayInput() throws IOException {
-        return take2dArrayInput(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
-    }
-
-    /**
-     * @param row    no of rows in array
-     * @param column no of columns in array
-     * @return 2-d integer array
-     * @throws IOException input/output exception
-     */
-    private static int[][] take2dArrayInput(final int row, final int column) throws IOException {
-        return take2dArrayInput(new int[row][column], 0);
+    public static Integer[][] take2dArrayInput() throws IOException {
+        return take2dArrayInputUtil(new Integer[GenericUtil.takeIntegerInput()][GenericUtil.takeIntegerInput()], 0);
     }
 
     /**
@@ -62,10 +52,10 @@ public final class ArrayUtil {
      * @return
      * @throws IOException
      */
-    private static int[][] take2dArrayInput(@NotNull final int[][] arr, final int row) throws IOException {
+    private static Integer[][] take2dArrayInputUtil(@NotNull final Integer[][] arr, final Integer row) throws IOException {
         if (arr.length == row) return arr;
-        arr[row] = takeArrayInput(arr[row], 0);
-        return take2dArrayInput(arr, row + 1);
+        arr[row] = takeArrayInputUtil(arr[row], 0);
+        return take2dArrayInputUtil(arr, row + 1);
     }
 
     /**
@@ -74,10 +64,10 @@ public final class ArrayUtil {
      * @return
      * @throws IOException
      */
-    private static int[] takeArrayInput(@NotNull final int ar[], final int index) throws IOException {
+    private static Integer[] takeArrayInputUtil(@NotNull final Integer[] ar, final Integer index) throws IOException {
         if (ar.length == index) return ar;
         ar[index] = GenericUtil.takeIntegerInput();
-        return takeArrayInput(ar, index + 1);
+        return takeArrayInputUtil(ar, index + 1);
     }
 
     /**
@@ -85,18 +75,7 @@ public final class ArrayUtil {
      * @param secondIndex
      * @param ar
      */
-    public static void swapValues(final int firstIndex, final int secondIndex, @NotNull final Integer[] ar) {
-        ar[firstIndex] = ar[firstIndex] + ar[secondIndex];
-        ar[secondIndex] = ar[firstIndex] - ar[secondIndex];
-        ar[firstIndex] = ar[firstIndex] - ar[secondIndex];
-    }
-
-    /**
-     * @param firstIndex
-     * @param secondIndex
-     * @param ar
-     */
-    public static void swapValues(final int firstIndex, final int secondIndex, @NotNull final int[] ar) {
+    public static void swapValues(@NotNull final Integer firstIndex, @NotNull final Integer secondIndex, @NotNull final Integer[] ar) {
         ar[firstIndex] = ar[firstIndex] + ar[secondIndex];
         ar[secondIndex] = ar[firstIndex] - ar[secondIndex];
         ar[firstIndex] = ar[firstIndex] - ar[secondIndex];
@@ -111,11 +90,10 @@ public final class ArrayUtil {
     }
 
     /**
-     *
      * @param ar
      * @param index
      */
-    private static void printArray(@NotNull final Integer[] ar, final int index) {
+    private static void printArray(@NotNull final Integer[] ar, final Integer index) {
         if (ar.length == index) return;
         System.out.print(ar[index] + " ");
         printArray(ar, index + 1);
@@ -130,50 +108,10 @@ public final class ArrayUtil {
     }
 
     /**
-     *
      * @param arr
      * @param row
      */
-    private static void print2dArray(@NotNull final Integer[][] arr, final int row) {
-        if (arr.length == row) return;
-        printArray(arr[row]);
-        System.out.println();
-        print2dArray(arr, row + 1);
-    }
-
-    /**
-     * @param ar integer array
-     */
-    public static void printArray(final int[] ar) {
-        if (ar == null) return;
-        printArray(ar, 0);
-    }
-
-    /**
-     *
-     * @param ar
-     * @param index
-     */
-    private static void printArray(@NotNull final int[] ar, final int index) {
-        if (ar.length == index) return;
-        System.out.print(ar[index] + " ");
-        printArray(ar, index + 1);
-    }
-
-    /**
-     * @param arr 2-d integer array
-     */
-    public static void print2dArray(final int[][] arr) {
-        if (arr == null) return;
-        print2dArray(arr, 0);
-    }
-
-    /**
-     *
-     * @param arr
-     * @param row
-     */
-    private static void print2dArray(@NotNull final int[][] arr, final int row) {
+    private static void print2dArray(@NotNull final Integer[][] arr, final Integer row) {
         if (arr.length == row) return;
         printArray(arr[row]);
         System.out.println();

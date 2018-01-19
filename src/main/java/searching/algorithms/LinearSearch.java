@@ -28,11 +28,17 @@ public class LinearSearch implements Searcher {
      * @return true if value if searched
      */
     @Override
-    public boolean search(final int[] ar, final int n) {
+    public boolean search(final Integer[] ar, final Integer n) {
         return search(ar, n, 0);
     }
 
-    private boolean search(@NotNull final int ar[], final int n, final int index) {
-        return ar.length != index && (ar[index] == n || search(ar, n, index + 1));
+    /**
+     * @param ar
+     * @param n
+     * @param index
+     * @return
+     */
+    private boolean search(@NotNull final Integer ar[], final Integer n, final Integer index) {
+        return ar.length != index && (ar[index].equals(n) || search(ar, n, index + 1));
     }
 }

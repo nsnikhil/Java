@@ -20,7 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,14 +38,13 @@ public final class DynamicArrayOperations {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add("insert");
-        mChoice.add("delete");
-        mChoice.add("set");
-        mChoice.add("get");
-        mChoice.add("search");
-        mChoice.add("display");
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                PrintUtil.ACTION_INSERT,
+                PrintUtil.ACTION_DELETE,
+                PrintUtil.ACTION_SET,
+                PrintUtil.ACTION_GET,
+                PrintUtil.ACTION_SEARCH,
+                PrintUtil.ACTION_DISPLAY));
     }
 
     private void initialize() throws IOException {
@@ -54,6 +53,7 @@ public final class DynamicArrayOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

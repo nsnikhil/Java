@@ -40,7 +40,7 @@ public final class GroupSum {
         System.out.println(new GroupSum().groupSum(GenericUtil.takeIntegerInput(), ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
-    private boolean groupSum(final int start, @NotNull final int[] nums, final int target) {
+    private boolean groupSum(final Integer start, @NotNull final Integer[] nums, final Integer target) {
         //TODO
         return false;
     }

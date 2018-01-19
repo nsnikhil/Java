@@ -18,6 +18,7 @@ package datastructure.stack.array;
 
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import util.ArrayUtil;
 
 /**
@@ -25,11 +26,11 @@ import util.ArrayUtil;
  */
 class Stack {
 
-    private final int[] mStack;
+    private final Integer[] mStack;
     private int mTop = -1;
 
     Stack(final int size) {
-        mStack = new int[size];
+        mStack = new Integer[size];
     }
 
     /**
@@ -39,7 +40,7 @@ class Stack {
      *
      * @param data the data to be pushed into stack
      */
-    final void push(final int data) {
+    final void push(final Integer data) {
         if (mTop >= mStack.length - 1) {
             System.out.println("Stack over flow");
             return;
@@ -68,7 +69,7 @@ class Stack {
      *
      * @return the element at top of stack
      */
-    final int peek() {
+    final Integer peek() {
         if (mTop <= -1) {
             System.out.println("Stack under flow");
             return -1;
@@ -85,15 +86,24 @@ class Stack {
      * @param data the data to be searched
      * @return position of data if found else -1
      */
-    final int search(final int data) {
+    final Integer search(final Integer data) {
         if (mTop <= -1) {
             System.out.println("Stack under flow");
             return -1;
         }
-        for (int i = 0, size = mStack.length; i < size; i++)
-            if (mStack[i] == data)
-                return i;
-        return -1;
+        return search(mStack, data, 0);
+    }
+
+    /**
+     * @param stack
+     * @param data
+     * @param index
+     * @return
+     */
+    private Integer search(@NotNull final Integer[] stack, final Integer data, final Integer index) {
+        if (stack.length == index) return -1;
+        if (stack[index].equals(data)) return index;
+        return search(stack, data, index + 1);
     }
 
     /**

@@ -20,6 +20,7 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public final class HeapOperations {
@@ -33,8 +34,7 @@ public final class HeapOperations {
     }
 
     private void buildChoice() {
-        mChoice = PrintUtil.getPrintList();
-        mChoice.add("Max heapify");
+        mChoice = PrintUtil.getPrintList(Arrays.asList("Max heapify"));
 
     }
 
@@ -44,6 +44,7 @@ public final class HeapOperations {
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             ch = GenericUtil.takeIntegerInput();
 
             switch (ch) {

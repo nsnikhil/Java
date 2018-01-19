@@ -22,10 +22,10 @@ import util.GenericUtil;
 import util.PrintUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Sorting {
+public final class Sorting {
 
     private List<String> mChoice;
 
@@ -36,31 +36,25 @@ public class Sorting {
     }
 
     private void buildChoice() {
-        mChoice = new ArrayList<>();
-        mChoice.add("exit");
-        mChoice.add(buildChoice("bubble"));
-        mChoice.add(buildChoice("insertion"));
-        mChoice.add(buildChoice("selection"));
-        mChoice.add(buildChoice("merge"));
-        mChoice.add(buildChoice("quick"));
-        mChoice.add(buildChoice("heap"));
-    }
-
-    private String buildChoice(String choice) {
-        return "perform " + choice + " sort";
+        mChoice = PrintUtil.getPrintList(Arrays.asList(
+                PrintUtil.buildChoiceString("bubble", PrintUtil.ACTION_SORT),
+                PrintUtil.buildChoiceString("insertion", PrintUtil.ACTION_SORT),
+                PrintUtil.buildChoiceString("selection", PrintUtil.ACTION_SORT),
+                PrintUtil.buildChoiceString("merge", PrintUtil.ACTION_SORT),
+                PrintUtil.buildChoiceString("quick", PrintUtil.ACTION_SORT),
+                PrintUtil.buildChoiceString("heap", PrintUtil.ACTION_SORT)));
     }
 
     private void initialize() throws IOException {
-
         int choice;
         System.out.println(ArrayUtil.ARRAY_INPUT_SIZE + " & " + ArrayUtil.ARRAY_ELEMENTS_INPUTS);
-        final int ar[] = ArrayUtil.takeArrayInput();
+        final Integer ar[] = ArrayUtil.takeArrayInput();
         ArrayUtil.printArray(ar);
 
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
-            System.out.println("\nEnter your choice\n");
+            System.out.println(PrintUtil.ENTER_CHOICE_MESSAGE);
             choice = GenericUtil.takeIntegerInput();
 
             switch (choice) {
