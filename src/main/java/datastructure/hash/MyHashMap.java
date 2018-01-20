@@ -16,36 +16,39 @@
 
 package datastructure.hash;
 
-import datastructure.linkedlist.LinkedList;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
+//TODO
 public class MyHashMap implements MapInterface<String, Integer> {
 
-    private List<LinkedList<Integer>> mDataList;
+    private static final Integer CONSTANT = 101;
 
     MyHashMap() {
-        mDataList = new ArrayList<>(MapInterface.DEFAULT_HASH_TABLE_SIZE);
+
     }
 
     @Override
-    public void put(String key, Integer data) {
-        mDataList.get(getIndex(getHashCode(key))).insertLast(data);
+    public void put(final String key, final Integer data) {
+
     }
 
     @Override
-    public Integer get(String key) {
+    public Integer get(final String key) {
         return null;
     }
 
     @Override
-    public Integer getHashCode(String key) {
-        return null;
+    public Integer getHashCode(final String key) {
+        return getHashCode(key, 0, key.length(), 0);
+    }
+
+    private Integer getHashCode(final String key, @NotNull final Integer index, final Integer size, Integer hashCode) {
+        if (index.equals(size)) return hashCode;
+        return key.charAt(index) * (int) Math.pow(CONSTANT, index) + getHashCode(key, index + 1, size, hashCode);
     }
 
     @Override
-    public Integer getIndex(Integer hashCode) {
-        return null;
+    public Integer getIndex(final Integer hashCode) {
+        return Math.abs(hashCode % MapInterface.DEFAULT_HASH_TABLE_SIZE);
     }
 }
