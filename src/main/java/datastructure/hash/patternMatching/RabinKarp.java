@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.hash;
+package datastructure.hash.patternMatching;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -30,16 +30,6 @@ public class RabinKarp {
      * @param pattern
      */
     public static void patternMatch(@NotNull final String string, @NotNull final String pattern) {
-        /*final int stringLength = string.length();
-        final int patternLength = pattern.length();
-        int stringHash = calculateHash(string.substring(0, patternLength));
-        final int patternHash = calculateHash(pattern);
-        for (int i = 0, size = stringLength - patternLength; i <= size; i++) {
-            if (checkEqual(patternHash, stringHash, string.substring(i, patternLength + i), pattern))
-                System.out.println("Match found for " + pattern + " at " + i + " index" + " for " + string.substring(0, i) + "'" + string.substring(i, i + patternLength) + "'" + string.substring(i + patternLength));
-            if (i < size)
-                stringHash = calculateNewHash(stringHash, string.charAt(i), string.charAt(i + patternLength), patternLength - 1);
-        }*/
         patternMatchUtil(string, pattern, calculateHash(pattern), pattern.length(), calculateHash(string.substring(0, pattern.length())), string.length() - pattern.length(), 0);
     }
 

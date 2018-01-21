@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.hash;
+package datastructure.hash.patternMatching;
 
 public class PatternMatch {
 
@@ -38,5 +38,4 @@ public class PatternMatch {
         RabinKarp.patternMatch(STRING, PATTERN_SIX);
         RabinKarp.patternMatch(STRING, PATTERN_SEVEN);
     }
-
 }

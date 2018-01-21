@@ -14,40 +14,32 @@
  *    limitations under the License.
  */
 
-package datastructure.hash;
+package datastructure.hash.chaining;
 
-
-import util.PrintUtil;
-
-import java.util.Arrays;
-import java.util.List;
+import static datastructure.hash.HashUtil.*;
 
 public final class MapOperation {
 
     private MyHashMap mMyHashMap;
-    private List<String> mChoice;
 
     public static void main(String... args) {
         final MapOperation mapOperation = new MapOperation();
-        //mapOperation.buildChoice();
         mapOperation.initialize();
-    }
-
-    private void buildChoice() {
-        mChoice = PrintUtil.getPrintList(Arrays.asList(
-                "add",
-                "get"));
     }
 
     private void initialize() {
         mMyHashMap = new MyHashMap();
 
-        mMyHashMap.put("nikhil", 80134);
-        mMyHashMap.put("chanchal", 98366);
-        mMyHashMap.put("rewant", 98367);
-        mMyHashMap.put("sidharth", 70036);
+        mMyHashMap.put(KEY_ONE, VALUE_ONE);
+        mMyHashMap.put(KEY_TWO, VALUE_TWO);
+        mMyHashMap.put(KEY_THREE, VALUE_THREE);
+        mMyHashMap.put(KEY_FOUR, VALUE_FOUR);
 
-        System.out.println(mMyHashMap.get("nikhil"));
+
+        System.out.println(mMyHashMap.get(KEY_ONE));
+        System.out.println(mMyHashMap.get(KEY_TWO));
+        System.out.println(mMyHashMap.get(KEY_THREE));
+        System.out.println(mMyHashMap.get(KEY_FOUR));
     }
 
 }

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package datastructure.hash;
+package datastructure.hash.chaining;
 
 public interface MapInterface<K, V> {
     Integer DEFAULT_HASH_TABLE_SIZE = 16;

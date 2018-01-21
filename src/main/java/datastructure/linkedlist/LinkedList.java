@@ -71,6 +71,10 @@ public class LinkedList<T> {
         insertLast(mRoot, temp);
     }
 
+    /**
+     * @param node
+     * @param newNode
+     */
     private void insertLast(@NotNull final Node<T> node, final Node<T> newNode) {
         if (node.getNode() == null) {
             node.setNode(newNode);
@@ -116,6 +120,11 @@ public class LinkedList<T> {
         insertAtPosition(mRoot, temp, position);
     }
 
+    /**
+     * @param node
+     * @param newNode
+     * @param position
+     */
     private void insertAtPosition(final Node<T> node, final Node<T> newNode, final int position) {
         if (position == 1) {
             newNode.setNode(node.getNode());
@@ -158,6 +167,10 @@ public class LinkedList<T> {
         deleteLast(mRoot);
     }
 
+    /**
+     *
+     * @param node
+     */
     private void deleteLast(@NotNull final Node<T> node) {
         if (node.getNode().getNode() == null) {
             node.setNode(null);
@@ -195,6 +208,11 @@ public class LinkedList<T> {
         deleteAtPosition(mRoot, position);
     }
 
+    /**
+     *
+     * @param node
+     * @param position
+     */
     private void deleteAtPosition(final Node<T> node, final int position) {
         if (position == 1) {
             node.setNode(node.getNode().getNode());
@@ -223,6 +241,11 @@ public class LinkedList<T> {
         deleteItem(mRoot, data);
     }
 
+    /**
+     *
+     * @param node
+     * @param data
+     */
     private void deleteItem(@NotNull final Node<T> node, final T data) {
         if (node.getNode().getData() == data) {
             node.setNode(node.getNode().getNode());
@@ -254,6 +277,11 @@ public class LinkedList<T> {
         return getLast(mRoot);
     }
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     private T getLast(@NotNull final Node<T> node) {
         if (node.getNode() == null) return node.getData();
         return getLast(node.getNode());
@@ -277,6 +305,12 @@ public class LinkedList<T> {
         return getAtPosition(mRoot, position);
     }
 
+    /**
+     *
+     * @param node
+     * @param position
+     * @return
+     */
     private T getAtPosition(final Node<T> node, final int position) {
         if (position == 0) return node.getData();
         return getAtPosition(node.getNode(), position - 1);
@@ -296,6 +330,12 @@ public class LinkedList<T> {
         return searchByItem(mRoot, data);
     }
 
+    /**
+     *
+     * @param node
+     * @param data
+     * @return
+     */
     @Contract("null, _ -> false")
     private boolean searchByItem(final Node<T> node, final T data) {
         return node != null && (node.getData().equals(data) || searchByItem(node.getNode(), data));
@@ -317,6 +357,12 @@ public class LinkedList<T> {
         return getItemPosition(mRoot, data);
     }
 
+    /**
+     *
+     * @param node
+     * @param data
+     * @return
+     */
     private int getItemPosition(@NotNull final Node<T> node, final T data) {
         if (node.getData().equals(data)) return 0;
         return 1 + getItemPosition(node.getNode(), data);
@@ -329,6 +375,10 @@ public class LinkedList<T> {
         display(mRoot);
     }
 
+    /**
+     *
+     * @param node
+     */
     private void display(final Node<T> node) {
         if (node == null) return;
         System.out.print(node.getData() + " ");
@@ -342,6 +392,11 @@ public class LinkedList<T> {
         return getSize(mRoot);
     }
 
+    /**
+     *
+     * @param node
+     * @return
+     */
     private int getSize(final Node<T> node) {
         if (node == null) return 0;
         return 1 + getSize(node.getNode());

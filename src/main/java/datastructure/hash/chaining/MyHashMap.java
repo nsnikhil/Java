@@ -14,39 +14,73 @@
  *    limitations under the License.
  */
 
-package datastructure.hash;
+package datastructure.hash.chaining;
 
+import datastructure.linkedlist.LinkedList;
 import org.jetbrains.annotations.NotNull;
 
-//TODO
 public class MyHashMap implements MapInterface<String, Integer> {
 
     private static final Integer CONSTANT = 101;
+    private LinkedList<Integer>[] mHashList;
 
+    /**
+     *
+     */
+    @SuppressWarnings("unchecked")
     MyHashMap() {
-
+        mHashList = new LinkedList[16];
     }
 
+    /**
+     * @param key
+     * @param data
+     */
     @Override
     public void put(final String key, final Integer data) {
+        final int index = getIndex(getHashCode(key));
+        if (mHashList[index] == null) mHashList[index] = new LinkedList<>();
+        mHashList[index].insertLast(data);
 
     }
 
+    /**
+     * @param key
+     * @return
+     */
     @Override
     public Integer get(final String key) {
-        return null;
+        return mHashList[getIndex(getHashCode(key))].getLast();
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     @Override
     public Integer getHashCode(final String key) {
         return getHashCode(key, 0, key.length(), 0);
     }
 
+    /**
+     *
+     * @param key
+     * @param index
+     * @param size
+     * @param hashCode
+     * @return
+     */
     private Integer getHashCode(final String key, @NotNull final Integer index, final Integer size, Integer hashCode) {
         if (index.equals(size)) return hashCode;
         return key.charAt(index) * (int) Math.pow(CONSTANT, index) + getHashCode(key, index + 1, size, hashCode);
     }
 
+    /**
+     *
+     * @param hashCode
+     * @return
+     */
     @Override
     public Integer getIndex(final Integer hashCode) {
         return Math.abs(hashCode % MapInterface.DEFAULT_HASH_TABLE_SIZE);
