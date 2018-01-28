@@ -18,12 +18,19 @@ package datastructure.hash.openAddressing;
 
 import static datastructure.hash.HashUtil.*;
 
+/**
+ * Class demonstrating the three open addressing
+ * techniques
+ */
 public class OpenAddressingOp {
 
     public static void main(String... args) {
         new OpenAddressingOp().initialize();
     }
 
+    /**
+     * Calls all the open addressing methods
+     */
     private void initialize() {
         setLinearProbing();
         System.out.println("_____");
@@ -32,6 +39,9 @@ public class OpenAddressingOp {
         setDoubleHashing();
     }
 
+    /**
+     * Function to demonstrate linear probing
+     */
     private void setLinearProbing() {
         final LinearProbing linearProbing = new LinearProbing();
 
@@ -46,6 +56,9 @@ public class OpenAddressingOp {
         System.out.println(linearProbing.get(KEY_FOUR));
     }
 
+    /**
+     * Function to demonstrate quadratic probing
+     */
     private void setQuadraticProbing() {
         final QuadraticProbing quadraticProbing = new QuadraticProbing();
 
@@ -60,6 +73,9 @@ public class OpenAddressingOp {
         System.out.println(quadraticProbing.get(KEY_FOUR));
     }
 
+    /**
+     * Function to demonstrate double hashing
+     */
     private void setDoubleHashing() {
         final DoubleHashing doubleHashing = new DoubleHashing();
 

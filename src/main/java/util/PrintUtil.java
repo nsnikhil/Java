@@ -23,12 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Utility class which houses some common
+ * print function used in the entire project
  */
 public final class PrintUtil {
 
-
-    private static final String CHOICE_EXIT = "exit";
 
     public static final String ACTION_SORT = "sort";
     public static final String ACTION_SEARCH = "search";
@@ -38,12 +37,12 @@ public final class PrintUtil {
     public static final String ACTION_GET = "get";
     public static final String ACTION_SET = "set";
     public static final String ACTION_CHECK = "check";
-
     public static final String ENTER_CHOICE_MESSAGE = "\nEnter your choice\n";
+    private static final String CHOICE_EXIT = "exit";
 
     /**
-     * @param listItem
-     * @return
+     * @param listItem the list
+     * @return the list with exit addded
      */
     public static List<String> getPrintList(List<String> listItem) {
         final List<String> choiceList = new ArrayList<>();
@@ -53,7 +52,7 @@ public final class PrintUtil {
     }
 
     /**
-     * @param list
+     * @param list the list to print
      */
     public static void printChoice(final List<String> list) {
         printChoice(list, list.size(), 1);
@@ -61,9 +60,9 @@ public final class PrintUtil {
     }
 
     /**
-     * @param list
-     * @param listSize
-     * @param index
+     * @param list     the list to print
+     * @param listSize the size of list
+     * @param index    the index from where the print has to start
      */
     private static void printChoice(final List<String> list, final int listSize, final int index) {
         if (listSize == index) return;
@@ -72,9 +71,9 @@ public final class PrintUtil {
     }
 
     /**
-     * @param index
-     * @param action
-     * @return
+     * @param index  the index
+     * @param action the string
+     * @return custom string
      */
     @NotNull
     @Contract(pure = true)
@@ -83,8 +82,8 @@ public final class PrintUtil {
     }
 
     /**
-     * @param choice
-     * @return
+     * @param choice the string
+     * @return custom string
      */
     @NotNull
     @Contract(pure = true)

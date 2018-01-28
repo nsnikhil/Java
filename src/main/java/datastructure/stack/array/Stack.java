@@ -95,10 +95,10 @@ class Stack {
     }
 
     /**
-     * @param stack
-     * @param data
-     * @param index
-     * @return
+     * @param stack the stack
+     * @param data  the element to search
+     * @param index the starting index of stack
+     * @return index of element in stack if found else -1
      */
     private Integer search(@NotNull final Integer[] stack, final Integer data, final Integer index) {
         if (stack.length == index) return -1;
@@ -114,6 +114,9 @@ class Stack {
         return mTop == -1;
     }
 
+    /**
+     * @return true if stack is full else !true
+     */
     @Contract(pure = true)
     final boolean isFull() {
         return mTop >= mStack.length - 1;

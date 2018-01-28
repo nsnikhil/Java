@@ -21,7 +21,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- *
+ * Utility class which houses some common
+ * function used in the entire project
  */
 public final class GenericUtil {
 

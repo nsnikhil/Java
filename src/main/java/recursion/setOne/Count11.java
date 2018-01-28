@@ -35,6 +35,10 @@ public final class Count11 {
         System.out.println(new Count11().count11(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return no of 11 in string
+     */
     private int count11(@NotNull final String str) {
         if (str.length() < 2) return 0;
         if (str.substring(0, 2).equals("11"))

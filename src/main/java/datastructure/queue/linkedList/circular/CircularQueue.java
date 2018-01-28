@@ -23,10 +23,6 @@ import datastructure.queue.linkedList.QueueInterface;
  * <p>
  * Here the last node contains a pointer to first node
  * not null like in general linked list
- *
- * @author Nikhil Soni
- * @version 1.0
- * @since 29-12-2017
  */
 public class CircularQueue<T> implements QueueInterface<T> {
 

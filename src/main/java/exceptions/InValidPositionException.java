@@ -18,6 +18,10 @@ package exceptions;
 
 import org.jetbrains.annotations.Contract;
 
+/**
+ * Runtime Exception, this is thrown when an invalid position/choice
+ * is provided
+ */
 public class InValidPositionException extends RuntimeException {
 
     private final int mPosition;

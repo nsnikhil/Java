@@ -35,6 +35,10 @@ public final class SumDigits {
         System.out.println(new SumDigits().sumDigits(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param n the number
+     * @return sum of digit of number
+     */
     private int sumDigits(final int n) {
         if (n < 1) return 0;
         return n % 10 + sumDigits(n / 10);

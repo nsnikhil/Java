@@ -52,6 +52,11 @@ public class SelectionSort implements Sorter {
         return selectionSort(ar, 0);
     }
 
+    /**
+     * @param ar    the array
+     * @param index the starting index
+     * @return the sorted array
+     */
     private Integer[] selectionSort(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return ar;
         final int minIndex = findMinIndex(ar, index + 1, index);
@@ -62,6 +67,12 @@ public class SelectionSort implements Sorter {
         return selectionSort(ar, index + 1);
     }
 
+    /**
+     * @param ar       the array
+     * @param index    the starting index
+     * @param minIndex the default min index
+     * @return index of element with smallest value
+     */
     private int findMinIndex(@NotNull final Integer[] ar, final int index, final int minIndex) {
         if (ar.length == index) return minIndex;
         if (ar[index] < ar[minIndex])

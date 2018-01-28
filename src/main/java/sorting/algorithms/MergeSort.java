@@ -19,6 +19,9 @@ package sorting.algorithms;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Implementation of merge sort
+ */
 public class MergeSort implements Sorter {
 
     /**

@@ -38,6 +38,23 @@ public final class Array6 {
         System.out.println(new Array6().array6(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * Recursion continues until index is less than array length
+     * and at a index 6 is found true if returned else index is
+     * incremented by 1 and function is called again
+     * <p>
+     * array6([1,6],0)
+     * <p>
+     * 0 i.e. index is less than array length i.e. 2
+     * ar[index] != 6
+     * so array6([1,6],1) is called
+     * and this time ar[index] == 6
+     * true if returned
+     *
+     * @param nums  the array
+     * @param index the starting index
+     * @return true if array contains a 6
+     */
     private boolean array6(@NotNull final Integer[] nums, final Integer index) {
         return index < nums.length && (nums[index] == 6 || array6(nums, index + 1));
     }

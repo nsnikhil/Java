@@ -35,6 +35,10 @@ public final class TreeOperations {
         treeOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 PrintUtil.ACTION_INSERT,
@@ -43,6 +47,12 @@ public final class TreeOperations {
                 PrintUtil.ACTION_DISPLAY));
     }
 
+    /**
+     * function that allows to perform all function
+     * of tree
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         mTree = new Tree<>();
         int ch;

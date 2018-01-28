@@ -22,7 +22,8 @@ import util.GenericUtil;
 import java.io.IOException;
 
 /**
- * Given a string and a non-empty substring sub, compute recursively the number of times that sub appears in the string, without the sub strings overlapping.
+ * Given a string and a non-empty substring sub, compute recursively the number of times that sub appears in the string,
+ * without the sub strings overlapping.
  * <p>
  * strCount("catcowcat", "cat") → 2
  * strCount("catcowcat", "cow") → 1
@@ -35,6 +36,11 @@ public final class StrCount {
         System.out.println(new StrCount().strCount(GenericUtil.takeStringInput(), GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @param sub the sub string
+     * @return no of times sub string cccurs in string without over lapping
+     */
     private int strCount(@NotNull final String str, @NotNull final String sub) {
         final int length = str.length();
         final int slength = sub.length();

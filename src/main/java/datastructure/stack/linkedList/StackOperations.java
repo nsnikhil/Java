@@ -23,9 +23,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to demonstrate functions of
+ * stack
+ */
 public class StackOperations {
 
-    private Stack<Integer> mStack;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -34,6 +37,10 @@ public class StackOperations {
         stackOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "push data to stack",
@@ -45,9 +52,15 @@ public class StackOperations {
                 "display the stack"));
     }
 
+    /**
+     * function that allows to perform all function
+     * of dynamic array
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
-        mStack = new Stack<>();
+        Stack<Integer> stack = new Stack<>();
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
@@ -57,26 +70,26 @@ public class StackOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mStack.push(GenericUtil.takeIntegerInput());
+                    stack.push(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    System.out.println(mStack.pop());
+                    System.out.println(stack.pop());
                     break;
                 case 3:
-                    System.out.println(mStack.peek());
+                    System.out.println(stack.peek());
                     break;
                 case 4:
-                    System.out.println(mStack.empty());
+                    System.out.println(stack.empty());
                     break;
                 case 5:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mStack.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(stack.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 6:
-                    System.out.println(mStack.size());
+                    System.out.println(stack.size());
                     break;
                 case 7:
-                    mStack.display();
+                    stack.display();
                     break;
             }
         } while (ch != 0);

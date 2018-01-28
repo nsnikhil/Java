@@ -37,6 +37,10 @@ public final class ParenBit {
         System.out.println(new ParenBit().parenBit(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return string starting from ( to )
+     */
     private String parenBit(@NotNull final String str) {
         if (str.charAt(0) != '(')
             return parenBit(str.substring(1));

@@ -22,7 +22,8 @@ import util.GenericUtil;
 import java.io.IOException;
 
 /**
- * Given a string, compute recursively the number of times lowercase "hi" appears in the string, however do not count "hi" that have an 'x' immedately before them.
+ * Given a string, compute recursively the number of times lowercase "hi" appears in the string,
+ * however do not count "hi" that have an 'x' immedately before them.
  * <p>
  * countHi2("ahixhi") → 1
  * countHi2("ahibhi") → 2
@@ -35,6 +36,10 @@ public final class CountHi2 {
         System.out.println(new CountHi2().countHi2(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return no of hi in string(if hi followed by x it is not counted)
+     */
     private int countHi2(@NotNull final String str) {
         final int length = str.length();
         if (length < 2) return 0;

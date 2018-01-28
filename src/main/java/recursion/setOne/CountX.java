@@ -35,6 +35,10 @@ public final class CountX {
         System.out.println(new CountX().countX(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return quantity of x in string
+     */
     private int countX(@NotNull final String str) {
         final int length = str.length();
         if (length < 1) return 0;

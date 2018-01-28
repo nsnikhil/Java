@@ -21,7 +21,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 /**
- *
+ * Utility class for Integer array that
+ * contains some common functions
  */
 public final class ArrayUtil {
 
@@ -47,10 +48,10 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param arr
-     * @param row
-     * @return
-     * @throws IOException
+     * @param arr the 2d array
+     * @param row number of rows in 2d array
+     * @return 2d array with inout taken from user
+     * @throws IOException IOException
      */
     private static Integer[][] take2dArrayInputUtil(@NotNull final Integer[][] arr, final Integer row) throws IOException {
         if (arr.length == row) return arr;
@@ -59,10 +60,10 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param ar
-     * @param index
-     * @return
-     * @throws IOException
+     * @param ar    the array
+     * @param index starting index array
+     * @return array with inout taken from user
+     * @throws IOException IOException
      */
     private static Integer[] takeArrayInputUtil(@NotNull final Integer[] ar, final Integer index) throws IOException {
         if (ar.length == index) return ar;
@@ -71,9 +72,9 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param firstIndex
-     * @param secondIndex
-     * @param ar
+     * @param firstIndex  the first index
+     * @param secondIndex the second index
+     * @param ar          the array in which first and second index is to be swapped
      */
     public static void swapValues(@NotNull final Integer firstIndex, @NotNull final Integer secondIndex, @NotNull final Integer[] ar) {
         ar[firstIndex] = ar[firstIndex] + ar[secondIndex];
@@ -90,8 +91,8 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param ar
-     * @param index
+     * @param ar    the array
+     * @param index the index from which printing is to start
      */
     private static void printArray(@NotNull final Integer[] ar, final Integer index) {
         if (ar.length == index) return;
@@ -100,7 +101,7 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param arr 2-d integer array
+     * @param arr 2d integer array
      */
     public static void print2dArray(final Integer[][] arr) {
         if (arr == null) return;
@@ -108,8 +109,8 @@ public final class ArrayUtil {
     }
 
     /**
-     * @param arr
-     * @param row
+     * @param arr the 2d array
+     * @param row no of rows in 2d array
      */
     private static void print2dArray(@NotNull final Integer[][] arr, final Integer row) {
         if (arr.length == row) return;

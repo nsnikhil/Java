@@ -16,6 +16,15 @@
 
 package datastructure.heap;
 
+/**
+ * Class with dummy/fake tree
+ * Here tree are represented in array format
+ * since heap is a complete n-ary(binary here) tree
+ * and any tree which is a heap has a property
+ * where left child is at  => 2*i+1
+ * and right child is at -> 2*i+2
+ * where i is the index of parent
+ */
 public final class DummyBinaryTrees {
 
     static final Integer[] TREE_ONE = {1, 2, 3, 4, 5, 6, 7};

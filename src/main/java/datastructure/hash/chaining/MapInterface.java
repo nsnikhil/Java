@@ -16,6 +16,12 @@
 
 package datastructure.hash.chaining;
 
+/**
+ * Interface defining the map interface
+ *
+ * @param <K> the key
+ * @param <V> the value
+ */
 public interface MapInterface<K, V> {
     Integer DEFAULT_HASH_TABLE_SIZE = 16;
 

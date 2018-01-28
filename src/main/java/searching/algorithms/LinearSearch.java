@@ -18,6 +18,9 @@ package searching.algorithms;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Implementation of linear search algorithm
+ */
 public class LinearSearch implements Searcher {
 
     /**
@@ -33,10 +36,10 @@ public class LinearSearch implements Searcher {
     }
 
     /**
-     * @param ar
-     * @param n
-     * @param index
-     * @return
+     * @param ar    the array
+     * @param n     the element to search
+     * @param index the starting index of array
+     * @return true of given element is found else !true
      */
     private boolean search(@NotNull final Integer ar[], final Integer n, final Integer index) {
         return ar.length != index && (ar[index].equals(n) || search(ar, n, index + 1));

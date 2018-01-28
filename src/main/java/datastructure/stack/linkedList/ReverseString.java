@@ -21,6 +21,10 @@ import util.GenericUtil;
 
 import java.io.IOException;
 
+/**
+ * Class to demonstrate revering of given
+ * Integer or String using stack
+ */
 public class ReverseString {
 
     private Stack<Character> mCharacterStack;
@@ -31,6 +35,9 @@ public class ReverseString {
         reverseString.initialize();
     }
 
+    /**
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         mCharacterStack = new Stack<>();
         mIntegerStack = new Stack<>();
@@ -52,6 +59,12 @@ public class ReverseString {
             System.out.print(mCharacterStack.pop());
     }
 
+    /**
+     * Push a given string in a given stack
+     *
+     * @param s     the string
+     * @param stack the stack
+     */
     private void pushString(@NotNull final String s, final Stack<Character> stack) {
         if (s.length() <= 0) return;
         stack.push(s.charAt(0));
@@ -84,6 +97,13 @@ public class ReverseString {
             System.out.print(mIntegerStack.pop());
     }
 
+    /**
+     * Push a given integer in a given stack
+     *
+     * @param integer the integer
+     * @param stack   the stack
+     * @param size    no of digits in integer
+     */
     private void pushInteger(final int integer, final Stack<Integer> stack, int size) {
         if (size < 1) return;
         final int div = (int) Math.pow(10, size - 1);

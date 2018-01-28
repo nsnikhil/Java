@@ -27,12 +27,11 @@ import java.util.List;
 import static datastructure.graph.adjacencyMatrix.DummyGraph.*;
 
 /**
- *
+ * Class to perform action/operations
+ * on graph(adjacency matrix)
  */
 public class GraphOperations {
 
-    private GraphObject<Character> mGraphOne;
-    private GraphObject<Character> mGraphTwo;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -41,16 +40,25 @@ public class GraphOperations {
         graphOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "find adjacent nodes",
-                "find if two nodes are connected"
-        ));
+                "find if two nodes are connected"));
     }
 
+    /**
+     * function that allows to perform
+     * function on graph(adjacency list)
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
-        mGraphOne = new GraphObject<>(VERTICES, EDGE_MATRIX_NON_WEIGHTED);
-        mGraphTwo = new GraphObject<>(VERTICES, EDGE_MATRIX_WEIGHTED);
+        GraphObject<Character> graphOne = new GraphObject<>(VERTICES, EDGE_MATRIX_NON_WEIGHTED);
+        GraphObject<Character> graphTwo = new GraphObject<>(VERTICES, EDGE_MATRIX_WEIGHTED);
 
         int ch;
 
@@ -63,11 +71,11 @@ public class GraphOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GraphUtil.CHARACTER_INPUT);
-                    GraphUtil.print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), mGraphOne));
+                    GraphUtil.print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), graphOne));
                     break;
                 case 2:
                     System.out.println(GraphUtil.CHARACTER_INPUT + " & " + GraphUtil.CHARACTER_INPUT);
-                    System.out.println(GraphActions.areConnected(GenericUtil.takeCharacterInput(), GenericUtil.takeCharacterInput(), mGraphOne));
+                    System.out.println(GraphActions.areConnected(GenericUtil.takeCharacterInput(), GenericUtil.takeCharacterInput(), graphOne));
                     break;
             }
 

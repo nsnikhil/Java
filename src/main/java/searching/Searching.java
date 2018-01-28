@@ -26,6 +26,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class illustrating searching on a array
+ */
 public final class Searching {
 
     private List<String> mChoice;
@@ -36,12 +39,22 @@ public final class Searching {
         searching.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 PrintUtil.buildChoiceString("linear", PrintUtil.ACTION_SEARCH),
                 PrintUtil.buildChoiceString("binary", PrintUtil.ACTION_SEARCH)));
     }
 
+    /**
+     * function that allows to perform
+     * linear and binary search on a array
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
 
         int choice;

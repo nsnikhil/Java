@@ -23,9 +23,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to demonstrate functions of
+ * linear queue(array)
+ */
 public class QueueOperations {
 
-    private Queue mQueue;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -34,6 +37,10 @@ public class QueueOperations {
         queueOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "enqueue data to queue",
@@ -46,11 +53,17 @@ public class QueueOperations {
                 "display the queue"));
     }
 
+    /**
+     * function that allows to perform all function
+     * of queue(array)
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
 
         System.out.println(GenericUtil.INTEGER_INPUT_SIZE);
-        mQueue = new Queue(GenericUtil.takeIntegerInput());
+        Queue queue = new Queue(GenericUtil.takeIntegerInput());
 
         do {
             System.out.println();
@@ -61,29 +74,29 @@ public class QueueOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mQueue.enqueue(GenericUtil.takeIntegerInput());
+                    queue.enqueue(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    mQueue.dequeue();
+                    queue.dequeue();
                     break;
                 case 3:
-                    System.out.print(mQueue.getFront());
+                    System.out.print(queue.getFront());
                     break;
                 case 4:
-                    System.out.print(mQueue.getRear());
+                    System.out.print(queue.getRear());
                     break;
                 case 5:
-                    System.out.print(mQueue.isEmpty());
+                    System.out.print(queue.isEmpty());
                     break;
                 case 6:
-                    System.out.print(mQueue.isFull());
+                    System.out.print(queue.isFull());
                     break;
                 case 7:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mQueue.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(queue.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
-                    mQueue.display();
+                    queue.display();
                     break;
             }
         } while (ch != 0);

@@ -36,6 +36,10 @@ public final class Count8 {
         System.out.println(new Count8().count8(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param n a number
+     * @return no of 8 in number(the value is doubled if two 8 occurs adjacently)
+     */
     private int count8(final int n) {
         if (n < 8) return 0;
         if (n % 10 == 8 && (n / 10) % 10 == 8) return 2 + count8(n / 10);

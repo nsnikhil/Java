@@ -18,9 +18,15 @@ package searching.algorithms;
 
 import sorting.algorithms.QuickSort;
 
+/**
+ * Implementation of binary search algorithm
+ */
 public class BinarySearch implements Searcher {
 
     /**
+     * To perform a binary search the given
+     * array has to be sorted
+     *
      * @param ar the original array
      * @param n  the value to be searched
      * @return true of value if found
@@ -44,7 +50,7 @@ public class BinarySearch implements Searcher {
      * recursively search from (0 to mid)
      * and if value if found return true.
      *
-     * @param ar    the original array
+     * @param ar    the sorted array
      * @param start the starting index
      * @param end   the end index
      * @param no    the number to be searched

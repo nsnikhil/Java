@@ -35,6 +35,10 @@ public final class NoX {
         System.out.println(new NoX().noX(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return string after x removed
+     */
     private String noX(@NotNull final String str) {
         if (str.length() < 1) return str;
         if (str.charAt(0) == 'x')

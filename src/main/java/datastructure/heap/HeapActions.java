@@ -19,15 +19,21 @@ package datastructure.heap;
 import org.jetbrains.annotations.NotNull;
 import util.ArrayUtil;
 
+/**
+ * Class implementing all the functions of heap
+ * data structure
+ */
 public final class HeapActions {
 
     /**
+     * Inserts a given value in a max heap
+     * <p>
      * Algorithm :
      * We can insert Integer.MIN_VALUE and the call
      * increase value with new value
      *
-     * @param ar
-     * @param value
+     * @param ar    max heap
+     * @param value the value
      */
     public static void insertIntoMaxHeap(final Integer ar[], Integer value) {
         if (ar[ar.length - 1] != null) throw new ArrayIndexOutOfBoundsException("Array is full ");
@@ -35,9 +41,13 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param value
-     * @param index
+     * Inserts MIN_VALUE at last index and
+     * then call increase value with the
+     * value to add to max heap
+     *
+     * @param ar    the max heap
+     * @param value the value
+     * @param index the index where value is to be inserted
      */
     private static void insertIntoMaxHeap(@NotNull final Integer[] ar, final Integer value, final int index) {
         ar[index] = Integer.MIN_VALUE;
@@ -49,8 +59,8 @@ public final class HeapActions {
      * We can insert Integer.MAX_VALUE and the call
      * decrease value with new value
      *
-     * @param ar
-     * @param value
+     * @param ar    the heap
+     * @param value the value
      */
     public static void insertIntoMinHeap(final Integer ar[], Integer value) {
         if (ar[ar.length - 1] != null) throw new ArrayIndexOutOfBoundsException("Array is full ");
@@ -58,9 +68,13 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param value
-     * @param index
+     * Inserts MAX_VALUE at last index and
+     * then call decrease value with the
+     * value to add to min heap
+     *
+     * @param ar    the min heap
+     * @param value the value
+     * @param index the index where value is to be inserted
      */
     private static void insertIntoMinHeap(final Integer ar[], Integer value, int index) {
         ar[index] = Integer.MAX_VALUE;
@@ -70,9 +84,9 @@ public final class HeapActions {
     /**
      * Returns the index in the array where value can be inserted
      *
-     * @param ar
-     * @param index
-     * @return
+     * @param ar    the heap
+     * @param index the starting index of heap
+     * @return the index where a new value can be inserted into heap
      */
     private static int getInsertIndex(final Integer ar[], final int index) {
         if (ar.length - 1 == index) return index;
@@ -95,8 +109,10 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
+     * Max heapify all values from given index to 0
+     *
+     * @param ar    the max heap
+     * @param index the index where max heapify will be carried out
      */
     private static void maxHeapify(@NotNull final Integer[] ar, final int index) {
         if (index < 0) return;
@@ -118,8 +134,10 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
+     * Min heapify all values from given index to 0
+     *
+     * @param ar    the min heap
+     * @param index the index where min heapify will be carried out
      */
     private static void minHeapify(final Integer[] ar, final int index) {
         if (index < 0) return;
@@ -182,11 +200,11 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
-     * @param largest
-     * @param left
-     * @param right
+     * @param ar      the array to max heapify
+     * @param index   the index on which the heapify will occur
+     * @param largest the index of largest value between parent and children
+     * @param left    the left child index
+     * @param right   the right child index
      */
     private static void maxHeapifyUtil(@NotNull final Integer[] ar, final int index, int largest, final int left, final int right) {
         if (left < ar.length && ar[left] > ar[largest])
@@ -254,6 +272,13 @@ public final class HeapActions {
         minHeapifyUtil(ar, index, index, 2 * index + 1, 2 * index + 2);
     }
 
+    /**
+     * @param ar       the array to min heapify
+     * @param index    the index on which the heapify will occur
+     * @param smallest the index of smallest value between parent and children
+     * @param left     the left child index
+     * @param right    the right child index
+     */
     private static void minHeapifyUtil(@NotNull final Integer[] ar, final int index, int smallest, final int left, final int right) {
         if (left < ar.length && ar[left] < ar[smallest])
             smallest = left;
@@ -273,7 +298,7 @@ public final class HeapActions {
      * now both the child of root are max heap and root might
      * be max heap so we call max heap from root
      *
-     * @param ar
+     * @param ar the heap
      */
     public static Integer extractMaxMaxHeap(final Integer[] ar) {
         final Integer max = ar[0];
@@ -284,7 +309,7 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
+     * @param ar the heap
      */
     public static Integer extractMinMinHeap(final Integer[] ar) {
         //TODO
@@ -299,9 +324,9 @@ public final class HeapActions {
      * parent if the parent is smaller than new value continue
      * until you reach root or if parent is greater than new value
      *
-     * @param ar
-     * @param index
-     * @param newVal
+     * @param ar     the heap
+     * @param index  the index at which value is to increased
+     * @param newVal the new(increased) value
      */
     public static void increaseValueMaxHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
         if (ar[index] > newVal)
@@ -311,8 +336,8 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
+     * @param ar    the heap
+     * @param index the index at which value is to increased
      */
     private static void swapParentMaxHeap(final Integer ar[], final int index) {
         if (index < 0 || ar[index] < ar[index / 2]) return;
@@ -326,9 +351,9 @@ public final class HeapActions {
      * Set the new value and call max heapify from the
      * node with new value
      *
-     * @param ar
-     * @param index
-     * @param newVal
+     * @param ar     the heap
+     * @param index  the index at which value is to decreased
+     * @param newVal the new(decreased) value
      */
     public static void decreaseValueMaxHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
         if (ar[index] < newVal)
@@ -343,9 +368,9 @@ public final class HeapActions {
      * Set the new value and call min heapify from the
      * node with new value
      *
-     * @param ar
-     * @param index
-     * @param newVal
+     * @param ar     the heap
+     * @param index  the index at which value is to increased
+     * @param newVal the new(increased) value
      */
     public static void increaseeValueMinHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
         if (ar[index] > newVal)
@@ -362,9 +387,9 @@ public final class HeapActions {
      * parent if the parent is greater than new value continue
      * until you reach root or if parent is smaller than new value
      *
-     * @param ar
-     * @param index
-     * @param newVal
+     * @param ar     the heap
+     * @param index  the index at which value is to decreased
+     * @param newVal the new(decreased) value
      */
     public static void decreaseValueMinHeap(@NotNull final Integer[] ar, final int index, final int newVal) {
         if (ar[index] < newVal)
@@ -374,8 +399,8 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
+     * @param ar    the heap
+     * @param index he index at which value is to decreased
      */
     private static void swapParentMinHeap(final Integer ar[], final int index) {
         if (index < 0 || ar[index] > ar[index / 2]) return;
@@ -384,8 +409,8 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @return
+     * @param ar the heap
+     * @return true if given heap is max heap else !true
      */
     public static boolean isMaxHeap(final Integer[] ar) {
         //TODO CHECK
@@ -393,26 +418,26 @@ public final class HeapActions {
     }
 
     /**
-     * @param ar
-     * @param index
-     * @return
+     * @param ar    the heap
+     * @param index the starting index in heap
+     * @return true if given heap is max heap else !true
      */
     private static boolean isMaxHeaps(@NotNull final Integer[] ar, final int index) {
         return ar.length / 2 == index || ar[index] >= ar[index * 2 + 1] && ar[index] >= ar[index * 2 + 2] && isMaxHeaps(ar, index + 1);
     }
 
     /**
-     * @param ar
-     * @param index
-     * @return
+     * @param ar    the heap
+     * @param index the starting index in heap
+     * @return true if given heap is min heap else !true
      */
     private static boolean isMinHeaps(@NotNull final Integer[] ar, final int index) {
         return ar.length / 2 == index || ar[index] <= ar[index * 2 + 1] && ar[index] <= ar[index * 2 + 2] && isMaxHeaps(ar, index + 1);
     }
 
     /**
-     * @param ar
-     * @return
+     * @param ar the heap
+     * @return true if given heap is min heap else !true
      */
     private boolean isMinHeap(final Integer[] ar) {
         //TODO CHECK

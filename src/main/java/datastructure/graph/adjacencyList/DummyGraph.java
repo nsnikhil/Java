@@ -62,17 +62,20 @@ import java.util.List;
 class DummyGraph {
 
     /**
-     *
+     * list of vertices
      */
     static final List<Character> VERTICES = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
 
     /**
+     * list of edges of a graph
+     * <p>
      * Creation a array of generic is a bad thing i know that and will change later
      */
     static final List<LinkedList<Integer>> EDGE_LIST_NON_WEIGHTED = new ArrayList<>();
 
     /*
-     *
+     * this static block defines connection/vertices
+     * for each vertex of the graph
      */
     static {
 

@@ -80,10 +80,10 @@ public class InsertionSort implements Sorter {
     }
 
     /**
-     * @param ar
-     * @param i
-     * @param j
-     * @return
+     * @param ar the array
+     * @param i  the starting index
+     * @param j  the index till which array is sorted
+     * @return sorted array
      */
     private Integer[] insertionSort(@NotNull final Integer[] ar, final int i, final int j) {
         if (ar.length == j) return ar;
@@ -94,11 +94,10 @@ public class InsertionSort implements Sorter {
     }
 
     /**
-     *
-     * @param ar
-     * @param position
-     * @param number
-     * @return
+     * @param ar       the array
+     * @param position the position at which numbers is to inserted
+     * @param number   the number to be inserted
+     * @return position at which number is to be inserted
      */
     private int insertAtCorrectPosition(@NotNull final Integer[] ar, final int position, final int number) {
         if (position < 0 || ar[position] < number) return position;

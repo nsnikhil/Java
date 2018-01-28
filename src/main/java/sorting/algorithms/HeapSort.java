@@ -19,6 +19,9 @@ package sorting.algorithms;
 import org.jetbrains.annotations.NotNull;
 import util.ArrayUtil;
 
+/**
+ * Implementation of heap sort
+ */
 public class HeapSort implements Sorter {
 
     /**
@@ -59,7 +62,7 @@ public class HeapSort implements Sorter {
      * <p>
      * and finally you have 1,2,3,4,5,6,7
      *
-     * @param ar
+     * @param ar the array
      */
     private Integer[] heapSort(@NotNull final Integer[] ar) {
         final Integer heapSize = ar.length;
@@ -69,8 +72,8 @@ public class HeapSort implements Sorter {
     }
 
     /**
-     * @param ar
-     * @param heapSize
+     * @param ar       the array
+     * @param heapSize size of jeap
      */
     private void heapSortUtil(final Integer[] ar, final Integer heapSize) {
         if (heapSize < 0) return;
@@ -83,41 +86,41 @@ public class HeapSort implements Sorter {
     }
 
     /**
-     * @param ar
-     * @param heapSize
-     * @param index
+     * @param ar       the array to heapify
+     * @param heapSize the size of heap
+     * @param index    the starting index
      */
     private void maxHeapify(Integer[] ar, Integer heapSize, Integer index) {
         maxHeapifyUtil(ar, heapSize, index);
     }
 
     /**
-     * @param ar
-     * @param heapSize
-     * @param index
+     * @param ar       the array to max heapify
+     * @param heapSize the size of heap
+     * @param index    the starting index
      */
     private void maxHeapifyUtil(Integer[] ar, Integer heapSize, Integer index) {
         if (index < 0) return;
-        maxHeapifyUtil(ar, heapSize, index, index, 2 * index + 1, 2 * index + 2);
+        maxHeapifySwapUtil(ar, heapSize, index, index, 2 * index + 1, 2 * index + 2);
         maxHeapifyUtil(ar, heapSize, index - 1);
     }
 
     /**
-     * @param ar
-     * @param heapSize
-     * @param index
-     * @param largest
-     * @param left
-     * @param right
+     * @param ar       the array to max heapify
+     * @param heapSize the size of heap
+     * @param index    the starting index
+     * @param largest  the index of largest element between parent and its child
+     * @param left     the left child
+     * @param right    the right child
      */
-    private void maxHeapifyUtil(Integer[] ar, Integer heapSize, Integer index, Integer largest, Integer left, Integer right) {
+    private void maxHeapifySwapUtil(Integer[] ar, Integer heapSize, Integer index, Integer largest, Integer left, Integer right) {
         if (left < heapSize && ar[largest] < ar[left])
             largest = left;
         if (right < heapSize && ar[largest] < ar[right])
             largest = right;
         if (!index.equals(largest)) {
             ArrayUtil.swapValues(index, largest, ar);
-            maxHeapifyUtil(ar, heapSize, largest, largest, 2 * largest + 1, 2 * largest + 2);
+            maxHeapifySwapUtil(ar, heapSize, largest, largest, 2 * largest + 1, 2 * largest + 2);
         }
     }
 }

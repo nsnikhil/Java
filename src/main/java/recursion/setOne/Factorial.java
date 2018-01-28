@@ -34,6 +34,10 @@ public final class Factorial {
         System.out.println(new Factorial().factorial(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param n the number
+     * @return factorial of number
+     */
     private int factorial(final int n) {
         if (n <= 1) return n;
         return n * factorial(n - 1);

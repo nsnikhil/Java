@@ -23,9 +23,6 @@ import org.jetbrains.annotations.NotNull;
  * Custom linked list implementation for circular queue
  *
  * @param <T>
- * @author Nikhil Soni
- * @version 1.0
- * @since 6-1-2018
  */
 public class CircularLinkedList<T> {
 

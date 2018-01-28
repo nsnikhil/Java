@@ -35,6 +35,10 @@ public final class ChangeXY {
         System.out.println(new ChangeXY().changeXY(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return modified string
+     */
     private String changeXY(@NotNull final String str) {
         if (str.length() < 1) return str;
         if (str.charAt(0) == 'x')

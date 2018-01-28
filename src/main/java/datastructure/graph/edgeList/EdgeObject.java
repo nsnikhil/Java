@@ -17,32 +17,75 @@
 package datastructure.graph.edgeList;
 
 /**
+ * Edge of a graph is given by two of the nodes its
+ * is connected to
+ *
  * @param <T>
  */
 public class EdgeObject<T> {
 
-    private T mData;
+    private VertexObject<T> mNodeOne;
+    private VertexObject<T> mNodeTwo;
+    private int mWeight;
 
     /**
-     * @param data
+     * @param nodeOne the first vertex
+     * @param nodeTwo the second vertex
      */
-    EdgeObject(T data) {
-        this.mData = data;
+    public EdgeObject(VertexObject<T> nodeOne, VertexObject<T> nodeTwo) {
+        this(nodeOne, nodeTwo, 1);
     }
 
     /**
-     *
-     * @return
+     * @param nodeOne the first vertex
+     * @param nodeTwo the second vertex
+     * @param weight  the weight of the edge
      */
-    public T getData() {
-        return this.mData;
+    EdgeObject(VertexObject<T> nodeOne, VertexObject<T> nodeTwo, int weight) {
+        this.mNodeOne = nodeOne;
+        this.mNodeTwo = nodeTwo;
+        this.mWeight = weight;
     }
 
     /**
-     *
-     * @param data
+     * @return the first vertex
      */
-    public void setData(T data) {
-        this.mData = data;
+    public VertexObject<T> getNodeOne() {
+        return mNodeOne;
+    }
+
+    /**
+     * @param nodeOne new first vertex
+     */
+    public void setNodeOne(VertexObject<T> nodeOne) {
+        this.mNodeOne = nodeOne;
+    }
+
+    /**
+     * @return the second vertex
+     */
+    public VertexObject<T> getNodeTwo() {
+        return mNodeTwo;
+    }
+
+    /**
+     * @param nodeTwo new second vertex
+     */
+    public void setNodeTwo(VertexObject<T> nodeTwo) {
+        this.mNodeTwo = nodeTwo;
+    }
+
+    /**
+     * @return the weight of edge
+     */
+    public int getWeight() {
+        return mWeight;
+    }
+
+    /**
+     * @param weight new weight of edge
+     */
+    public void setWeight(int weight) {
+        this.mWeight = weight;
     }
 }

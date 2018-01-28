@@ -16,17 +16,25 @@
 
 package datastructure.hash;
 
+/**
+ * Utility class that houses some
+ * common hash functions/values
+ */
 public class HashUtil {
 
+    //Key-Value Pair One
     public static final String KEY_ONE = "nikhil";
     public static final Integer VALUE_ONE = 80134;
 
+    //Key-Value Pair Two
     public static final String KEY_TWO = "chanchal";
     public static final Integer VALUE_TWO = 98366;
 
+    //Key-Value Pair Three
     public static final String KEY_THREE = "rewant";
     public static final Integer VALUE_THREE = 98367;
 
+    //Key-Value Pair Four
     public static final String KEY_FOUR = "sidharth";
     public static final Integer VALUE_FOUR = 70036;
 

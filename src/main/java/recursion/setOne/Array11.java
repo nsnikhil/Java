@@ -38,6 +38,14 @@ public final class Array11 {
         System.out.println(new Array11().array11(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * Recursion continues till index less than array length
+     * and if at a given index 11 is found add 1 else recurse
+     *
+     * @param nums  the array
+     * @param index the starting index
+     * @return quantity of 11 in array
+     */
     private int array11(@NotNull final Integer[] nums, final Integer index) {
         if (index >= nums.length) return 0;
         if (nums[index] == 11) return 1 + array11(nums, index + 1);

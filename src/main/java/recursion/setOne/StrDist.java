@@ -35,6 +35,11 @@ public final class StrDist {
         System.out.println(new StrDist().strDist(GenericUtil.takeStringInput(), GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @param sub sub string
+     * @return ??
+     */
     private int strDist(@NotNull final String str, @NotNull final String sub) {
         //TODO
         return Integer.MIN_VALUE;

@@ -36,6 +36,10 @@ public final class Triangle {
         System.out.println(new Triangle().triangle(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param rows no of rows
+     * @return no of triangle blocks in given rows
+     */
     private int triangle(final int rows) {
         if (rows <= 1) return rows;
         return rows + triangle(rows - 1);

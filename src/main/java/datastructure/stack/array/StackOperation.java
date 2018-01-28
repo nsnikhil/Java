@@ -23,9 +23,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to demonstrate functions of
+ * stack(array)
+ */
 public class StackOperation {
 
-    private Stack mStack;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -34,6 +37,10 @@ public class StackOperation {
         stackOperation.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "push data to stack",
@@ -45,11 +52,18 @@ public class StackOperation {
                 "display the stack"));
     }
 
+
+    /**
+     * function that allows to perform all function
+     * of stack(array)
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
 
         System.out.println(GenericUtil.INTEGER_INPUT_SIZE);
-        mStack = new Stack(GenericUtil.takeIntegerInput());
+        Stack stack = new Stack(GenericUtil.takeIntegerInput());
 
         do {
             System.out.println();
@@ -60,26 +74,26 @@ public class StackOperation {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mStack.push(GenericUtil.takeIntegerInput());
+                    stack.push(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    mStack.pop();
+                    stack.pop();
                     break;
                 case 3:
-                    System.out.println(mStack.peek());
+                    System.out.println(stack.peek());
                     break;
                 case 4:
-                    System.out.println(mStack.isEmpty());
+                    System.out.println(stack.isEmpty());
                     break;
                 case 5:
-                    System.out.println(mStack.isFull());
+                    System.out.println(stack.isFull());
                     break;
                 case 6:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mStack.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(stack.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 7:
-                    mStack.display();
+                    stack.display();
                     break;
             }
         } while (ch != 0);

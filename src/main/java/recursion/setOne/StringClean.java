@@ -36,6 +36,10 @@ public final class StringClean {
         System.out.println(new StringClean().stringClean(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return string with removed repeating character
+     */
     private String stringClean(@NotNull final String str) {
         if (str.length() < 2) return str;
         if (str.charAt(0) == str.charAt(1))

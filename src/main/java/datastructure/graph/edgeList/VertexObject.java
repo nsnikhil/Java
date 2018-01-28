@@ -16,61 +16,33 @@
 
 package datastructure.graph.edgeList;
 
+/**
+ * Edge
+ *
+ * @param <T>
+ */
 public class VertexObject<T> {
 
-    private EdgeObject<T> mNodeOne;
-    private EdgeObject<T> mNodeTwo;
-    private int mWeight;
+    private T mData;
 
     /**
-     * @param nodeOne
-     * @param nodeTwo
+     * @param data the data
      */
-    public VertexObject(EdgeObject<T> nodeOne, EdgeObject<T> nodeTwo) {
-        this(nodeOne, nodeTwo, 1);
+    VertexObject(T data) {
+        this.mData = data;
     }
 
     /**
-     *
-     * @param nodeOne
-     * @param nodeTwo
-     * @param weight
+     * @return the data
      */
-    public VertexObject(EdgeObject<T> nodeOne, EdgeObject<T> nodeTwo, int weight) {
-        this.mNodeOne = nodeOne;
-        this.mNodeTwo = nodeTwo;
-        this.mWeight = weight;
+    public T getData() {
+        return this.mData;
     }
 
     /**
-     *
-     * @return
+     * @param data new data
      */
-    public EdgeObject<T> getNodeOne() {
-        return mNodeOne;
-    }
-
-    /**
-     *
-     * @param nodeOne
-     */
-    public void setmNodeOne(EdgeObject<T> nodeOne) {
-        this.mNodeOne = nodeOne;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getWeight() {
-        return mWeight;
-    }
-
-    /**
-     *
-     * @param weight
-     */
-    public void setWeight(int weight) {
-        this.mWeight = weight;
+    public void setData(T data) {
+        this.mData = data;
     }
 }

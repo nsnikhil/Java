@@ -24,9 +24,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class illustrating all the operations of
+ * binary search tree
+ */
 public final class BstOperations {
 
-    private BinarySearchTree<Integer> mBinarySearchTree;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -35,6 +38,10 @@ public final class BstOperations {
         bstOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "add item",
@@ -57,8 +64,14 @@ public final class BstOperations {
                 "display"));
     }
 
+    /**
+     * function that allows to perform all function
+     * of binary search tree
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
-        mBinarySearchTree = new BinarySearchTree<>();
+        BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>();
         int ch;
 
         do {
@@ -68,63 +81,63 @@ public final class BstOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mBinarySearchTree.insert(GenericUtil.takeIntegerInput());
+                    binarySearchTree.insert(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mBinarySearchTree.remove(GenericUtil.takeIntegerInput());
+                    binarySearchTree.remove(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(binarySearchTree.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 4:
-                    System.out.println(mBinarySearchTree.getMin());
+                    System.out.println(binarySearchTree.getMin());
                     break;
                 case 5:
-                    System.out.println(mBinarySearchTree.getMax());
+                    System.out.println(binarySearchTree.getMax());
                     break;
                 case 6:
-                    System.out.println(mBinarySearchTree.getHeight());
+                    System.out.println(binarySearchTree.getHeight());
                     break;
                 case 7:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.getDepth(GenericUtil.takeIntegerInput()));
+                    System.out.println(binarySearchTree.getDepth(GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
-                    ArrayUtil.printArray(mBinarySearchTree.toInorder());
+                    ArrayUtil.printArray(binarySearchTree.toInorder());
                     break;
                 case 9:
-                    ArrayUtil.printArray(mBinarySearchTree.toPreOrder());
+                    ArrayUtil.printArray(binarySearchTree.toPreOrder());
                     break;
                 case 10:
-                    ArrayUtil.printArray(mBinarySearchTree.toPostOrder());
+                    ArrayUtil.printArray(binarySearchTree.toPostOrder());
                     break;
                 case 11:
-                    ArrayUtil.printArray(mBinarySearchTree.toLevelOrder());
+                    ArrayUtil.printArray(binarySearchTree.toLevelOrder());
                     break;
                 case 12:
-                    System.out.println(mBinarySearchTree.getNoOfElements());
+                    System.out.println(binarySearchTree.getNoOfElements());
                     break;
                 case 13:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.getSuccessorInOrder(GenericUtil.takeIntegerInput()));
+                    System.out.println(binarySearchTree.getSuccessorInOrder(GenericUtil.takeIntegerInput()));
                     break;
                 case 14:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mBinarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
+                    System.out.println(binarySearchTree.isLeafNode(GenericUtil.takeIntegerInput()));
                     break;
                 case 15:
-                    System.out.println(mBinarySearchTree.isComplete());
+                    System.out.println(binarySearchTree.isComplete());
                     break;
                 case 16:
-                    System.out.println(mBinarySearchTree.isBalanced());
+                    System.out.println(binarySearchTree.isBalanced());
                     break;
                 case 17:
-                    mBinarySearchTree.balanceBst();
+                    binarySearchTree.balanceBst();
                     break;
                 case 18:
-                    mBinarySearchTree.display();
+                    binarySearchTree.display();
                     break;
             }
 

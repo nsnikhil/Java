@@ -37,6 +37,12 @@ public final class StrCopies {
         System.out.println(new StrCopies().strCopies(GenericUtil.takeStringInput(), GenericUtil.takeStringInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param str the string
+     * @param sub the sub string
+     * @param n   no of copies of sub string in given string
+     * @return true if n equals no of copies of sub string in given string else !true
+     */
     private boolean strCopies(@NotNull final String str, @NotNull final String sub, final int n) {
         if (n == 0) return true;
         if (str.length() < sub.length()) return false;

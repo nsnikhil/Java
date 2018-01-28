@@ -27,9 +27,12 @@ import java.util.List;
 import static datastructure.graph.adjacencyList.DummyGraph.EDGE_LIST_NON_WEIGHTED;
 import static datastructure.graph.adjacencyList.DummyGraph.VERTICES;
 
+/**
+ * Class to perform action/operations
+ * on graph(adjacency list)
+ */
 public class GraphOperations {
 
-    private GraphObject<Character> mGraphOne;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -38,15 +41,25 @@ public class GraphOperations {
         graphOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "find adjacent nodes",
                 "find if two nodes are connected"));
     }
 
+    /**
+     * function that allows to perform
+     * function on graph(adjacency list)
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
-        mGraphOne = new GraphObject<>(VERTICES, EDGE_LIST_NON_WEIGHTED);
+        GraphObject<Character> graphOne = new GraphObject<>(VERTICES, EDGE_LIST_NON_WEIGHTED);
 
         do {
             System.out.println();
@@ -57,11 +70,11 @@ public class GraphOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GraphUtil.CHARACTER_INPUT);
-                    GraphUtil.print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), mGraphOne));
+                    GraphUtil.print(GraphActions.getAdjacentNodes(GenericUtil.takeCharacterInput(), graphOne));
                     break;
                 case 2:
                     System.out.println(GraphUtil.CHARACTER_INPUT + " & " + GraphUtil.CHARACTER_INPUT);
-                    System.out.println(GraphActions.areConnected(GenericUtil.takeCharacterInput(), GenericUtil.takeCharacterInput(), mGraphOne));
+                    System.out.println(GraphActions.areConnected(GenericUtil.takeCharacterInput(), GenericUtil.takeCharacterInput(), graphOne));
                     break;
             }
         } while (ch != 0);

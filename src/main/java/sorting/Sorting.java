@@ -25,6 +25,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class illustrating sorting of a array
+ */
 public final class Sorting {
 
     private List<String> mChoice;
@@ -35,6 +38,10 @@ public final class Sorting {
         sorting.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 PrintUtil.buildChoiceString("bubble", PrintUtil.ACTION_SORT),
@@ -45,6 +52,12 @@ public final class Sorting {
                 PrintUtil.buildChoiceString("heap", PrintUtil.ACTION_SORT)));
     }
 
+    /**
+     * function that allows to perform
+     * sorting on a given array
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int choice;
         System.out.println(ArrayUtil.ARRAY_INPUT_SIZE + " & " + ArrayUtil.ARRAY_ELEMENTS_INPUTS);

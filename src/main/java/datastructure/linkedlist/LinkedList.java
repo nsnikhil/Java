@@ -21,12 +21,9 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * //COMMENTS NEEDS TO BE CHANGED FOR EVERY CLASS OF THE PROJECT
+ * Implementation of linked list
  *
  * @param <T> Generic to be replaced with any object sub class
- * @author Nikhil Soni
- * @version 1.0
- * @since 29-12-2017
  */
 public class LinkedList<T> {
 
@@ -72,8 +69,8 @@ public class LinkedList<T> {
     }
 
     /**
-     * @param node
-     * @param newNode
+     * @param node    the root node
+     * @param newNode the new node to insert
      */
     private void insertLast(@NotNull final Node<T> node, final Node<T> newNode) {
         if (node.getNode() == null) {
@@ -121,9 +118,9 @@ public class LinkedList<T> {
     }
 
     /**
-     * @param node
-     * @param newNode
-     * @param position
+     * @param node     the root
+     * @param newNode  the new node to insert
+     * @param position the position at which new node is to inserted
      */
     private void insertAtPosition(final Node<T> node, final Node<T> newNode, final int position) {
         if (position == 1) {
@@ -168,8 +165,7 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
+     * @param node the node to be deleted
      */
     private void deleteLast(@NotNull final Node<T> node) {
         if (node.getNode().getNode() == null) {
@@ -209,9 +205,8 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @param position
+     * @param node     the root node
+     * @param position the position at which node is to be deleted
      */
     private void deleteAtPosition(final Node<T> node, final int position) {
         if (position == 1) {
@@ -242,9 +237,8 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @param data
+     * @param node the root node
+     * @param data the node which to be deleted
      */
     private void deleteItem(@NotNull final Node<T> node, final T data) {
         if (node.getNode().getData() == data) {
@@ -278,9 +272,8 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @return
+     * @param node the root node
+     * @return the last node in linked list
      */
     private T getLast(@NotNull final Node<T> node) {
         if (node.getNode() == null) return node.getData();
@@ -306,10 +299,9 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @param position
-     * @return
+     * @param node     the root node
+     * @param position the position at which you want a node
+     * @return the node at given position
      */
     private T getAtPosition(final Node<T> node, final int position) {
         if (position == 0) return node.getData();
@@ -331,10 +323,9 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @param data
-     * @return
+     * @param node the root node
+     * @param data the node to search
+     * @return true if given node is found in linked list else !true
      */
     @Contract("null, _ -> false")
     private boolean searchByItem(final Node<T> node, final T data) {
@@ -358,10 +349,9 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @param data
-     * @return
+     * @param node the root node
+     * @param data the node whose position to be found
+     * @return position of node if present else -1
      */
     private int getItemPosition(@NotNull final Node<T> node, final T data) {
         if (node.getData().equals(data)) return 0;
@@ -376,8 +366,7 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
+     * @param node the root node
      */
     private void display(final Node<T> node) {
         if (node == null) return;
@@ -393,9 +382,8 @@ public class LinkedList<T> {
     }
 
     /**
-     *
-     * @param node
-     * @return
+     * @param node the root node
+     * @return the size of list from node
      */
     private int getSize(final Node<T> node) {
         if (node == null) return 0;

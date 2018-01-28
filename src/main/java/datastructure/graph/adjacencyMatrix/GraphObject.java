@@ -28,12 +28,19 @@ import java.util.List;
  */
 public class GraphObject<T> {
 
+    /**
+     * list of vertices
+     */
     private List<T> mVertices;
+
+    /**
+     * 2d array representation of graph
+     */
     private Integer[][] mEdges;
 
     /**
-     * @param vertices
-     * @param edges
+     * @param vertices list of vertices
+     * @param edges    2d array representation of graph
      */
     GraphObject(List<T> vertices, Integer[][] edges) {
         mVertices = vertices;
@@ -41,32 +48,28 @@ public class GraphObject<T> {
     }
 
     /**
-     *
-     * @return
+     * @return the edges array representation
      */
     public Integer[][] getEdges() {
         return mEdges;
     }
 
     /**
-     *
-     * @param edges
+     * @param edges new edges
      */
     public void setEdges(Integer[][] edges) {
         this.mEdges = edges;
     }
 
     /**
-     *
-     * @return
+     * @return list of vertices
      */
     public List<T> getVertices() {
         return mVertices;
     }
 
     /**
-     *
-     * @param vertices
+     * @param vertices new vertices
      */
     public void setVertices(List<T> vertices) {
         this.mVertices = vertices;

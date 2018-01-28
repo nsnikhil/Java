@@ -20,28 +20,57 @@ import datastructure.linkedlist.LinkedList;
 
 import java.util.List;
 
+/**
+ * Object that represents the entire graph in
+ * adjacency list form
+ *
+ * @param <T>
+ */
 public class GraphObject<T> {
 
+    /**
+     * list of vertices
+     */
     private List<T> mVertex;
+
+    /**
+     * list of linked list of edges
+     */
     private List<LinkedList<Integer>> mEdgeList;
 
+    /**
+     * @param vertex   the vertex
+     * @param edgeList the list of edges
+     */
     GraphObject(List<T> vertex, List<LinkedList<Integer>> edgeList) {
         mVertex = vertex;
         mEdgeList = edgeList;
     }
 
+    /**
+     * @return the vertex
+     */
     public List<T> getVertex() {
         return mVertex;
     }
 
+    /**
+     * @param vertex new vertices
+     */
     public void setVertex(List<T> vertex) {
         this.mVertex = vertex;
     }
 
+    /**
+     * @return list of edges
+     */
     public List<LinkedList<Integer>> getEdgeList() {
         return mEdgeList;
     }
 
+    /**
+     * @param edgeList new edges
+     */
     public void setEdgeList(List<LinkedList<Integer>> edgeList) {
         this.mEdgeList = edgeList;
     }

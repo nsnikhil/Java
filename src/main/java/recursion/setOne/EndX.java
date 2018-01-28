@@ -35,6 +35,10 @@ public final class EndX {
         System.out.println(new EndX().endX(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return modified string
+     */
     private String endX(@NotNull final String str) {
         if (str.length() < 1) return str;
         if (str.charAt(0) == 'x')

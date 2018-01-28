@@ -37,6 +37,10 @@ public final class Fibonacci {
         System.out.println(new Fibonacci().fibonacci(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param n the range
+     * @return fibonacci till the given range
+     */
     private int fibonacci(final int n) {
         if (n <= 1) return n;
         return fibonacci(n - 1) + fibonacci(n - 2);

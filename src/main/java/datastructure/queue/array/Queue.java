@@ -135,6 +135,13 @@ public class Queue {
         return search(mRear, mQueue, mFront, data);
     }
 
+    /**
+     * @param rear  the rear of queue
+     * @param queue the queue
+     * @param index the starting index of queue(front)
+     * @param data  the data to search
+     * @return index of data in queue if found else -1
+     */
     private int search(final int rear, final int[] queue, int index, final int data) {
         if (rear < index) return -1;
         if (queue[index] == data) return index;
@@ -153,6 +160,11 @@ public class Queue {
         display(mRear, mQueue, mFront);
     }
 
+    /**
+     * @param rear  the rear of queue
+     * @param queue the queue
+     * @param index the starting index of queue
+     */
     private void display(final int rear, final int queue[], int index) {
         if (rear < index) return;
         System.out.print(queue[index] + " ");

@@ -38,6 +38,12 @@ public final class Array220 {
         System.out.println(new Array220().array220(ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param nums  the array
+     * @param index the starting index
+     * @return true if a array contains a number in higher index which
+     * is a 10times that of a value in lower index
+     */
     private boolean array220(@NotNull final Integer[] nums, final Integer index) {
         //TODO
         return false;

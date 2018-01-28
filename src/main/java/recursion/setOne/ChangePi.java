@@ -35,6 +35,10 @@ public final class ChangePi {
         System.out.println(new ChangePi().changePi(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return modified string
+     */
     private String changePi(@NotNull final String str) {
         final int length = str.length();
         if (length < 2) return str;

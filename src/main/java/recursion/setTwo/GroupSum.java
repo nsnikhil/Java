@@ -40,6 +40,12 @@ public final class GroupSum {
         System.out.println(new GroupSum().groupSum(GenericUtil.takeIntegerInput(), ArrayUtil.takeArrayInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param start  ??
+     * @param nums   ??
+     * @param target ??
+     * @return ??
+     */
     private boolean groupSum(final Integer start, @NotNull final Integer[] nums, final Integer target) {
         //TODO
         return false;

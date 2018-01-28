@@ -16,6 +16,9 @@
 
 package datastructure.hash.patternMatching;
 
+/**
+ * Class to test Rabin karp algorithm
+ */
 public class PatternMatch {
 
     private static final String STRING = "nikabcjavnikapygud";

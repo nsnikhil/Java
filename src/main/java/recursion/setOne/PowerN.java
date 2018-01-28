@@ -34,6 +34,11 @@ public final class PowerN {
         System.out.println(new PowerN().powerN(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param base the no
+     * @param n    the power
+     * @return no ^ power
+     */
     private int powerN(final int base, final int n) {
         if (n <= 1) return base;
         return base * powerN(base, n - 1);

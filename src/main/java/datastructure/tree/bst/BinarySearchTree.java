@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
+ * Implementation of binary search tree
+ * <p>
  * Tree traversal functions works if only Integer type Tree is used.
  *
  * @param <I>
@@ -142,8 +144,8 @@ public class BinarySearchTree<I> {
      * of the min to the node to be deleted and simply remove the duplicate node like deleting a node
      * with 0 or 1 child.Or we can also go for maximum in left subtree
      *
-     * @param data  the element to be deleted
-     * @param node  the root
+     * @param data the element to be deleted
+     * @param node the root
      * @return the node after deletion of element
      */
     @Contract("_, null -> null")
@@ -462,6 +464,7 @@ public class BinarySearchTree<I> {
      * @param data the node/element whose In Order successor is to be found
      * @return In Order successor of the node
      */
+    @Nullable
     final I getSuccessorInOrder(final I data) {
         if (!search(data, mBstNode)) throw new IllegalArgumentException("Invalid data");
         if (getMax().equals(data)) {

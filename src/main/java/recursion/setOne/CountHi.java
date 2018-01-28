@@ -35,6 +35,10 @@ public final class CountHi {
         System.out.println(new CountHi().countHi(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return no of hi in string
+     */
     private int countHi(@NotNull final String str) {
         if (str.length() < 2) return 0;
         if (str.substring(0, 2).equals("hi"))

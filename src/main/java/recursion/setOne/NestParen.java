@@ -21,6 +21,14 @@ import util.GenericUtil;
 
 import java.io.IOException;
 
+/**
+ * Given a string, return true if it is a nesting of zero or more pairs of parenthesis, like "(())" or "((()))".
+ * Suggestion: check the first and last chars, and then recur on what's inside them.
+ * <p>
+ * nestParen("(())") → true
+ * nestParen("((()))") → true
+ * nestParen("(((x))") → false
+ */
 public final class NestParen {
 
     public static void main(String... args) throws IOException {
@@ -28,6 +36,10 @@ public final class NestParen {
         System.out.println(new NestParen().nestParen(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return true if given no of braces are balanced
+     */
     private boolean nestParen(@NotNull final String str) {
         return str.length() == 0 || str.charAt(0) == '(' && str.charAt(str.length() - 1) == ')' && nestParen(str.substring(1, str.length() - 1));
     }

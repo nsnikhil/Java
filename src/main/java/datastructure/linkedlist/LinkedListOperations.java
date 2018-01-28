@@ -26,7 +26,6 @@ import java.util.List;
 
 public final class LinkedListOperations {
 
-    private LinkedList<Integer> mLinkedList;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -35,6 +34,10 @@ public final class LinkedListOperations {
         linkedListOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 PrintUtil.ACTION_INSERT + " at beginning",
@@ -53,10 +56,16 @@ public final class LinkedListOperations {
                 PrintUtil.ACTION_DISPLAY + " list"));
     }
 
+    /**
+     * function that allows to perform all function
+     * of linked list
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
 
         int ch;
-        mLinkedList = new LinkedList<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
 
         do {
             System.out.println();
@@ -67,56 +76,56 @@ public final class LinkedListOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mLinkedList.insertFirst(GenericUtil.takeIntegerInput());
+                    linkedList.insertFirst(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mLinkedList.insertLast(GenericUtil.takeIntegerInput());
+                    linkedList.insertLast(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
                     System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE + " & " + GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mLinkedList.insertAtPosition(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
+                    linkedList.insertAtPosition(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
                     break;
                 case 4:
-                    mLinkedList.deleteFirst();
+                    linkedList.deleteFirst();
                     break;
                 case 5:
-                    mLinkedList.deleteLast();
+                    linkedList.deleteLast();
                     break;
                 case 6:
                     System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE);
-                    mLinkedList.deleteAtPosition(GenericUtil.takeIntegerInput());
+                    linkedList.deleteAtPosition(GenericUtil.takeIntegerInput());
                     break;
                 case 7:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mLinkedList.deleteItem(GenericUtil.takeIntegerInput());
+                    linkedList.deleteItem(GenericUtil.takeIntegerInput());
                     break;
                 case 8:
-                    System.out.println(mLinkedList.getFirst());
+                    System.out.println(linkedList.getFirst());
                     break;
                 case 9:
-                    System.out.println(mLinkedList.getLast());
+                    System.out.println(linkedList.getLast());
                     break;
                 case 10:
                     System.out.println(GenericUtil.INTEGER_POSITION_MESSAGE);
-                    System.out.println(mLinkedList.getAtPosition(GenericUtil.takeIntegerInput()));
+                    System.out.println(linkedList.getAtPosition(GenericUtil.takeIntegerInput()));
                     break;
                 case 11:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mLinkedList.getItemPosition(GenericUtil.takeIntegerInput()));
+                    System.out.println(linkedList.getItemPosition(GenericUtil.takeIntegerInput()));
                     break;
                 case 12:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mLinkedList.searchByItem(GenericUtil.takeIntegerInput()));
+                    System.out.println(linkedList.searchByItem(GenericUtil.takeIntegerInput()));
                     break;
                 case 13:
-                    System.out.println(mLinkedList.getSize());
+                    System.out.println(linkedList.getSize());
                     break;
                 case 14:
-                    System.out.println(mLinkedList.isEmpty());
+                    System.out.println(linkedList.isEmpty());
                     break;
                 case 15:
-                    mLinkedList.display();
+                    linkedList.display();
                     break;
             }
         } while (ch != 0);

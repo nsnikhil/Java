@@ -68,11 +68,15 @@ import java.util.List;
 class DummyGraph {
 
     /**
-     *
+     * list of vertices
      */
     static final List<Character> VERTICES = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
+
     /**
-     *
+     * Non weighted Matrix representation of the graph
+     * Each row represent each vertex of the graph
+     * and column are the connection for that row
+     * here 1 represents a connection.
      */
     static final Integer[][] EDGE_MATRIX_NON_WEIGHTED = {
             {0, 1, 1, 1, 0, 0, 0, 0},
@@ -84,11 +88,18 @@ class DummyGraph {
             {0, 0, 1, 0, 0, 0, 0, 1},
             {0, 0, 0, 1, 1, 1, 1, 0}};
     /**
-     *
+     * The max value
      */
     private static final int m = Integer.MAX_VALUE;
+
     /**
-     *
+     * Weighted Matrix representation of the graph
+     * Each row represent each vertex of the graph
+     * and column are the connection for that row
+     * M represents infinity i.e. no connection
+     * between those two vertices and the value
+     * represents the weight of the edge that connects
+     * those two vertices
      */
     static final Integer[][] EDGE_MATRIX_WEIGHTED = {
             {m, 5, 7, 3, m, m, m, m},

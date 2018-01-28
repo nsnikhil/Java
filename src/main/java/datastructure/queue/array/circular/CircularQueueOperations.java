@@ -23,9 +23,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to demonstrate functions of
+ * circular queue(array)
+ */
 public class CircularQueueOperations {
 
-    private CircularQueueArray mCircularQueueArray;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -34,6 +37,11 @@ public class CircularQueueOperations {
         circularQueueOperations.initialize();
     }
 
+
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 "enqueue data to queue",
@@ -46,11 +54,17 @@ public class CircularQueueOperations {
                 "display the queue"));
     }
 
+    /**
+     * function that allows to perform all function
+     * of circular queue(array)
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
 
         System.out.println(GenericUtil.INTEGER_INPUT_SIZE);
-        mCircularQueueArray = new CircularQueueArray(GenericUtil.takeIntegerInput());
+        CircularQueueArray circularQueueArray = new CircularQueueArray(GenericUtil.takeIntegerInput());
 
         do {
             System.out.println();
@@ -61,29 +75,29 @@ public class CircularQueueOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mCircularQueueArray.enqueue(GenericUtil.takeIntegerInput());
+                    circularQueueArray.enqueue(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
-                    mCircularQueueArray.dequeue();
+                    circularQueueArray.dequeue();
                     break;
                 case 3:
-                    System.out.println(mCircularQueueArray.getFront());
+                    System.out.println(circularQueueArray.getFront());
                     break;
                 case 4:
-                    System.out.println(mCircularQueueArray.getRear());
+                    System.out.println(circularQueueArray.getRear());
                     break;
                 case 5:
-                    System.out.println(mCircularQueueArray.isEmpty());
+                    System.out.println(circularQueueArray.isEmpty());
                     break;
                 case 6:
-                    System.out.println(mCircularQueueArray.isFull());
+                    System.out.println(circularQueueArray.isFull());
                     break;
                 case 7:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mCircularQueueArray.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(circularQueueArray.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 8:
-                    mCircularQueueArray.display();
+                    circularQueueArray.display();
                     break;
             }
 

@@ -35,6 +35,10 @@ public final class Count7 {
         System.out.println(new Count7().count7(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param n the number
+     * @return quantity of 7 in a given no
+     */
     private int count7(final int n) {
         if (n < 1) return 0;
         if (n % 10 == 7) return 1 + count7(n / 10);

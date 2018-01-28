@@ -21,6 +21,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * Utility class that houses some
+ * common graph functions
+ */
 public class GraphUtil {
 
     /**
@@ -29,63 +33,79 @@ public class GraphUtil {
     public static final String CHARACTER_INPUT = "Enter the vertex name";
 
     /**
-     * @param vertex
-     * @param vertexList
-     * @return
+     * Returns the index of the vertex
+     * from a vertex list
+     *
+     * @param vertex     the vertex whose index is to be found
+     * @param vertexList the vertex list
+     * @return the index of vertex in vertex list
      */
     public static int getVertexIndex(final Character vertex, final List<Character> vertexList) {
-        return getVertexIndex(vertex, vertexList, 0, vertexList.size());
+        return getVertexIndexUtil(vertex, vertexList, 0, vertexList.size());
     }
 
     /**
-     * @param vertex
-     * @param vertexList
-     * @param index
-     * @param size
-     * @return
+     * Returns the index of the vertex
+     * from a vertex list
+     *
+     * @param vertex     the vertex whose index is to be found
+     * @param vertexList the vertex list
+     * @param index      the starting point of search
+     * @param size       the size of list
+     * @return the index of vertex in vertex list
      */
-    private static int getVertexIndex(final Character vertex, final List<Character> vertexList, final int index, final int size) {
+    private static int getVertexIndexUtil(final Character vertex, final List<Character> vertexList, final int index, final int size) {
         if (size == index) return index;
         if (vertexList.get(index).equals(vertex)) return index;
-        return getVertexIndex(vertex, vertexList, index + 1, size);
+        return getVertexIndexUtil(vertex, vertexList, index + 1, size);
     }
 
     /**
-     * @param index
-     * @param vertexList
-     * @return
+     * Returns an array of nodes(character)
+     * from a given indexes and vertex list
+     *
+     * @param index      the indexes whose vertex is to be found
+     * @param vertexList the vertex list
+     * @return node(character) array
      */
     @Contract(pure = true)
     public static Character[] getNodesFromIndex(@NotNull final Integer[] index, @NotNull final List<Character> vertexList) {
-        return getNodesFromIndex(index, index.length, vertexList, new Character[index.length], 0);
+        return getNodesFromIndexUtil(index, index.length, vertexList, new Character[index.length], 0);
     }
 
 
     /**
-     * @param indexes
-     * @param size
-     * @param vertexList
-     * @param charArray
-     * @param index
-     * @return
+     * Returns an array of nodes(character)
+     * from a given indexes and vertex list
+     *
+     * @param indexes    the indexes whose vertex is to be found
+     * @param size       the size of indexes
+     * @param vertexList the vertex list
+     * @param charArray  the array which will be filled with value from vertex list
+     * @param index      the starting point from list
+     * @return node(character) array
      */
-    private static Character[] getNodesFromIndex(final Integer[] indexes, final int size, @NotNull final List<Character> vertexList, final Character[] charArray, final int index) {
+    private static Character[] getNodesFromIndexUtil(final Integer[] indexes, final int size, @NotNull final List<Character> vertexList, final Character[] charArray, final int index) {
         if (size == index || indexes[index] == null) return charArray;
         charArray[index] = vertexList.get(indexes[index]);
-        return getNodesFromIndex(indexes, size, vertexList, charArray, index + 1);
+        return getNodesFromIndexUtil(indexes, size, vertexList, charArray, index + 1);
     }
 
     /**
-     * @param ar
+     * Displays the given graph
+     *
+     * @param ar the graph
      */
     public static void print(@NotNull Character[] ar) {
         print(ar, ar.length, 0);
     }
 
     /**
-     * @param ar
-     * @param size
-     * @param index
+     * Displays the given graph
+     *
+     * @param ar    the graph
+     * @param size  the size of graph
+     * @param index the starting index of display
      */
     private static void print(final Character[] ar, final int size, final int index) {
         if (size == index) return;

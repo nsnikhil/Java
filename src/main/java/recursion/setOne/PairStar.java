@@ -36,6 +36,10 @@ public final class PairStar {
         System.out.println(new PairStar().pairStar(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return modified string(if two adjacent character are same place * in between)
+     */
     private String pairStar(@NotNull final String str) {
         final int length = str.length();
         if (length <= 1) return str;

@@ -19,6 +19,9 @@ package sorting.algorithms;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Implementation of quick sort
+ */
 public class QuickSort implements Sorter {
 
     /**
@@ -104,7 +107,7 @@ public class QuickSort implements Sorter {
         return pivotIndex;
     }
 
-    private int getPivotIndex(@NotNull final Integer[] ar, final int start, final int end, final int pivotIndex, final int pivot) {
+    /*private int getPivotIndex(@NotNull final Integer[] ar, final int start, final int end, final int pivotIndex, final int pivot) {
         if (start == end) return pivotIndex;
         if (ar[start] <= pivot) {
             final int temp = ar[start];
@@ -113,5 +116,5 @@ public class QuickSort implements Sorter {
             return getPivotIndex(ar, start + 1, end, pivotIndex + 1, pivot);
         } else
             return getPivotIndex(ar, start + 1, end, pivotIndex, pivot);
-    }
+    }*/
 }

@@ -20,6 +20,9 @@ import datastructure.hash.chaining.MapInterface;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Utility class for open addressing hashing technique
+ */
 class OpenAddressingUtil {
 
     static final Integer DELETED_INDICATION = Integer.MIN_VALUE;
@@ -27,27 +30,35 @@ class OpenAddressingUtil {
     static final Integer PRIME_CONSTANT = 101;
 
     /**
-     * @param string
-     * @return
+     * Returns the hash code for a given key
+     *
+     * @param string the key
+     * @return the hash code
      */
     static Integer getHash(final String string) {
         return getHashUtil(string, string.length(), 0, 0);
     }
 
     /**
-     * @param string
-     * @return
+     * Returns the hash code for a given key
+     * <p>
+     * Used in double hashing
+     *
+     * @param string the key
+     * @return the hash code
      */
     static Integer getHash2(final String string) {
         return getHashUtil2(string, string.length(), 0, 0);
     }
 
     /**
-     * @param string
-     * @param stringLength
-     * @param hashCode
-     * @param index
-     * @return
+     * Returns the hash code for a given key
+     *
+     * @param string       the key
+     * @param stringLength length of key
+     * @param hashCode     the empty hash code
+     * @param index        the start index of key
+     * @return the hash code
      */
     private static Integer getHashUtil(final String string, final Integer stringLength, final Integer hashCode, @NotNull final Integer index) {
         if (index.equals(stringLength)) return hashCode;
@@ -55,11 +66,15 @@ class OpenAddressingUtil {
     }
 
     /**
-     * @param string
-     * @param stringLength
-     * @param hashCode
-     * @param index
-     * @return
+     * Returns the hash code for a given key
+     * <p>
+     * Used in double hashing
+     *
+     * @param string       the key
+     * @param stringLength length of key
+     * @param hashCode     the empty hash code
+     * @param index        the start index of key
+     * @return the hash code
      */
     private static Integer getHashUtil2(final String string, final Integer stringLength, final Integer hashCode, @NotNull final Integer index) {
         if (index.equals(stringLength)) return hashCode;
@@ -67,8 +82,10 @@ class OpenAddressingUtil {
     }
 
     /**
-     * @param hashCode
-     * @return
+     * Returns an index from given hash code
+     *
+     * @param hashCode the hash code
+     * @return index
      */
     @NotNull
     @Contract(pure = true)

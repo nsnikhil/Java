@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class to demonstrate hep data structure and
+ */
 public final class HeapOperations {
 
     private List<String> mChoice;
@@ -30,15 +33,25 @@ public final class HeapOperations {
     public static void main(String... args) throws IOException {
         final HeapOperations heapOperations = new HeapOperations();
         heapOperations.buildChoice();
-        heapOperations.initliaze();
+        heapOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList("Max heapify"));
 
     }
 
-    private void initliaze() throws IOException {
+    /**
+     * function that perform some operations on
+     * heap
+     *
+     * @throws IOException IOException
+     */
+    private void initialize() throws IOException {
         int ch;
 
         do {

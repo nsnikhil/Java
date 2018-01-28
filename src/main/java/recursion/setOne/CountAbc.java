@@ -35,6 +35,10 @@ public final class CountAbc {
         System.out.println(new CountAbc().countAbc(GenericUtil.takeStringInput()));
     }
 
+    /**
+     * @param str the string
+     * @return no of abc or aba in string
+     */
     private int countAbc(@NotNull final String str) {
         final int length = str.length();
         if (length < 3) return 0;

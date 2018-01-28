@@ -35,6 +35,10 @@ public final class BunnyEars {
         System.out.println(new BunnyEars().bunnyEars(GenericUtil.takeIntegerInput()));
     }
 
+    /**
+     * @param bunnies no of bunnies
+     * @return no of ears of bunnies
+     */
     private int bunnyEars(final int bunnies) {
         if (bunnies < 1) return 0;
         return 2 + bunnyEars(bunnies - 1);

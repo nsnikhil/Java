@@ -61,9 +61,9 @@ public class BubbleSort implements Sorter {
     }
 
     /**
-     * @param ar
-     * @param index
-     * @return
+     * @param ar    the array
+     * @param index the starting index
+     * @return the sorted array
      */
     private Integer[] outerSort(@NotNull final Integer[] ar, final int index) {
         if (ar.length == index) return ar;
@@ -72,10 +72,9 @@ public class BubbleSort implements Sorter {
     }
 
     /**
-     *
-     * @param ar
-     * @param index
-     * @param end
+     * @param ar    the array
+     * @param index the starting index
+     * @param end   the ending index
      */
     private void innerSort(@NotNull final Integer ar[], final int index, final int end) {
         if (index >= end) return;

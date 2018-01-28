@@ -18,28 +18,34 @@ package datastructure.hash.chaining;
 
 import static datastructure.hash.HashUtil.*;
 
+/**
+ * Class to perform action/operations
+ * on chain hash table
+ */
 public final class MapOperation {
-
-    private MyHashMap mMyHashMap;
 
     public static void main(String... args) {
         final MapOperation mapOperation = new MapOperation();
         mapOperation.initialize();
     }
 
+    /**
+     * function that allows to perform operations
+     * of chain hash table
+     */
     private void initialize() {
-        mMyHashMap = new MyHashMap();
+        MyHashMap myHashMap = new MyHashMap();
 
-        mMyHashMap.put(KEY_ONE, VALUE_ONE);
-        mMyHashMap.put(KEY_TWO, VALUE_TWO);
-        mMyHashMap.put(KEY_THREE, VALUE_THREE);
-        mMyHashMap.put(KEY_FOUR, VALUE_FOUR);
+        myHashMap.put(KEY_ONE, VALUE_ONE);
+        myHashMap.put(KEY_TWO, VALUE_TWO);
+        myHashMap.put(KEY_THREE, VALUE_THREE);
+        myHashMap.put(KEY_FOUR, VALUE_FOUR);
 
 
-        System.out.println(mMyHashMap.get(KEY_ONE));
-        System.out.println(mMyHashMap.get(KEY_TWO));
-        System.out.println(mMyHashMap.get(KEY_THREE));
-        System.out.println(mMyHashMap.get(KEY_FOUR));
+        System.out.println(myHashMap.get(KEY_ONE));
+        System.out.println(myHashMap.get(KEY_TWO));
+        System.out.println(myHashMap.get(KEY_THREE));
+        System.out.println(myHashMap.get(KEY_FOUR));
     }
 
 }

@@ -24,11 +24,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Class illustrating all the operations of dynamic array
  */
 public final class DynamicArrayOperations {
 
-    private DynamicIntegerArray mDynamicIntegerArray;
     private List<String> mChoice;
 
     public static void main(String... args) throws IOException {
@@ -37,6 +36,10 @@ public final class DynamicArrayOperations {
         dynamicArrayOperations.initialize();
     }
 
+    /**
+     * build list of choices which
+     * can be performed
+     */
     private void buildChoice() {
         mChoice = PrintUtil.getPrintList(Arrays.asList(
                 PrintUtil.ACTION_INSERT,
@@ -47,9 +50,15 @@ public final class DynamicArrayOperations {
                 PrintUtil.ACTION_DISPLAY));
     }
 
+    /**
+     * function that allows to perform all function
+     * of dynamic array
+     *
+     * @throws IOException IOException
+     */
     private void initialize() throws IOException {
         int ch;
-        mDynamicIntegerArray = new DynamicIntegerArray();
+        DynamicIntegerArray dynamicIntegerArray = new DynamicIntegerArray();
         do {
             System.out.println();
             PrintUtil.printChoice(mChoice);
@@ -59,26 +68,26 @@ public final class DynamicArrayOperations {
             switch (ch) {
                 case 1:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mDynamicIntegerArray.add(GenericUtil.takeIntegerInput());
+                    dynamicIntegerArray.add(GenericUtil.takeIntegerInput());
                     break;
                 case 2:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    mDynamicIntegerArray.remove(GenericUtil.takeIntegerInput());
+                    dynamicIntegerArray.remove(GenericUtil.takeIntegerInput());
                     break;
                 case 3:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE + " & " + GenericUtil.INTEGER_INPUT_INDEX);
-                    mDynamicIntegerArray.set(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
+                    dynamicIntegerArray.set(GenericUtil.takeIntegerInput(), GenericUtil.takeIntegerInput());
                     break;
                 case 4:
                     System.out.println(GenericUtil.INTEGER_INPUT_INDEX);
-                    System.out.println(mDynamicIntegerArray.get(GenericUtil.takeIntegerInput()));
+                    System.out.println(dynamicIntegerArray.get(GenericUtil.takeIntegerInput()));
                     break;
                 case 5:
                     System.out.println(GenericUtil.INTEGER_INPUT_MESSAGE);
-                    System.out.println(mDynamicIntegerArray.search(GenericUtil.takeIntegerInput()));
+                    System.out.println(dynamicIntegerArray.search(GenericUtil.takeIntegerInput()));
                     break;
                 case 6:
-                    mDynamicIntegerArray.display();
+                    dynamicIntegerArray.display();
                     break;
             }
         } while (ch != 0);
